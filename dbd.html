@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBD</title>
+</head>
+<body>
+    <script>
+
+        function downloadTextFile(content, filename) {
+            var blob = new Blob([content], { type: 'text/plain' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+        }
+        var filecontent = 'Hello World.';
+        var fileName = 'example.txt';
+
+        downloadTextFile(filecontent, fileName);
+    </script>   
+    <h1>Hi!</h1>
+</body>
+</html>
