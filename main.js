@@ -1,16 +1,23 @@
-chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    if (tabs.length > 0) {
-      const tabId = tabs[0].id;
-      chrome.tabs.executeScript(tabId, { code: "document.documentElement.outerHTML" }, (result) => {
-        if (chrome.runtime.lastError) {
-          console.error(chrome.runtime.lastError);
-        } else if (result && result.length > 0) {
-          const pageSource = result[0];
-          console.log(pageSource);
-  
-          // Further processing or manipulation of the source code
-          // ...
-        }
-      });
-    }
-  });
+if (sessionStorage.times % 2 === 0){
+    sessionStorage.setItem('check','true');
+    console.log("Checked");
+}else{
+    sessionStorage.times = 1;
+    window.stop()   
+    fetch(window.location.href)
+        .then(response => response.text())
+        .then(data => {
+            // Process the response data
+            console.log(data);
+            if (data.includes("eval")) {
+                console.log("The is malware.");
+            } else {
+                window.location.reload();
+                sessionStorage.times = Number(sessionStorage.times) +1;
+            }
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error(error);
+        });
+}
