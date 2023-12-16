@@ -3,8 +3,7 @@
   "name": "Your Extension",
   "version": "1.0",
   "permissions": [
-    "activeTab",
-    "scripting"
+    "tabGroups"
   ],
   "content_scripts": [
     {
