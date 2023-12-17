@@ -19,14 +19,14 @@ if (sessionStorage.times % 2 === 0){
                         if (data.includes(malwarecode[i])) {
                             $malweb = true;
                             console.log("This is malware website.");
+                            // console.log(i)
                         }else {
                             console.log("This is not malware website.");
                         }
-
-                        if (i === malwarecode.length && $malweb === false){
-                            window.location.reload();
-                            sessionStorage.times = Number(sessionStorage.times) +1;
-                        }
+                    }
+                    if ($malweb === false){
+                        window.location.reload();
+                        sessionStorage.times = Number(sessionStorage.times) +1;
                     }
                 })
                 .catch(error => {
