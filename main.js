@@ -35,6 +35,7 @@ if (sessionStorage.times % 2 === 0){
                 });
         })
         .catch(error => {
+            // Handle any errors
             console.error('Error retrieving data:', error);
         });
 }
