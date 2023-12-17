@@ -4,20 +4,37 @@ if (sessionStorage.times % 2 === 0){
 }else{
     sessionStorage.times = 1;
     window.stop()   
-    fetch(window.location.href)
-        .then(response => response.text())
-        .then(data => {
-            // Process the response data
-            console.log(data);
-            if (data.includes("eval")) {
-                console.log("The is malware.");
-            } else {
-                window.location.reload();
-                sessionStorage.times = Number(sessionStorage.times) +1;
-            }
+    fetch("http://127.0.0.1/connect.php")
+        .then(response => response.json())
+        .then(malwarecode => {
+            // Process and use the retrieved data
+            fetch(window.location.href)
+                .then(response => response.text())
+                .then(data => {
+                    // Process the response data
+                    console.log(data);
+                    var $malweb = false;
+                    for (var i = 0; i < malwarecode.length; i++) {
+                        console.log(malwarecode[i]);
+                        if (data.includes(malwarecode[i])) {
+                            $malweb = true;
+                            console.log("This is malware website.");
+                        }else {
+                            console.log("This is not malware website.");
+                        }
+
+                        if (i === malwarecode.length && $malweb === false){
+                            window.location.reload();
+                            sessionStorage.times = Number(sessionStorage.times) +1;
+                        }
+                    }
+                })
+                .catch(error => {
+                    // Handle any errors
+                    console.error(error);
+                });
         })
         .catch(error => {
-            // Handle any errors
-            console.error(error);
+            console.error('Error retrieving data:', error);
         });
 }

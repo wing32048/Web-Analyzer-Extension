@@ -3,7 +3,8 @@
   "name": "Your Extension",
   "version": "1.0",
   "permissions": [
-    "tabGroups"
+    "tabGroups",
+    "http://127.0.0.1/connect.php"
   ],
   "content_scripts": [
     {
