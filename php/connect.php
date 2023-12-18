@@ -22,6 +22,7 @@ try {
     $stmt->execute();
     $codes = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
+    header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     echo json_encode($codes);
   } catch (PDOException $e) {
