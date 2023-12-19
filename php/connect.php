@@ -15,17 +15,26 @@ function dbconnect() {
 }
 
 $pdo = dbconnect();
+header('Access-Control-Allow-Origin: *');
 
 try {
-    $sql =  "SELECT code FROM wordlist";
+    $sql =  "SELECT * FROM wordlist";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
-    $codes = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-    header('Access-Control-Allow-Origin: *');
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    $output = [];
+    foreach ($data as $row) {
+        if (!isset($output[$row['type']])) {
+            $output[$row['type']] = [];
+        }
+        $codes = explode(', ', $row['code']);
+        $output[$row['type']] = array_merge($output[$row['type']], $codes);
+    }
+    
     header('Content-Type: application/json');
-    echo json_encode($codes);
-  } catch (PDOException $e) {
+    echo json_encode($output);
+} catch (PDOException $e) {
     die($e->getMessage());
 }
 ?>
