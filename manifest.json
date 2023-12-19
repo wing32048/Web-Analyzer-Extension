@@ -12,5 +12,8 @@
       "js": ["main2.js"],
       "run_at": "document_start"
     }
-  ]
+  ],
+  "action":{
+    "default_popup":"./popup/html/signin/signin.html"
+  }
 }
