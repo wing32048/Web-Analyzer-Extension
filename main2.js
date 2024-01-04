@@ -22,8 +22,8 @@ if (sessionStorage.times % 2 === 0){
                         var objectsIncluded = values.every(obj => data.includes(obj));
                         console.log(objectsIncluded);
                         if (objectsIncluded) {
-                        anyTypeObjectsIncluded = true;
-                        malwareTypes.push(key);
+                            anyTypeObjectsIncluded = true;
+                            malwareTypes.push(key);
                         }
                     }
                     if (anyTypeObjectsIncluded) {
