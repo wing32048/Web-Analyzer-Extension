@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.loader {
+  border: 16px solid #bdbdbd;
+  border-top: 16px solid #646464;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+  margin: 10px 0;
+}
+
+.button {
+  background-color: rgb(243, 243, 243);
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+</head>
+<body>
+
+<h1>MaliciousChecker</h1>
+<div class="loader-wrapper">
+    <div class="loader"></div>
+    <h2>Scanning...</h2>
+    <p>Whoops! This website seems to be dangerous</p>
+    <p>Are you sure continue connect the website ?</p>
+    <a href = "https://www.google.com" class = "button">Return</a>
+    <p></p>
+    <button class = "button">Continue</button>
+</div>
+</body>
+</html>
