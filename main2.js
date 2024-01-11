@@ -3,7 +3,7 @@ if (sessionStorage.times % 2 === 0){
     console.log("Checked");
 }else{
     sessionStorage.times = 1;
-    window.stop()   
+    window.stop();
     fetch("http://127.0.0.1/connect.php")
         .then(response => response.json())
         .then(malwarejs => {
@@ -14,6 +14,12 @@ if (sessionStorage.times % 2 === 0){
                 .then(data => {
                     // Process the response data
                     console.log(data);
+                    const base64VariablesAndConstants = findBase64VariablesAndConstants(data);
+                    if (base64VariablesAndConstants.length > 0){
+                        for (var i in base64VariablesAndConstants) {
+                            console.log("Base64 Variable and Constant Name:", base64VariablesAndConstants[i]);
+                          }
+                    };
                     var malwareTypes = [];
                     var anyTypeObjectsIncluded = false;
                     for (var key in malwarejs) {
@@ -44,4 +50,29 @@ if (sessionStorage.times % 2 === 0){
             // Handle any errors
             console.error('Error retrieving data:', error);
         });
+}
+
+function findBase64VariablesAndConstants(scriptData) {
+    const pattern = /(?:var|const)\s+(\w+)\s*=\s*["'`]?([A-Za-z0-9+/=]+)["'`]?/g;
+    const matches = [];
+    let match;
+    while ((match = pattern.exec(scriptData)) !== null) {
+        const varName = match[1];
+        const encodedString = match[2];
+    
+        if (isBase64(encodedString)) {
+            matches.push(varName);
+        }
+    }
+    return matches;
+}
+  
+function isBase64(encodedString) {
+    const decodedString = atob(encodedString);
+    const base64Charset = /^[A-Za-z0-9+/=]+$/;
+    return base64Charset.test(encodedString) && isAscii(decodedString);
+}
+  
+function isAscii(str) {
+    return /^[\x00-\x7F]*$/.test(str);
 }
