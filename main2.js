@@ -68,11 +68,12 @@ function findBase64VariablesAndConstants(scriptData) {
 }
   
 function isBase64(encodedString) {
-    const decodedString = atob(encodedString);
+    // const decodedString = atob(encodedString);
     const base64Charset = /^[A-Za-z0-9+/=]+$/;
-    return base64Charset.test(encodedString) && isAscii(decodedString);
+    return base64Charset.test(encodedString);
+    // return base64Charset.test(encodedString) && isAscii(decodedString);
 }
   
-function isAscii(str) {
-    return /^[\x00-\x7F]*$/.test(str);
-}
+// function isAscii(str) {
+//     return /^[\x00-\x7F]*$/.test(str);
+// }

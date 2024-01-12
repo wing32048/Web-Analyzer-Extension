@@ -5,50 +5,53 @@
 // Display scanning message in the popup window
 // popup.document.write("<h2>Scanning for malware...</h2>");
 
+window.stop();
 fetch(window.location.href)
   .then(response => response.text())
   .then(data => {
     // Process the response data
     console.log(data);
-    function findBase64VariablesAndConstants() {
-      const scriptTags = document.getElementsByTagName('script');
-      const matches = [];
+    //https://developer.chrome.com/docs/extensions/develop/ui/add-popup
+    chrome.action.setPopup({popup: './html/loading/loading.html'});
+    // function findBase64VariablesAndConstants() {
+    //   const scriptTags = document.getElementsByTagName('script');
+    //   const matches = [];
     
-      for (let i = 0; i < scriptTags.length; i++) {
-        const script = scriptTags[i].textContent;
+    //   for (let i = 0; i < scriptTags.length; i++) {
+    //     const script = scriptTags[i].textContent;
     
-        if (script) {
-          const pattern = /(?:var|const)\s+(\w+)\s*=\s*["'`]?([A-Za-z0-9+/=]+)["'`]?/g;
-          let match;
+    //     if (script) {
+    //       const pattern = /(?:var|const)\s+(\w+)\s*=\s*["'`]?([A-Za-z0-9+/=]+)["'`]?/g;
+    //       let match;
     
-          while ((match = pattern.exec(script)) !== null) {
-            const varName = match[1];
-            const encodedString = match[2];
+    //       while ((match = pattern.exec(script)) !== null) {
+    //         const varName = match[1];
+    //         const encodedString = match[2];
     
-            if (isBase64(encodedString)) {
-              matches.push(varName);
-            }
-          }
-        }
-      }
+    //         if (isBase64(encodedString)) {
+    //           matches.push(varName);
+    //         }
+    //       }
+    //     }
+    //   }
     
-      return matches;
-    }
+    //   return matches;
+    // }
     
-    function isBase64(encodedString) {
-      const decodedString = atob(encodedString);
-      const base64Charset = /^[A-Za-z0-9+/=]+$/;
+    // function isBase64(encodedString) {
+    //   const decodedString = atob(encodedString);
+    //   const base64Charset = /^[A-Za-z0-9+/=]+$/;
     
-      return base64Charset.test(encodedString) && isAscii(decodedString);
-    }
+    //   return base64Charset.test(encodedString) && isAscii(decodedString);
+    // }
     
-    function isAscii(str) {
-      return /^[\x00-\x7F]*$/.test(str);
-    }
+    // function isAscii(str) {
+    //   return /^[\x00-\x7F]*$/.test(str);
+    // }
     
-    const base64VariablesAndConstants = findBase64VariablesAndConstants();
-    console.log(base64VariablesAndConstants);
-    // var malwareTypes = [];
+    // const base64VariablesAndConstants = findBase64VariablesAndConstants();
+    // console.log(base64VariablesAndConstants);
+    // // var malwareTypes = [];
     // var anyTypeObjectsIncluded = false;
     // for (var key in jsonCheck) {
     //   var values = jsonCheck[key];
