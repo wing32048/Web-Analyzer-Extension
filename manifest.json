@@ -4,16 +4,20 @@
   "version": "1.0",
   "permissions": [
     "tabGroups",
-    "http://127.0.0.1/connect.php"
+    "http://127.0.0.1/connect.php",
+    "notifications"
   ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["main.js"],
+      "js": ["js/main.js"],
       "run_at": "document_start"
     }
   ],
   "action":{
     "default_popup":"./popup/html/signin/signin.html"
+  },
+  "background" : {
+    "service_worker" : "js/background.js"
   }
 }

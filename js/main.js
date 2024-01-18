@@ -1,9 +1,17 @@
 if (sessionStorage.times % 2 === 0){
-    sessionStorage.setItem('check','true');
     console.log("Checked");
 }else{
     sessionStorage.times = 1;
     window.stop();
+    chrome.runtime.sendMessage('', {
+        type: 'notification',
+        options: {
+            title: 'Just wanted to notify you',
+            message: 'Scanning !!!',
+            iconUrl: '/ZKZx.gif',
+            type: 'basic'
+        }
+    });
     fetch("http://127.0.0.1/connect.php")
         .then(response => response.json())
         .then(malwarejs => {
@@ -14,6 +22,8 @@ if (sessionStorage.times % 2 === 0){
                 .then(data => {
                     // Process the response data
                     console.log(data);
+                    
+
                     const base64VariablesAndConstants = findBase64VariablesAndConstants(data);
                     if (base64VariablesAndConstants.length > 0){
                         for (var i in base64VariablesAndConstants) {
@@ -35,6 +45,12 @@ if (sessionStorage.times % 2 === 0){
                     if (anyTypeObjectsIncluded) {
                         console.log("At least one type has all its objects included in the data.");
                         console.log("Malware types found:", malwareTypes.join(", "));
+                        if (window.confirm("Malware types were found. Do you want to continue?")) {
+                            window.location.reload();
+                            sessionStorage.times = Number(sessionStorage.times) +1;                            
+                        } else {
+                            history.back()
+                        }
                     } else {
                         console.log("No type has all its objects included in the data.");
                         window.location.reload();
