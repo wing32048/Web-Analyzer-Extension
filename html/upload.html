@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script>
+        function checkFile(event) {
+            const file = event.target.files[0];
+
+            // Check file extension
+            const allowedExtensions = ['.json'];
+            const fileName = file.name;
+            const fileExtension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
+
+            if (!allowedExtensions.includes(fileExtension)) {
+                console.log('Invalid file type. Please select a JSON file.');
+                return;
+            }
+
+            // Read and parse file content
+            const reader = new FileReader();
+            reader.readAsText(file, 'UTF-8');
+            reader.onload = function (event) {
+            try {
+                const jsonData = JSON.parse(event.target.result);
+                const isValidFormat = validateJSONFormat(jsonData);
+                if (isValidFormat) {
+                    console.log('Valid JSON file with the expected format');
+                } else {
+                    console.log('Invalid JSON file format');
+                }
+            } catch (error) {
+                console.log('Invalid JSON file');
+                }
+            };
+        }
+
+        function validateJSONFormat(data) {
+            if (typeof data !== 'object' || data === null) {
+                return false;
+            }
+
+            // Check if each key has an array value
+            for (const key in data) {
+                if (!Array.isArray(data[key])) {
+                return false;
+                }
+            }
+
+            return true;
+        }
+    </script>
+    <input type="file" id="fileInput" accept=".json" onchange="checkFile(event)">
+  </body>
+</html>
