@@ -28,6 +28,7 @@ if (sessionStorage.times % 2 === 0){
                     if (base64VariablesAndConstants.length > 0){
                         for (var i in base64VariablesAndConstants) {
                             console.log("Base64 Variable and Constant Name:", base64VariablesAndConstants[i]);
+                            anyTypeObjectsIncluded = true;
                           }
                     };
                     var malwareTypes = [];
