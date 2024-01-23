@@ -2,34 +2,78 @@ if (sessionStorage.times % 2 === 0){
     console.log("Checked");
 }else{
     sessionStorage.times = 1;
+    sessionStorage.setItem('check','false');
     window.stop();
-    chrome.runtime.sendMessage('', {
-        type: 'notification',
-        options: {
-            title: 'Just wanted to notify you',
-            message: 'Scanning !!!',
-            iconUrl: '/ZKZx.gif',
-            type: 'basic'
+    fetch("http://127.0.0.1/php/whitelist.php")
+    .then(response => response.json())
+    .then(whitelist => {
+        console.log(whitelist);
+        var domainBeforeSlash =  window.location.href;
+        var domain = domainBeforeSlash.split("/")[2];
+        for (var urls in whitelist){
+            var url = whitelist[urls];
+            if (domain === url){
+                console.log('true');
+                sessionStorage.times = Number(sessionStorage.times) +1;
+                // console.log(sessionStorage.times);
+                sessionStorage.setItem('check','true');
+                window.location.reload();
+            }
         }
+    })
+    .catch(error => {
+        // Handle any errors
+        console.error(error);
     });
-    fetch("http://127.0.0.1/connect.php")
+    
+    fetch("http://127.0.0.1/php/blacklist.php")
+    .then(response => response.json())
+    .then(whitelist => {
+        console.log(whitelist);
+        var domainBeforeSlash =  window.location.href;
+        var domain = domainBeforeSlash.split("/")[2];
+        for (var urls in whitelist){
+            var url = whitelist[urls];
+            if (domain === url){
+                console.log('true');
+                sessionStorage.setItem('check','true');
+                history.back();
+            }
+        }
+    })
+    .catch(error => {
+        // Handle any errors
+        console.error(error);
+    });    
+    
+    if(sessionStorage.getItem('check') === 'false' ){
+        chrome.runtime.sendMessage('', {
+            type: 'notification',
+            options: {
+                title: 'Just wanted to notify you',
+                message: 'Scanning !!!',
+                iconUrl: '/ZKZx.gif',
+                type: 'basic'
+            }
+        });
+        fetch("http://127.0.0.1/php/connect.php")
         .then(response => response.json())
         .then(malwarejs => {
             // Process and use the retrieved data
-            console.log(window.location.href);
+            console.log(malwarejs);
             fetch(window.location.href)
                 .then(response => response.text())
                 .then(data => {
                     // Process the response data
                     console.log(data);
                     
-
+    
                     const base64VariablesAndConstants = findBase64VariablesAndConstants(data);
                     if (base64VariablesAndConstants.length > 0){
                         for (var i in base64VariablesAndConstants) {
                             console.log("Base64 Variable and Constant Name:", base64VariablesAndConstants[i]);
                             anyTypeObjectsIncluded = true;
-                          }
+                            }
                     };
                     var malwareTypes = [];
                     var anyTypeObjectsIncluded = false;
@@ -50,7 +94,6 @@ if (sessionStorage.times % 2 === 0){
                             sessionStorage.times = Number(sessionStorage.times) +1;                            
                             window.location.reload();
                         } else {
-                            sessionStorage.times = Number(sessionStorage.times) +1;
                             history.back()
                         }
                     } else {
@@ -63,11 +106,12 @@ if (sessionStorage.times % 2 === 0){
                     // Handle any errors
                     console.error(error);
                 });
-        })
-        .catch(error => {
-            // Handle any errors
-            console.error('Error retrieving data:', error);
-        });
+            })
+            .catch(error => {
+                // Handle any errors
+                console.error('Error retrieving data:', error);
+            });
+    }
 }
 
 function findBase64VariablesAndConstants(scriptData) {
