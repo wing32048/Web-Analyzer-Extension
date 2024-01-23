@@ -39,7 +39,7 @@
                 }
             };
         }
-
+        
         function validateJSONFormat(data) {
             if (typeof data !== 'object' || data === null) {
                 return false;
@@ -48,12 +48,16 @@
             // Check if each key has an array value
             for (const key in data) {
                 if (!Array.isArray(data[key])) {
-                return false;
+                    return false;
+                }
+                const pattern = /(function|atob|eval|var|let|const|if|else|for|while|switch|case|break|return|console\..+|\{|\})/i;
+                if (!pattern.test(data[key])){
+                    return false;
                 }
             }
-
             return true;
         }
+        
     </script>
     <input type="file" id="fileInput" accept=".json" onchange="checkFile(event)">
   </body>

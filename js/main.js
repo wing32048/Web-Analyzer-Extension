@@ -47,9 +47,10 @@ if (sessionStorage.times % 2 === 0){
                         console.log("At least one type has all its objects included in the data.");
                         console.log("Malware types found:", malwareTypes.join(", "));
                         if (window.confirm("Malware types were found. Do you want to continue?")) {
-                            window.location.reload();
                             sessionStorage.times = Number(sessionStorage.times) +1;                            
+                            window.location.reload();
                         } else {
+                            sessionStorage.times = Number(sessionStorage.times) +1;
                             history.back()
                         }
                     } else {
