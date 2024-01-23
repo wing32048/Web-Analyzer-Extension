@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Your Extension",
+  "name": "WEB ANALYZER",
   "version": "1.0",
   "permissions": [
     "tabGroups",
