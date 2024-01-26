@@ -35,11 +35,11 @@ if (sessionStorage.times % 2 === 0){
 
     fetch("http://127.0.0.1/php/blacklist.php")
     .then(response => response.json())
-    .then(whitelist => {
-        console.log(whitelist);
+    .then(blacklist => {
+        console.log(blacklist);
         var domainBeforeSlash =  window.location.href;
         var domain = domainBeforeSlash.split("/")[2];
-        for (var urls in whitelist){
+        for (var urls in blacklist){
             var url = whitelist[urls];
             if (domain === url){
                 console.log('true');
