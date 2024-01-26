@@ -8,7 +8,7 @@ if (sessionStorage.times % 2 === 0){
         options: {
             title: 'Just wanted to notify you',
             message: 'Scanning !!!',
-            iconUrl: '/ZKZx.gif',
+            iconUrl: '/image/ZKZx.gif',
             type: 'basic'
         }
     });
