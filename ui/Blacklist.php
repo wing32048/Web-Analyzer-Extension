@@ -69,7 +69,7 @@
     <!-- Custom styles for this template -->
     <link href="sidebars.css" rel="stylesheet">
     <?php 
-      require_once 'db.php';
+      require_once './inc/db.php';
     ?>
   </head>
   <body>
@@ -102,7 +102,7 @@
         $numFound = $stmt->rowCount();
         // echo $numFound;
         if ( $numFound <= 0){
-          echo "No result";
+          echo "You can start to edit the Blacklist now.";
         }
         else if ( $numFound > 0){
             echo "<table class='table table-bordered'>\n";
