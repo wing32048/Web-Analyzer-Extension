@@ -1,5 +1,19 @@
+// Store the initial URL
+var initialUrl = window.location.href;
+
+// Add an event listener to the onpopstate event
+window.onpopstate = function(event) {
+  // Check if the URL has changed
+  if (window.location.href !== initialUrl) {
+    // URL has changed, perform desired actions
+    console.log("URL changed!");
+  }
+};
+
 if (sessionStorage.times % 2 === 0){
+    sessionStorage.times = 1;
     console.log("Checked");
+    console.log(sessionStorage.times);
 }else{
     sessionStorage.times = 1;
     window.stop();
@@ -21,7 +35,7 @@ if (sessionStorage.times % 2 === 0){
         for (var urls in whitelist){
             var url = whitelist[urls];
             if (domain === url){
-                console.log('true');
+                console.log('white list true');
                 sessionStorage.times = Number(sessionStorage.times) +1;
                 // console.log(sessionStorage.times);
                 window.location.reload();
@@ -42,7 +56,7 @@ if (sessionStorage.times % 2 === 0){
         for (var urls in blacklist){
             var url = whitelist[urls];
             if (domain === url){
-                console.log('true');
+                console.log('black list true');
                 sessionStorage.times = 1;
                 history.back();
             }
@@ -67,6 +81,7 @@ if (sessionStorage.times % 2 === 0){
                 
 
                 const base64VariablesAndConstants = findBase64VariablesAndConstants(data);
+                console.log(base64VariablesAndConstants.length);
                 if (base64VariablesAndConstants.length > 0){
                     for (var i in base64VariablesAndConstants) {
                         console.log("Base64 Variable and Constant Name:", base64VariablesAndConstants[i]);
@@ -89,10 +104,12 @@ if (sessionStorage.times % 2 === 0){
                     console.log("At least one type has all its objects included in the data.");
                     console.log("Malware types found:", malwareTypes.join(", "));
                     if (window.confirm("Malware types were found. Do you want to continue?")) {
-                        sessionStorage.times = Number(sessionStorage.times) +1;                            
+                        sessionStorage.times = Number(sessionStorage.times) +1;
+                        console.log('user select continue');                           
                         window.location.reload();
                     } else {
-                        history.back()
+                        console.log('user select not continue');                           
+                        history.back();
                     }
                 } else {
                     console.log("No type has all its objects included in the data.");
@@ -113,27 +130,19 @@ if (sessionStorage.times % 2 === 0){
 }
 
 function findBase64VariablesAndConstants(scriptData) {
-    const pattern = /(?:var|const)\s+(\w+)\s*=\s*["'`]?([A-Za-z0-9+/=]+)["'`]?/g;
+    const base64Pattern = /(?:var|let|const)\s+(\w+)\s*=\s*['"]([A-Za-z0-9+/=]+)['"]/g;
     const matches = [];
     let match;
-    while ((match = pattern.exec(scriptData)) !== null) {
-        const varName = match[1];
+    while ((match = base64Pattern.exec(scriptData)) !== null) {
+        const variableName = match[1];
         const encodedString = match[2];
-    
-        if (isBase64(encodedString)) {
-            matches.push(varName);
+        if (!encodedString.includes('message')) {
+            matches.push(variableName);
+            // console.log(`Variable: ${variableName}, Encoded String: ${encodedString}`);
+        }else{
+            console.log(`Variable: ${variableName}, Encoded String: ${encodedString}`);
         }
     }
+    console.log(matches);
     return matches;
-}
-  
-function isBase64(encodedString) {
-    // const decodedString = atob(encodedString);
-    const base64Charset = /^[A-Za-z0-9+/=]+$/;
-    return base64Charset.test(encodedString);
-    // return base64Charset.test(encodedString) && isAscii(decodedString);
-}
-  
-// function isAscii(str) {
-//     return /^[\x00-\x7F]*$/.test(str);
-// }
+};
