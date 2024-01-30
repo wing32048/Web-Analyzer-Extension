@@ -51,7 +51,7 @@
   
   <div class="h5 mb-3 fw-normal col py-5">
     <h1>About our Web Analysis</h1> 
-    <h5>Installing our tools can enhance your browsing safety. Once you visit a website, our tools will automatically scan it to detect potential malware such as XSS (Cross-Site Scripting), Drive-By Downloads, and URL Redirects. This proactive scanning helps ensure a secure browsing experience for you.</h5> 
+    <h5>Installing our tools can enhance your browsing safety. Once you visit a website, our tools will automatically scan it to detect potential malware such as XSS (Cross-Site Scripting), Drive-By Downloads, and URL Redirects. This automatic scanning extension ensure a secure browsing for our users.</h5> 
 
 </div>
 
