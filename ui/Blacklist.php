@@ -84,7 +84,7 @@
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-8"><h2>Blacklist</b></h2></div>
+                <div class="col-sm-8"><h2>Action Page</b></h2></div>
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-info add-new" onclick="window.location.href='./binsert.php'"> Add New</button>
                 </div>
