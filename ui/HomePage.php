@@ -50,46 +50,9 @@
   <div class="b-example-divider"></div>
   
   <div class="h5 mb-3 fw-normal col py-5">
-    <h1>Recent browser record</h1> 
-    <h4>Users can view their recent browsing history. The browsing record are categorized into four types: Whitelist, Blacklist, Normal website and Malicious Website</h4> 
-   
-     <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">URL</th>
-          <th scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">11-12-2023</th>
-          <td>https://www.youtube.com</td>
-          <td>Normal</td>
-        </tr>
-        <tr>
-          <th scope="row">11-12-2023</th>
-          <td>https://www.facebook.com</td>
-          <td>Normal</td>
-        </tr>
-        <tr>
-          <th scope="row">11-12-2023</th>
-          <td>http://amz0n.com</td>
-          <td>Malicious</td>
-        </tr>
-        <tr>
-          <th scope="row">10-12-2023</th>
-          <td>https://www.facebook.com</td>
-          <td>Normal</td>
-        </tr>
-        <tr>
-          <th scope="row">10-12-2023</th>
-          <td>https://www.google.com</td>
-          <td>Normal</td>
-        </tr>
-      </tbody>
+    <h1>About our Web Analysis</h1> 
+    <h5>Installing our tools can enhance your browsing safety. Once you visit a website, our tools will automatically scan it to detect potential malware such as XSS (Cross-Site Scripting), Drive-By Downloads, and URL Redirects. This proactive scanning helps ensure a secure browsing experience for you.</h5> 
 
-    </table>
 </div>
 
 </main>
