@@ -88,6 +88,7 @@ if (sessionStorage.times % 2 === 0){
                         console.log("Base64 Variable and Constant Name:", base64VariablesAndConstants[i]);
                         anyBase64 = true;
                     }
+                    // console.log(anyBase64);
                 };
                 var malwareTypes = [];
                 var anyTypeObjectsIncluded = false;

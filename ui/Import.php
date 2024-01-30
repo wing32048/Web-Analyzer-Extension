@@ -56,11 +56,14 @@
                 const isValidFormat = validateJSONFormat(jsonData);
                 if (isValidFormat) {
                     console.log('Valid JSON file with the expected format');
+                    // alert('Valid JSON file with the expected format');
                 } else {
                     console.log('Invalid JSON file format');
+                    alert('Invalid JSON file format');
                 }
             } catch (error) {
                 console.log('Invalid JSON file');
+                alert('Invalid JSON file');
                 }
             };
         }
@@ -75,7 +78,7 @@
                 if (!Array.isArray(data[key])) {
                     return false;
                 }
-                const pattern = /(function|atob|eval|var|let|const|if|else|for|while|switch|case|break|return|console\..+|\{|\})/i;
+                const pattern = /(function|atob|window.open|createObjectURL|download|eval|var|let|const|if|else|for|while|switch|case|break|return|console\..+|\{|\})/i;
                 if (!pattern.test(data[key])){
                     return false;
                 }
@@ -91,22 +94,19 @@
 </head>
 <body>
     
-
-
     <main>
         <?php 
             require_once 'sidebars.php';
         ?>
-      
-
-
         <div class="b-example-divider"></div>
         <div>
-            <label for="formFileLg" class="h3 form-label fw-normal col py-5">User can import their file onece each. If import more than one file, it will have a wrong message.</label>
-                <p>File type: .json</p>
-            <input class="form-control form-control-lg" id="formFileLg" type="file" accept=".json" onchange="checkFile(event)">
-                <br>
-            <input class="btn btn-primary" type="submit" value="Upload">
+            <form method="post" action="dbimport.php" enctype="multipart/form-data">
+                <label for="formFileLg" class="h3 form-label fw-normal col py-5">User can import their file onece each. If import more than one file, it will have a wrong message.</label>
+                    <p>File type: .json</p>
+                <input class="form-control form-control-lg" name="jsonFile" id="formFileLg" type="file" accept=".json" onchange="checkFile(event)">
+                    <br>
+                <input class="btn btn-primary" type="submit" value="Upload">
+            </form>
         </div>
     </main> 
 

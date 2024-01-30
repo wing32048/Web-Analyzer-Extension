@@ -13,7 +13,7 @@
     <script src="popup.js"></script>
 
     <!-- Bootstrap core CSS -->
-<link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {

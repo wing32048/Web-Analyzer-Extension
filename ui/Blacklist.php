@@ -85,9 +85,9 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-8"><h2>Blacklist</b></h2></div>
-                <!-- <div class="col-sm-4">
-                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
-                </div> -->
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-info add-new" onclick="window.location.href='./binsert.php'"> Add New</button>
+                </div>
             </div>
         </div>
         <?php
@@ -105,30 +105,27 @@
           echo "You can start to edit the Blacklist now.";
         }
         else if ( $numFound > 0){
-            echo "<table class='table table-bordered'>\n";
-            echo "<thead>\n";
+          echo "<table class='table table-hover'>\n";
+          echo "<thead>\n";
+          echo "<tr>\n";
+          echo "<th scope='col'>Date</th>\n";
+          echo "<th scope='col'>URL</th>\n";
+          echo "<th scope='col'>Action</th>\n";
+          echo "</tr>\n";
+          echo "</thead>\n";
+          echo "<tbody>\n";
+          while( $result = $stmt->fetch() ) {
+            // echo $result["id"];
             echo "<tr>\n";
-            echo "<th>Date</th>\n";
-            echo "<th>URL</th>\n";
-            echo "<th>Edit</th>\n";
-            echo "</thead>\n";
-            // echo "</table>\n";
-            while( $result = $stmt->fetch() ) {
-              echo "<tbody>\n";
-              echo "<tr>\n";
-              echo "<td>".$result["date"]."</td>\n";	
-              echo "<td>".$result["url"]."</td>\n";
-              echo "<td>\n";
-              echo "<a class='add' title='Add' data-toggle='tooltip'><i class='material-icons'>&#xE03B;</i></a>\n";
-              echo "<a class='edit' title='Edit' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>\n";
-              echo "<a class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>\n";
-              echo "</td>\n";
-              echo "</tr>\n";      
-              echo "</tbody>\n";
-            }	
-            echo "</table>\n";
-                    
-        }
+            echo "<td>".$result["date"]."</td>\n";	
+            echo "<td>".$result["url"]."</td>\n";
+            echo "<td><button type='button' class='btn btn-info add-new' onclick=\"window.location.href='./dbbdelete.php?id=" . $result["id"] . "';\">Delete</button></td>\n";
+            echo "</tr>\n";      
+          }	
+          echo "</tbody>\n";
+          echo "</table>\n";
+                  
+      }
         ?>
     </div>
 </div>     

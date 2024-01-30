@@ -8,7 +8,7 @@ if ( !array_key_exists('expiry',$_SESSION)  // have not logged in
   session_unset();
 
   // redirect to login form
-  header('Location: login.php');
+  header('Location: signin.php');
   exit();
 }
 // show content to logged in users

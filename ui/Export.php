@@ -57,14 +57,14 @@
   <div class="b-example-divider"></div>
   <section class="container">
     <h2 class="py-2">Please choose a date to export the file.</h2>
-    <form class="row">
-      <label for="datepicker" class="col-1 col-form-label">Date</label>
+    <form class="row" method='post' action='dbexport.php'>
+      <label for="datepicker" class="col-2 col-form-label">Date Before:</label>
       <div class="col-5">
-        <input type="text" id="datepicker" class="form-control" />
+        <input type="text" id="datepicker" name="date" class="form-control" />
       </div>
+      <button class="btn btn-primary" type="submit">export</button>
     </form>
     <br>
-    <button type="button" class="btn btn-primary">Export</button>
   </section>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -73,6 +73,7 @@
   <script>
     $(document).ready(function() {
       $('#datepicker').datepicker({
+        format: 'yyyy-mm-dd',
         uiLibrary: 'bootstrap5'
       });
     });

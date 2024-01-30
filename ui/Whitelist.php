@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
-  <head>
-  <?php
-      require_once "./inc/session.inc.php";
+    <head>
+    <?php
+        require_once "./inc/session.inc.php";
     ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,22 +88,24 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-8"><h2>Whitelist</b></h2></div>
-
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-info add-new" onclick="window.location.href='./winsert.php'"> Add New</button>
+                </div>
             </div>
         </div>
         <?php
         $pdo = dbconnect();
         try {
-          $sql =  'SELECT * FROM whitelist' ;
-          $stmt = $pdo->prepare($sql);
-          $stmt->execute();
+            $sql =  'SELECT * FROM whitelist' ;
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
         } catch (PDOException $e) {
-          die($e->getMessage());
+            die($e->getMessage());
         }
         $numFound = $stmt->rowCount();
         // echo $numFound;
         if ( $numFound < 0){
-          echo "No result";
+            echo "No result";
         }
         else if ( $numFound > 0){
             echo "<table class='table table-hover'>\n";
@@ -111,13 +113,16 @@
             echo "<tr>\n";
             echo "<th scope='col'>Date</th>\n";
             echo "<th scope='col'>URL</th>\n";
+            echo "<th scope='col'>Action</th>\n";
             echo "</tr>\n";
             echo "</thead>\n";
             echo "<tbody>\n";
             while( $result = $stmt->fetch() ) {
+              // echo $result["id"];
               echo "<tr>\n";
               echo "<td>".$result["date"]."</td>\n";	
-              echo "<td>".$result["url"]."</td>\n";;
+              echo "<td>".$result["url"]."</td>\n";
+              echo "<td><button type='button' class='btn btn-info add-new' onclick=\"window.location.href='./dbwdelete.php?id=" . $result["id"] . "';\">Delete</button></td>\n";
               echo "</tr>\n";      
             }	
             echo "</tbody>\n";
