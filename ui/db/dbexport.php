@@ -1,5 +1,5 @@
 <?php
-require_once "./inc/db.php";
+require_once "../inc/db.inc.php";
 $pdo = dbconnect();
 
 if(isset($_POST["date"]) && !empty($_POST["date"])) {

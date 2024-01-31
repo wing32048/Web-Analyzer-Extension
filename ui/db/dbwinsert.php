@@ -1,6 +1,6 @@
 <?php
 /* 1. Connect to the database */
-require_once "./inc/db.php";
+require_once "../inc/db.inc.php";
 $pdo = dbconnect();
 
 if( isset($_POST["url"]) && !empty($_POST["url"]) ) {
