@@ -18,7 +18,7 @@ $pdo = dbconnect();
 header('Access-Control-Allow-Origin: *');
 
 try {
-    $sql =  "SELECT * FROM wordlist";
+    $sql =  "SELECT * FROM malicious_chain";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
