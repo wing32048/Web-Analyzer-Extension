@@ -7,19 +7,19 @@ $pdo = dbconnect();
 if( !array_key_exists('id',$_GET) ) {
     header('location: whitelist.php');
     exit();
-  }
-  $id = $_GET['id'];
+}
+$id = $_GET['id'];
   
 try {
-  /* 3. Prepare and execute SQL . . . */
-  $sql =  "DELETE FROM whitelist ";
-  $sql .= " WHERE id = :id ";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(":id", $id);
-  $stmt->execute();
-  header('location: whitelist.php');
-  exit();
+    /* 3. Prepare and execute SQL . . . */
+    $sql =  "DELETE FROM whitelist ";
+    $sql .= " WHERE id = :id ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    header('location: whitelist.php');
+    exit();
 
 } catch (PDOException $e) {
-  die($e->getMessage());
+    die($e->getMessage());
 }

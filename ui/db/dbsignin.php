@@ -20,7 +20,7 @@ if (array_key_exists('email',$_POST) && array_key_exists('password',$_POST)){
             header('Location: ../signin.php?error=1');
         }
     } catch (PDOException $e) {
-    die($e->getMessage());
+        die($e->getMessage());
     }
 }
 ?>

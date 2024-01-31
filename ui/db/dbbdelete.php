@@ -7,19 +7,19 @@ $pdo = dbconnect();
 if( !array_key_exists('id',$_GET) ) {
     header('location: blacklist.php');
     exit();
-  }
-  $id = $_GET['id'];
+}
+$id = $_GET['id'];
   
 try {
-  /* 3. Prepare and execute SQL . . . */
-  $sql =  "DELETE FROM blacklist ";
-  $sql .= " WHERE id = :id ";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(":id", $id);
-  $stmt->execute();
-  header('location: blacklist.php');
-  exit();
+    /* 3. Prepare and execute SQL . . . */
+    $sql =  "DELETE FROM blacklist ";
+    $sql .= " WHERE id = :id ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    header('location: blacklist.php');
+    exit();
 
 } catch (PDOException $e) {
-  die($e->getMessage());
+    die($e->getMessage());
 }
