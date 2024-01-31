@@ -102,7 +102,7 @@ if (sessionStorage.times % 2 === 0){
                         malwareTypes.push(key);
                     }
                 }
-                if (anyTypeObjectsIncluded || anyBase64) {
+                if (anyTypeObjectsIncluded && anyBase64) {
                     console.log("At least one type has all its objects included in the data.");
                     console.log("Malware types found:", malwareTypes.join(", "));
                     if (window.confirm("Malware types were found. Do you want to continue?")) {
@@ -148,3 +148,11 @@ function findBase64VariablesAndConstants(scriptData) {
     console.log(matches);
     return matches;
 };
+
+// function urlred(){
+//     console.log(window.location.href);
+//     const urlredPattern = /(?:var|let|const)\s+(\w+)\s*=\s*['https|http"]([A-Za-z0-9+/=]+)['"]/g;
+//     let match;
+    
+//     console.log()
+// }

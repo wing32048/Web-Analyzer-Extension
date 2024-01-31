@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
-    <link href="signin.css" rel="stylesheet">
+    <title>WEB ANALYZER</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
 <main class="form-signin">
-    <form method="post" action="dbwinsert.php">
-        <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <form method="post" action="./db/dbwinsert.php">
         <h1 class="h3 mb-3 fw-normal">Whitelist insert</h1>
         <div class="form-floating">
             <input type="url" class="form-control" id="floatingInput" name="url" placeholder="https://example.com">

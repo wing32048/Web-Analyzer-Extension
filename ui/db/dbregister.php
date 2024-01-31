@@ -25,14 +25,14 @@ if (array_key_exists('email',$_POST) && array_key_exists('username',$_POST) && a
                 $stmt->execute();
                 $data = $stmt->fetch();
                 if (($stmt->rowCount()) == 1){
-                    header('location: ./signin.php?error=2');
+                    header('location: ../register.php?error=2');
                 }
             }
             catch (PDOException $e) {
                 die($e->getMessage());
             }
         }else{
-            header('location: ./signin.php?error=3');
+            header('location: ../register.php?error=3');
         }
         
     } catch (PDOException $e) {

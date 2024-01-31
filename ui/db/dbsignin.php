@@ -29,9 +29,9 @@ if (array_key_exists('email',$_POST) && array_key_exists('password',$_POST)){
         $data = $stmt->fetch();
         if ($data['password'] === $password && ($stmt->rowCount()) === 1){
             $_SESSION["expiry"] = time() + 900;
-            header('Location: ./HomePage.php');
+            header('Location: ../HomePage.php');
         }else{
-            header('Location: ./signin.php?error=1');
+            header('Location: ../signin.php?error=1');
         }
     } catch (PDOException $e) {
     die($e->getMessage());

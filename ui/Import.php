@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<?php
+    <?php
       require_once "./inc/session.inc.php";
     ?>
     <meta charset="utf-8">
@@ -41,8 +41,11 @@
             const allowedExtensions = ['.json'];
             const fileName = file.name;
             const fileExtension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
-
+            const submitButton = document.querySelector('input[type="submit"]');
+            
             if (!allowedExtensions.includes(fileExtension)) {
+                submitButton.disabled = true;
+                alert('Invalid file type. Please select a JSON file.');
                 console.log('Invalid file type. Please select a JSON file.');
                 return;
             }
@@ -55,15 +58,18 @@
                 const jsonData = JSON.parse(event.target.result);
                 const isValidFormat = validateJSONFormat(jsonData);
                 if (isValidFormat) {
+                    submitButton.disabled = false;
                     console.log('Valid JSON file with the expected format');
                     // alert('Valid JSON file with the expected format');
                 } else {
-                    console.log('Invalid JSON file format');
+                    submitButton.disabled = true;
                     alert('Invalid JSON file format');
+                    console.log('Invalid JSON file format');
                 }
             } catch (error) {
-                console.log('Invalid JSON file');
+                submitButton.disabled = true;
                 alert('Invalid JSON file');
+                console.log('Invalid JSON file');
                 }
             };
         }
@@ -98,21 +104,17 @@
         <?php 
             require_once 'sidebars.php';
         ?>
+        
         <div class="b-example-divider"></div>
         <div>
-            <form method="post" action="dbimport.php" enctype="multipart/form-data">
+            <form method="post" action="./db/dbimport.php" enctype="multipart/form-data">
                 <label for="formFileLg" class="h3 form-label fw-normal col py-5">User can import their file onece each. If import more than one file, it will have a wrong message.</label>
                     <p>File type: .json</p>
                 <input class="form-control form-control-lg" name="jsonFile" id="formFileLg" type="file" accept=".json" onchange="checkFile(event)">
                     <br>
-                <input class="btn btn-primary" type="submit" value="Upload">
+                <input class="btn btn-primary" type="submit" value="Upload" disabled>
             </form>
         </div>
     </main> 
-
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="sidebars.js"></script>
 </body>
 </html>
