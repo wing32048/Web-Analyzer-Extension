@@ -16,6 +16,8 @@ if (sessionStorage.times % 2 === 0){
             console.log('PHP cookie not found.');
         }
     });
+}else if(window.location.href.startsWith("https://www.google.com/search?")){
+    console.log('Googel Search')
 }else{
     sessionStorage.times = 1;
     window.stop();
@@ -45,18 +47,59 @@ if (sessionStorage.times % 2 === 0){
                             action_page(phpCookieValue)
                             .then(result => {
                                 if (result === true) {
-                                history.back();
+                                    alert('this page in action list')
+                                    history.back();
                                 } else {
                                 if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false){
                                     sessionStorage.times = Number(sessionStorage.times) +1;
                                     window.location.reload();
                                 }else{
                                     if (window.confirm("Malware types were found. Do you want to continue?")) {
+                                        console.log('user select continue');
+                                        fetch("http://127.0.0.1/php/white_list_add.php", {
+                                            method: "POST",
+                                            headers: {
+                                                "Content-Type": "application/x-www-form-urlencoded"
+                                            },
+                                            body: "url=" + encodeURIComponent(window.location.href) + "&user_id=" + encodeURIComponent(phpCookieValue)
+                                            })
+                                            .then(function(response) {
+                                                if (response.ok) {
+                                                return response.text();
+                                                } else {
+                                                throw new Error("Error: " + response.status);
+                                                }
+                                            })
+                                            .then(function(data) {
+                                                console.log(data); 
+                                            })
+                                            .catch(function(error) {
+                                                console.error(error);
+                                            });                           
                                         sessionStorage.times = Number(sessionStorage.times) +1;
-                                        console.log('user select continue');                           
                                         window.location.reload();
                                     } else {
-                                        console.log('user select not continue');                           
+                                        console.log('user select not continue');
+                                        fetch("http://127.0.0.1/php/action_list_add.php", {
+                                            method: "POST",
+                                            headers: {
+                                                "Content-Type": "application/x-www-form-urlencoded"
+                                            },
+                                            body: "url=" + encodeURIComponent(window.location.href) + "&user_id=" + encodeURIComponent(phpCookieValue)
+                                            })
+                                            .then(function(response) {
+                                                if (response.ok) {
+                                                return response.text();
+                                                } else {
+                                                throw new Error("Error: " + response.status);
+                                                }
+                                            })
+                                            .then(function(data) {
+                                                console.log(data); 
+                                            })
+                                            .catch(function(error) {
+                                                console.error(error);
+                                            });                           
                                         history.back();
                                     }
                                 }
