@@ -33,23 +33,24 @@ if (sessionStorage.times % 2 === 0){
         .then(malwarejs => {
             // Process and use the retrieved data
             console.log(malwarejs);;
-                fetch(window.location.href)
-                .then(response => response.text())
-                .then(data => {
-                    // Process the response data
-                    console.log(data);
-                    whitelist(phpCookieValue)
-                    .then(result => {
-                        if (result === true) {
-                            sessionStorage.times = Number(sessionStorage.times) +1;
-                            window.location.reload();
-                        } else {
-                            action_page(phpCookieValue)
-                            .then(result => {
-                                if (result === true) {
-                                    alert('this page in action list')
-                                    history.back();
-                                } else {
+            fetch(window.location.href)
+            .then(response => response.text())
+            .then(data => {
+                // Process the response data
+                console.log(data);
+                whitelist(phpCookieValue)
+                .then(result => {
+                    if (result === true) {
+                        sessionStorage.times = Number(sessionStorage.times) +1;
+                        window.location.reload();
+                    } else {
+                        action_page(phpCookieValue)
+                        .then(result => {
+                            if (result === true) {
+                                alert('this page in action list')
+                                history.back();
+                            } else {
+                                notification();
                                 if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false){
                                     sessionStorage.times = Number(sessionStorage.times) +1;
                                     window.location.reload();
@@ -103,18 +104,18 @@ if (sessionStorage.times % 2 === 0){
                                         history.back();
                                     }
                                 }
-                                }
-                            })
-                            .catch(error => {
-                                // Handle any errors that occurred during the fetch operation
-                                console.error(error);
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        // Handle any errors that occurred during the fetch operation
-                        console.error(error);
-                    });
+                            }
+                        })
+                        .catch(error => {
+                            // Handle any errors that occurred during the fetch operation
+                            console.error(error);
+                        });
+                    }
+                })
+                .catch(error => {
+                    // Handle any errors that occurred during the fetch operation
+                    console.error(error);
+                });
 
                 })
                 .catch(error => {
@@ -127,6 +128,17 @@ if (sessionStorage.times % 2 === 0){
             // Handle the error
             console.error('Error:', error.message);
         });
+    });
+}
+function notification(){
+    chrome.runtime.sendMessage('', {
+        type: 'notification',
+        options: {
+            title: 'Just wanted to notify you',
+            message: 'Scanning !!!',
+            iconUrl: '/image/ZKZx.gif',
+            type: 'basic'
+        }
     });
 }
 
