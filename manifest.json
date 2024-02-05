@@ -4,7 +4,6 @@
     "version": "1.0",
     "permissions": [
         "tabGroups",
-        "http://127.0.0.1/connect.php",
         "notifications",
         "cookies",
         "storage"
