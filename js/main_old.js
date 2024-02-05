@@ -80,16 +80,16 @@ if (sessionStorage.times % 2 === 0){
                 console.log(data);
                 
 
-                const base64VariablesAndConstants = findBase64VariablesAndConstants(data);
-                console.log(base64VariablesAndConstants.length);
-                var anyBase64 = false;
-                if (base64VariablesAndConstants.length > 0){
-                    for (var i in base64VariablesAndConstants) {
-                        console.log("Base64 Variable and Constant Name:", base64VariablesAndConstants[i]);
-                        anyBase64 = true;
-                    }
-                    // console.log(anyBase64);
-                };
+                // const base64VariablesAndConstants = findBase64VariablesAndConstants(data);
+                // console.log(base64VariablesAndConstants.length);
+                // var anyBase64 = false;
+                // if (base64VariablesAndConstants.length > 0){
+                //     for (var i in base64VariablesAndConstants) {
+                //         console.log("Base64 Variable and Constant Name:", base64VariablesAndConstants[i]);
+                //         anyBase64 = true;
+                //     }
+                //     // console.log(anyBase64);
+                // };
                 var malwareTypes = [];
                 var anyTypeObjectsIncluded = false;
                 for (var key in malwarejs) {
