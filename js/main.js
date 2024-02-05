@@ -16,8 +16,6 @@ if (sessionStorage.times % 2 === 0){
             console.log('PHP cookie not found.');
         }
     });
-    // sessionStorage.times = Number(sessionStorage.times) +1;
-    // window.location.reload();
 }else{
     sessionStorage.times = 1;
     window.stop();
