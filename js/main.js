@@ -51,9 +51,9 @@ if (sessionStorage.times % 2 === 0){
                                 history.back();
                             } else {
                                 notification();
-                                if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false){
+                                if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false && reflected_xss(window.location.href) == false){
                                     sessionStorage.times = Number(sessionStorage.times) +1;
-                                    window.location.reload();
+                                    // window.location.reload();
                                 }else{
                                     if (window.confirm("Malware types were found. Do you want to continue?")) {
                                         console.log('user select continue');
@@ -333,4 +333,16 @@ function utf8Decode(encodedString) {
   
     const textDecoder = new TextDecoder('utf-8');
     return textDecoder.decode(bytes);
+}
+
+function reflected_xss(url){
+    const xssPattern = /<script\b[^>]*>(.*?)<\/script>|%3Cscript%3E.*?%3C%2Fscript%3E/i;
+    let anyTypeObjectsIncluded = false;
+    if (xssPattern.test(url)) {
+        console.log("Potential reflected XSS vulnerability detected.");
+        return anyTypeObjectsIncluded = true;
+    } else {
+        console.log("No potential reflected XSS vulnerability detected.");
+    }
+    return anyTypeObjectsIncluded;
 }
