@@ -38,19 +38,43 @@ if (sessionStorage.times % 2 === 0){
                 .then(data => {
                     // Process the response data
                     console.log(data);
-                    if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) ==false){
-                        sessionStorage.times = Number(sessionStorage.times) +1;
-                        window.location.reload();
-                    }else{
-                        if (window.confirm("Malware types were found. Do you want to continue?")) {
+                    whitelist(phpCookieValue)
+                    .then(result => {
+                        if (result === true) {
                             sessionStorage.times = Number(sessionStorage.times) +1;
-                            console.log('user select continue');                           
                             window.location.reload();
                         } else {
-                            console.log('user select not continue');                           
-                            history.back();
+                            action_page(phpCookieValue)
+                            .then(result => {
+                                if (result === true) {
+                                history.back();
+                                } else {
+                                if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false){
+                                    sessionStorage.times = Number(sessionStorage.times) +1;
+                                    window.location.reload();
+                                }else{
+                                    if (window.confirm("Malware types were found. Do you want to continue?")) {
+                                        sessionStorage.times = Number(sessionStorage.times) +1;
+                                        console.log('user select continue');                           
+                                        window.location.reload();
+                                    } else {
+                                        console.log('user select not continue');                           
+                                        history.back();
+                                    }
+                                }
+                                }
+                            })
+                            .catch(error => {
+                                // Handle any errors that occurred during the fetch operation
+                                console.error(error);
+                            });
                         }
-                    }
+                    })
+                    .catch(error => {
+                        // Handle any errors that occurred during the fetch operation
+                        console.error(error);
+                    });
+
                 })
                 .catch(error => {
                     // Handle the error
@@ -64,6 +88,57 @@ if (sessionStorage.times % 2 === 0){
         });
     });
 }
+
+function action_page(phpCookieValue){
+    return new Promise((resolve, reject) => {
+    fetch("http://127.0.0.1/php/action_page.php?id=" + phpCookieValue)
+        .then(response => response.json())
+        .then(action_list => {
+        console.log(action_list);
+        var domain = window.location.href;
+        console.log(domain);
+        for (var urls in action_list) {
+            var url = action_list[urls];
+            if (domain === url) {
+            console.log('action list true');
+            resolve(true);
+            return;
+            }
+        }
+        resolve(false);
+        })
+        .catch(error => {
+        console.error(error);
+        reject(error);
+        });
+    });
+}
+
+function whitelist(phpCookieValue) {
+    return new Promise((resolve, reject) => {
+    fetch("http://127.0.0.1/php/whitelist.php?id=" + phpCookieValue)
+        .then(response => response.json())
+        .then(whitelist => {
+        console.log(whitelist);
+        var domain = window.location.href;
+        console.log(domain);
+        for (var urls in whitelist) {
+            var url = whitelist[urls];
+            if (domain === url) {
+            console.log('whitelist true');
+            resolve(true);
+            return;
+            }
+        }
+        resolve(false);
+        })
+        .catch(error => {
+        console.error(error);
+        reject(error);
+        });
+    });
+}
+
 function withoutencode(data,malwarejs){
     let anyTypeObjectsIncluded = false;
     for (var id in malwarejs) {
@@ -168,7 +243,7 @@ function base32Decode(encodedString) {
   
     return new Uint8Array(decodedBytes);
 }
-ut
+
 function findutf8(data,malwarejs){
     const utf8Pattern = /(?:var|let|const)\s+(\w+)\s*=\s*['"]((?:[\x00-\x7F]|[\xC2-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF4][\x80-\xBF]{3})+)['"]/g;
     let anyTypeObjectsIncluded = false;
