@@ -16,25 +16,48 @@ function dbconnect() {
 
 $pdo = dbconnect();
 header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 
-try {
-    $sql =  "SELECT * FROM malicious_chain";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    $output = [];
-    foreach ($data as $row) {
-        if (!isset($output[$row['type']])) {
-            $output[$row['type']] = [];
+// if (isset($_COOKIE['id'])) {
+    // $cookieValue = $_COOKIE['id'];
+    // 
+    try {
+        $userId = $_GET['id'];
+        $sql = "SELECT * FROM malicious_chain where user_id = '$userId'";
+        $stmt = $pdo->prepare($sql);
+        // $stmt->bindValue(':userId', $userId);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        $output = [];
+        foreach ($data as $row) {
+            $id = $row['id'];
+            $type = $row['type'];
+            $code = $row['code'];
+            
+            if (!isset($output[$id])) {
+                $output[$id] = [
+                    'type' => $type,
+                    'chains' => [],
+                ];
+            }
+        
+            $chains = explode(", ", $code);
+
+            foreach ($chains as $chain) {
+                if (!in_array($chain, $output[$id]['chains'])) {
+                    $output[$id]['chains'][] = $chain;
+                }
+            }
         }
-        $codes = explode(', ', $row['code']);
-        $output[$row['type']] = array_merge($output[$row['type']], $codes);
+        $jsonOutput = json_encode($output);
+        echo $jsonOutput;
+        
+        
+        // Further code execution
+    } catch (PDOException $e) {
+        die($e->getMessage());
     }
-    
-    header('Content-Type: application/json');
-    echo json_encode($output);
-} catch (PDOException $e) {
-    die($e->getMessage());
-}
+// }
+
 ?>

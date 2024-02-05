@@ -19,7 +19,8 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 try {
-    $sql =  "SELECT * FROM whitelist ";
+    $userId = $_GET['id'];
+    $sql =  "SELECT * FROM whitelist where user_id = '$userId'";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
