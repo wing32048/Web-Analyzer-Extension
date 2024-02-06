@@ -130,6 +130,7 @@ if (sessionStorage.times % 2 === 0){
         });
     });
 }
+
 function notification(){
     chrome.runtime.sendMessage('', {
         type: 'notification',
