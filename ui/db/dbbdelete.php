@@ -12,7 +12,7 @@ $id = $_GET['id'];
   
 try {
     /* 3. Prepare and execute SQL . . . */
-    $sql =  "DELETE FROM blacklist ";
+    $sql =  "DELETE FROM action_history ";
     $sql .= " WHERE id = :id ";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":id", $id);

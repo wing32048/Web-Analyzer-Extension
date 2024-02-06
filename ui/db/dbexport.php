@@ -5,7 +5,7 @@ $pdo = dbconnect();
 if(isset($_POST["date"]) && !empty($_POST["date"])) {
     $date = $_POST["date"];
     try {
-        $sql =  "SELECT * FROM wordlist WHERE date < '$date' ";
+        $sql =  "SELECT * FROM malicious_chain WHERE date < '$date' ";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -19,7 +19,7 @@ if(isset($_POST["date"]) && !empty($_POST["date"])) {
             $output[$row['type']] = array_merge($output[$row['type']], $codes);
         }
     
-        $filename = "wordlist.json";
+        $filename = "malicious_chain.json";
         header("Content-Type: application/json");
         header("Content-Disposition: attachment; filename=" . $filename);
         echo json_encode($output, JSON_PRETTY_PRINT);

@@ -11,7 +11,7 @@ if(isset($_POST["url"]) && !empty($_POST["url"]) ) {
     $today = date("Y-m-d");
     // echo "URL without HTTP prefix: " . $urlWithoutHttp;
     try {
-        $sql =  "SELECT url FROM blacklist where url = '$urlwithouthttp'";
+        $sql =  "SELECT url FROM action_history where url = '$urlwithouthttp'";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetch();
@@ -19,7 +19,7 @@ if(isset($_POST["url"]) && !empty($_POST["url"]) ) {
         // echo $data['email'];
         if (($stmt->rowCount()) == 0){
             try{
-                $sql2 = "INSERT INTO blacklist (`user_id`, `url`, `date`) VALUES ( '1', '$urlwithouthttp', '$today')";
+                $sql2 = "INSERT INTO action_history (`user_id`, `url`, `date`) VALUES ( '1', '$urlwithouthttp', '$today')";
                 $stmt2 = $pdo->prepare($sql2);
                 $stmt2->execute();
                 $stmt->execute();
