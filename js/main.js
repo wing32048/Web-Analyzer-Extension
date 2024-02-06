@@ -196,10 +196,10 @@ function whitelist(phpCookieValue) {
 function withoutencode(data,malwarejs){
     let anyTypeObjectsIncluded = false;
     for (var id in malwarejs) {
-    var type = malwarejs[id].type;
-    var chains = malwarejs[id].chains;
-    console.log(chains);
-    var allChainsFound = chains.every(chain => data.includes(chain));
+        var type = malwarejs[id].type;
+        var chains = malwarejs[id].chains;
+        console.log(chains);
+        var allChainsFound = chains.every(chain => data.includes(chain));
 
         if (!allChainsFound) {
             console.log("Not all malware chains of type", type, "found in data.");
@@ -223,10 +223,10 @@ function findbase64(data,malwarejs){
         console.log(decodedString);
     
         for (var id in malwarejs) {
-        var type = malwarejs[id].type;
-        var chains = malwarejs[id].chains;
-        console.log(chains);
-        var allChainsFound = chains.every(chain => decodedString.includes(chain));
+            var type = malwarejs[id].type;
+            var chains = malwarejs[id].chains;
+            console.log(chains);
+            var allChainsFound = chains.every(chain => decodedString.includes(chain));
     
             if (!allChainsFound) {
                 console.log("Not all malware chains of type", type, "found in data.");
@@ -251,10 +251,10 @@ function findbase32(data,malwarejs){
         console.log(decodedString);
     
         for (var id in malwarejs) {
-        var type = malwarejs[id].type;
-        var chains = malwarejs[id].chains;
-        console.log(chains);
-        var allChainsFound = chains.every(chain => decodedString.includes(chain));
+            var type = malwarejs[id].type;
+            var chains = malwarejs[id].chains;
+            console.log(chains);
+            var allChainsFound = chains.every(chain => decodedString.includes(chain));
     
             if (!allChainsFound) {
                 console.log("Not all malware chains of type", type, "found in data.");
@@ -310,10 +310,10 @@ function findutf8(data,malwarejs){
         console.log(decodedString);
     
         for (var id in malwarejs) {
-        var type = malwarejs[id].type;
-        var chains = malwarejs[id].chains;
-        console.log(chains);
-        var allChainsFound = chains.every(chain => decodedString.includes(chain));
+            var type = malwarejs[id].type;
+            var chains = malwarejs[id].chains;
+            console.log(chains);
+            var allChainsFound = chains.every(chain => decodedString.includes(chain));
     
             if (!allChainsFound) {
                 console.log("Not all malware chains of type", type, "found in data.");
