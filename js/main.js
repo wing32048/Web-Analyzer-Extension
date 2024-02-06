@@ -276,9 +276,9 @@ function base32Decode(encodedString) {
     let decodedBytes = [];
   
     for (let i = 0; i < encodedString.length; i++) {
-    const char = encodedString.charAt(i);
-    if (char === paddingChar) {
-        break; // Reached the padding character, stop decoding
+        const char = encodedString.charAt(i);
+        if (char === paddingChar) {
+            break; // Reached the padding character, stop decoding
     }
 
     const charValue = base32Chars.indexOf(char);
