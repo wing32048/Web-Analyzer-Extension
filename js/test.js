@@ -1,50 +1,56 @@
-// var data = {
-//     "1": {
-//         "base64": ["eval, atob"]
-//     },
-//     "2": {
-//         "URL redirect": ["window.open"]
-//     },
-//     "3": {
-//         "DBD": ["createObjectURL, download"]
-//     },
-//     "4": {
-//         "XSS": ["oncopy"]
-//     },
-//     "5": {
-//         "URL redirect": ["window.location.href"]
-//     }
-// };
+window.stop();
 
-// for (var key in data) {
-//     var type = Object.keys(data[key])[0];
-//     var value = JSON.stringify(data[key][type]);
-//     console.log("Type:", type);
-//     console.log("Value:", value);
-// }
-// Assuming you have the PHP cookie name stored in a variable called 'cookieName'
-chrome.runtime.sendMessage({ action: 'getCookie' }, function(response) {
-    if (response.cookie) {
-      var cookieValue = response.cookie.value;
-      chrome.storage.local.set({ 'phpCookieValue': cookieValue }, function() {
-        console.log('PHP cookie saved to local storage.');});
-      // Use the cookie value as needed
-    } else {
-      console.log('PHP cookie not found.');
+function isPotentiallyMalicious(value) {
+  // Add your custom checks here based on your application's context
+  const maliciousPatterns = [
+    "<script>",
+    "alert(",
+    "onmouseover="
+    // Add more patterns as needed
+  ];
+
+  for (let pattern of maliciousPatterns) {
+    if (value.toLowerCase().includes(pattern)) {
+      return true;
     }
-  });
-  chrome.storage.local.get('phpCookieValue', function(result) {
-    var phpCookieValue = result.phpCookieValue;
-    console.log('Retrieved PHP cookie value:', phpCookieValue);
-    // Use the PHP cookie value as needed
-    fetch("http://127.0.0.1/php/connect.php?id="+phpCookieValue)
-    .then(response => response.json())
-    .then(malwarejs => {
-      console.log(malwarejs);
-  })
-      .catch(error => {
-          // Handle the error
-          console.error('Error2:', error.message);
-          // alert('Please log in first.');
-      });
-  });
+  }
+
+  return false;
+}
+
+function scanPageForStoredXSS() {
+  const elements = document.getElementsByTagName("*");
+
+  for (let element of elements) {
+    for (let attribute of element.attributes) {
+      if (isPotentiallyMalicious(attribute.value)) {
+        console.log(`Potentially malicious attribute value found: ${attribute.value}`);
+        // You can perform additional actions here, such as displaying an alert or sending data to a server
+        // Note: Be cautious when interacting with user data to prevent introducing security risks
+      }
+    }
+    if (isPotentiallyMalicious(element.innerText)) {
+      console.log(`Potentially malicious text found: ${element.innerText}`);
+      // You can perform additional actions here
+    }
+  }
+}
+
+function scanPageForDOMXSS() {
+  const scripts = document.getElementsByTagName("script");
+
+  for (let script of scripts) {
+    if (isPotentiallyMalicious(script.innerText)) {
+      console.log(`Potentially malicious script content found: ${script.innerText}`);
+      // You can perform additional actions here
+    }
+  }
+}
+
+function scanPageForXSS() {
+  scanPageForStoredXSS();
+  scanPageForDOMXSS();
+}
+
+// Execute the scan when the document starts loading
+scanPageForXSS();
