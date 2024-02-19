@@ -56,7 +56,7 @@ if (sessionStorage.times % 2 === 0){
                                 notification(window.location.href);
                                 if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false && reflected_xss(window.location.href) == false){
                                     sessionStorage.times = Number(sessionStorage.times) +1;
-                                    // window.location.reload();
+                                    window.location.reload();
                                 }else{
                                     if (window.confirm("Malware types were found. Do you want to continue?")) {
                                         console.log('user select continue');
