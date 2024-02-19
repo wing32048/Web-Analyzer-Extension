@@ -7,6 +7,9 @@ if (sessionStorage.times % 2 === 0){
         console.log('Local storage cleared.');
     });
 }else if(window.location.href == 'http://127.0.0.1/ui/HomePage.php'){
+    chrome.storage.local.clear(function() {
+        console.log('Local storage cleared.');
+    });
     chrome.runtime.sendMessage({ action: 'getCookie' }, function(response) {
         if (response.cookie) {
             var cookieValue = response.cookie.value;
@@ -17,7 +20,7 @@ if (sessionStorage.times % 2 === 0){
         }
     });
 }else if(window.location.href.startsWith("https://www.google.com/search?")){
-    console.log('Googel Search')
+    console.log('Googel Search');
 }else{
     sessionStorage.times = 1;
     window.stop();
@@ -50,7 +53,7 @@ if (sessionStorage.times % 2 === 0){
                                 alert('this page in action list')
                                 history.back();
                             } else {
-                                notification();
+                                notification(window.location.href);
                                 if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false && reflected_xss(window.location.href) == false){
                                     sessionStorage.times = Number(sessionStorage.times) +1;
                                     // window.location.reload();
@@ -116,7 +119,6 @@ if (sessionStorage.times % 2 === 0){
                     // Handle any errors that occurred during the fetch operation
                     console.error(error);
                 });
-
                 })
                 .catch(error => {
                     // Handle the error
@@ -131,12 +133,12 @@ if (sessionStorage.times % 2 === 0){
     });
 }
 
-function notification(){
+function notification(url){
     chrome.runtime.sendMessage('', {
         type: 'notification',
         options: {
             title: 'Just wanted to notify you',
-            message: 'Scanning !!!',
+            message: 'Scanning' + url,
             iconUrl: '/image/ZKZx.gif',
             type: 'basic'
         }
@@ -386,4 +388,4 @@ function findURL(data) {
     }
 
     return urls;
-}
+}}
