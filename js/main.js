@@ -54,7 +54,7 @@ if (sessionStorage.times % 2 === 0){
                                 history.back();
                             } else {
                                 notification(window.location.href);
-                                if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false && reflected_xss(window.location.href) == false){
+                                if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false && reflected_xss(window.location.href,malwarejs) == false){
                                     sessionStorage.times = Number(sessionStorage.times) +1;
                                     window.location.reload();
                                 }else{
@@ -358,14 +358,21 @@ function utf8Decode(encodedString) {
     return textDecoder.decode(bytes);
 }
 
-function reflected_xss(url){
-    const xssPattern = /<script\b[^>]*>(.*?)<\/script>|%3Cscript%3E.*?%3C%2Fscript%3E/i;
+function reflected_xss(url,malwarejs){
     let anyTypeObjectsIncluded = false;
-    if (xssPattern.test(url)) {
-        console.log("Potential reflected XSS vulnerability detected.");
-        return anyTypeObjectsIncluded = true;
-    } else {
-        console.log("No potential reflected XSS vulnerability detected.");
+    for (var id in malwarejs) {
+        var type = malwarejs[id].type;
+        var chains = malwarejs[id].chains;
+        console.log(chains);
+        console.log(decodeURIComponent(url));
+        var allChainsFound = chains.every(chain => decodeURIComponent(url).includes(chain));
+
+        if (!allChainsFound) {
+            console.log("No potential reflected XSS vulnerability detected.");
+        } else {
+            console.log("Potential reflected XSS vulnerability detected.");
+            return anyTypeObjectsIncluded = true;
+        }
     }
     return anyTypeObjectsIncluded;
 }
