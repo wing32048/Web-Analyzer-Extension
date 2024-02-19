@@ -18,26 +18,30 @@ function isPotentiallyMalicious(value) {
   return false;
 }
 
-function scanPageForStoredXSS() {
-  const elements = document.getElementsByTagName("*");
+function scanPageForStoredXSS(data) {     
+  const domParser = new DOMParser();
+  const htmlDocument = domParser.parseFromString(data, 'text/html');
+  const elements = htmlDocument.getElementsByTagName("*");
 
   for (let element of elements) {
     for (let attribute of element.attributes) {
       if (isPotentiallyMalicious(attribute.value)) {
-        console.log(`Potentially malicious attribute value found: ${attribute.value}`);
+        console.log(attribute.value);
         // You can perform additional actions here, such as displaying an alert or sending data to a server
         // Note: Be cautious when interacting with user data to prevent introducing security risks
       }
     }
     if (isPotentiallyMalicious(element.innerText)) {
-      console.log(`Potentially malicious text found: ${element.innerText}`);
+      console.log(element.innerText);
       // You can perform additional actions here
     }
   }
 }
 
-function scanPageForDOMXSS() {
-  const scripts = document.getElementsByTagName("script");
+function scanPageForDOMXSS(data) {
+  const domParser = new DOMParser();
+  const htmlDocument = domParser.parseFromString(data, 'text/html');
+  const scripts = htmlDocument.getElementsByTagName("script");
 
   for (let script of scripts) {
     if (isPotentiallyMalicious(script.innerText)) {
@@ -47,10 +51,15 @@ function scanPageForDOMXSS() {
   }
 }
 
-function scanPageForXSS() {
-  scanPageForStoredXSS();
-  scanPageForDOMXSS();
+function scanPageForXSS(data) {
+  scanPageForStoredXSS(data);
+  scanPageForDOMXSS(data);
 }
 
-// Execute the scan when the document starts loading
-scanPageForXSS();
+fetch(window.location.href)
+  .then(response => response.text())
+  .then(data => {
+    console.log(data);
+    // Execute the scan when the document starts loading
+    scanPageForXSS(data);
+  });

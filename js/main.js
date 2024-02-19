@@ -2,7 +2,7 @@ if (sessionStorage.times % 2 === 0){
     sessionStorage.times = 1;
     console.log("Checked");
     console.log(sessionStorage.times);
-}else if(window.location.href == 'http://127.0.0.1/ui/signin.php'){
+}else if(window.location.href.startsWith('http://127.0.0.1/ui/signin.php') || window.location.href.startsWith('http://127.0.0.1/ui/register.php')){
     chrome.storage.local.clear(function() {
         console.log('Local storage cleared.');
     });
@@ -53,7 +53,7 @@ if (sessionStorage.times % 2 === 0){
                                 notification();
                                 if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false && reflected_xss(window.location.href) == false){
                                     sessionStorage.times = Number(sessionStorage.times) +1;
-                                    window.location.reload();
+                                    // window.location.reload();
                                 }else{
                                     if (window.confirm("Malware types were found. Do you want to continue?")) {
                                         console.log('user select continue');
@@ -200,11 +200,16 @@ function withoutencode(data,malwarejs){
         var chains = malwarejs[id].chains;
         console.log(chains);
         var allChainsFound = chains.every(chain => data.includes(chain));
-
+        
         if (!allChainsFound) {
             console.log("Not all malware chains of type", type, "found in data.");
         } else {
             console.log("All malware chains of type", type, "found in data.");
+            return anyTypeObjectsIncluded = true;
+        }
+        if(findURL().length == 0){
+            console.log('All in domain')
+        }else{
             return anyTypeObjectsIncluded = true;
         }
     }
@@ -234,6 +239,11 @@ function findbase64(data,malwarejs){
                 console.log("All malware chains of type", type, "found in data.");
                 return anyTypeObjectsIncluded = true;
             }
+            if(findURL().length == 0){
+                console.log('All in domain')
+            }else{
+                return anyTypeObjectsIncluded = true;
+            }
         }
     }
     return anyTypeObjectsIncluded;
@@ -260,6 +270,11 @@ function findbase32(data,malwarejs){
                 console.log("Not all malware chains of type", type, "found in data.");
             } else {
                 console.log("All malware chains of type", type, "found in data.");
+                return anyTypeObjectsIncluded = true;
+            }
+            if(findURL().length == 0){
+                console.log('All in domain')
+            }else{
                 return anyTypeObjectsIncluded = true;
             }
         }
@@ -321,6 +336,11 @@ function findutf8(data,malwarejs){
                 console.log("All malware chains of type", type, "found in data.");
                 return anyTypeObjectsIncluded = true;
             }
+            if(findURL().length == 0){
+                console.log('All in domain')
+            }else{
+                return anyTypeObjectsIncluded = true;
+            }
         }
     }
     return anyTypeObjectsIncluded;
@@ -346,4 +366,24 @@ function reflected_xss(url){
         console.log("No potential reflected XSS vulnerability detected.");
     }
     return anyTypeObjectsIncluded;
+}
+
+function findURL(data) {
+    const urlPattern = /(?:var|let|const)\s+(\w+)\s*=\s*['"]((?:https?:)[^\s'"]+)['"]/g;
+    const currentDomain = window.location.hostname;
+    console.log(currentDomain);
+    let match;
+    const urls = [];
+  
+    while ((match = urlPattern.exec(data)) !== null) {
+        const variableName = match[1];
+        const url = match[2];
+        console.log(variableName, ':', url);
+
+        if (!url.includes(currentDomain)) {
+            urls.push(url);
+        }
+    }
+
+    return urls;
 }
