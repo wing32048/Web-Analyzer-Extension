@@ -2,11 +2,11 @@ if (sessionStorage.times % 2 === 0){
     sessionStorage.times = 1;
     console.log("Checked");
     console.log(sessionStorage.times);
-}else if(window.location.href.startsWith('http://127.0.0.1/ui/signin.php') || window.location.href.startsWith('http://127.0.0.1/ui/register.php')){
+}else if(window.location.href.startsWith('http://192.168.140.100/ui/signin.php') || window.location.href.startsWith('http://192.168.140.100/ui/register.php')){
     chrome.storage.local.clear(function() {
         console.log('Local storage cleared.');
     });
-}else if(window.location.href == 'http://127.0.0.1/ui/HomePage.php'){
+}else if(window.location.href == 'http://192.168.140.100/ui/HomePage.php'){
     chrome.storage.local.clear(function() {
         console.log('Local storage cleared.');
     });
@@ -29,9 +29,9 @@ if (sessionStorage.times % 2 === 0){
         console.log('Retrieved PHP cookie value:', phpCookieValue);
         if (phpCookieValue == undefined){
             alert('Please log in first.');
-            window.location.href = 'http://127.0.0.1/ui/signin.php';
+            window.location.href = 'http://192.168.140.100/ui/signin.php';
         }
-        fetch("http://127.0.0.1/php/connect.php?id="+phpCookieValue)
+        fetch("http://192.168.140.100/php/connect.php?id="+phpCookieValue)
         .then(response => response.json())
         .then(malwarejs => {
             // Process and use the retrieved data
@@ -60,7 +60,7 @@ if (sessionStorage.times % 2 === 0){
                                 }else{
                                     if (window.confirm("Malware types were found. Do you want to continue?")) {
                                         console.log('user select continue');
-                                        fetch("http://127.0.0.1/php/white_list_add.php", {
+                                        fetch("http://192.168.140.100/php/white_list_add.php", {
                                             method: "POST",
                                             headers: {
                                                 "Content-Type": "application/x-www-form-urlencoded"
@@ -84,7 +84,7 @@ if (sessionStorage.times % 2 === 0){
                                         window.location.reload();
                                     } else {
                                         console.log('user select not continue');
-                                        fetch("http://127.0.0.1/php/action_list_add.php", {
+                                        fetch("http://192.168.140.100/php/action_list_add.php", {
                                             method: "POST",
                                             headers: {
                                                 "Content-Type": "application/x-www-form-urlencoded"
@@ -147,7 +147,7 @@ function notification(url){
 
 function action_page(phpCookieValue){
     return new Promise((resolve, reject) => {
-    fetch("http://127.0.0.1/php/action_page.php?id=" + phpCookieValue)
+    fetch("http://192.168.140.100/php/action_page.php?id=" + phpCookieValue)
         .then(response => response.json())
         .then(action_list => {
         console.log(action_list);
@@ -172,7 +172,7 @@ function action_page(phpCookieValue){
 
 function whitelist(phpCookieValue) {
     return new Promise((resolve, reject) => {
-    fetch("http://127.0.0.1/php/whitelist.php?id=" + phpCookieValue)
+    fetch("http://192.168.140.100/php/whitelist.php?id=" + phpCookieValue)
         .then(response => response.json())
         .then(whitelist => {
         console.log(whitelist);
