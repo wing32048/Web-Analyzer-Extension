@@ -15,7 +15,7 @@
     <li class="nav-item">
         <a class="nav-link" href="account.php">
             <i class="fa fa-user" aria-hidden="true"></i>
-            <span>User Profile</span></a>
+            <span>My Profile</span></a>
     </li>
 
     <!-- Divider -->
@@ -67,7 +67,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Data Management</h6>
                             <a class="collapse-item" href="history.php">History</a>
-                            <a class="collapse-item" href="whitelist.php">Whitelist</a>
+
                             
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Management</h6>
                             <a class="collapse-item" href="history.php">History</a>
-                            <a class="collapse-item" href="whitelist.php">Whitelist</a>
+
                         </div>
                     </div>
                 </li>

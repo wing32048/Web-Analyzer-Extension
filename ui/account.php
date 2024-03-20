@@ -46,23 +46,29 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                <?php
+                    $pdo = dbconnect();
+                    $cookieId = $_COOKIE['id'];
+                    // echo $cookieId;
+                    try {
+                        $sql =  "SELECT * FROM user where id = $cookieId" ;
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->execute();
+                        $result = $stmt->fetch();
+                    } catch (PDOException $e) {
+                        die($e->getMessage());
+                    }
+                    ?>  
                     <h1>Account</h1>
                     <h3>Manage your account settings</h3>
-                
-                    <!-- Profile -->
-                    <h5>Profile</h5>
-                    <table>
-                        <tr>
-                            <td>Add your profile information here.</td>
-                        </tr>
-                    </table>
-                    <hr>
                 
                     <!-- Username -->
                     <h5>Username</h5>
                     <table>
                         <tr>
-                            <td>Add your username here.</td>
+                            <?php
+                                echo "<td>".$result['username']."</td>";
+                            ?>
                         </tr>
                     </table>
                     <button type="button" class="btn btn-primary btn-sm">Edit</button>
@@ -73,10 +79,17 @@
                     <h5>Email Address</h5>
                     <table>
                         <tr>
-                            <td>Add your email address here.</td>
+                            <?php
+                                echo "<td>".$result['email']."</td>";
+                            ?>
                         </tr>
                     </table>
                     <button type="button" class="btn btn-primary btn-sm">Edit</button>
+
+                    <hr>
+
+                    <h5>Password</h5>
+                    <button type="button" class="btn btn-primary btn-sm">Change Password</button>
                     <hr>
                 </div>
 

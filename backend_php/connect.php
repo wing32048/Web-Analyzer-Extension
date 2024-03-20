@@ -1,6 +1,6 @@
 <?php
-$dsn = 'mysql:dbname=fyp;host=127.0.0.1;charset=UTF8';
-$dbuser = 'root';
+$dsn = 'mysql:dbname=fyp;host=192.168.140.100;charset=UTF8';
+$dbuser = 'www-data';
 $dbpwd = '';
 
 function dbconnect() {
@@ -42,7 +42,7 @@ header('Content-Type: application/json');
                 ];
             }
         
-            $chains = explode(", ", $code);
+            $chains = explode(",", $code);
 
             foreach ($chains as $chain) {
                 if (!in_array($chain, $output[$id]['chains'])) {
