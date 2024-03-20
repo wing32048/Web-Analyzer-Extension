@@ -31,7 +31,7 @@ if (sessionStorage.times % 2 === 0){
             alert('Please log in first.');
             window.location.href = 'https://192.168.140.100/signin.php';
         }
-        fetch("https://192.168.140.100/php/connect.php?id="+phpCookieValue)
+        fetch("https://192.168.140.100/backend_php/connect.php?id="+phpCookieValue)
         .then(response => response.json())
         .then(malwarejs => {
             // Process and use the retrieved data
@@ -60,7 +60,7 @@ if (sessionStorage.times % 2 === 0){
                                 }else{
                                     if (window.confirm("Malware types were found. Do you want to continue?")) {
                                         console.log('user select continue');
-                                        fetch("https://192.168.140.100/php/white_list_add.php", {
+                                        fetch("https://192.168.140.100/backend_php/white_list_add.php", {
                                             method: "POST",
                                             headers: {
                                                 "Content-Type": "application/x-www-form-urlencoded"
@@ -84,7 +84,7 @@ if (sessionStorage.times % 2 === 0){
                                         window.location.reload();
                                     } else {
                                         console.log('user select not continue');
-                                        fetch("https://192.168.140.100/php/action_list_add.php", {
+                                        fetch("https://192.168.140.100/backend_php/action_list_add.php", {
                                             method: "POST",
                                             headers: {
                                                 "Content-Type": "application/x-www-form-urlencoded"
@@ -147,7 +147,7 @@ function notification(url){
 
 function action_page(phpCookieValue){
     return new Promise((resolve, reject) => {
-    fetch("https://192.168.140.100/php/action_page.php?id=" + phpCookieValue)
+    fetch("https://192.168.140.100/backend_php/action_page.php?id=" + phpCookieValue)
         .then(response => response.json())
         .then(action_list => {
         console.log(action_list);
@@ -172,7 +172,7 @@ function action_page(phpCookieValue){
 
 function whitelist(phpCookieValue) {
     return new Promise((resolve, reject) => {
-    fetch("https://192.168.140.100/php/whitelist.php?id=" + phpCookieValue)
+    fetch("https://192.168.140.100/backend_php/whitelist.php?id=" + phpCookieValue)
         .then(response => response.json())
         .then(whitelist => {
         console.log(whitelist);
