@@ -58,7 +58,7 @@
 
                     <div class="row">
 
-                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                    <input class="form-control" id="myInput" type="text" placeholder="Search username">
                     <br>
 
                     <?php
@@ -81,6 +81,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
+                                    <th class="text-center">User ID</th>
                                     <th class="text-center">Username</th>
                                     <th class="text-center">Email</th>
                                     <th class="text-center">Status</th>
@@ -95,24 +96,25 @@
                                 while ($result = $stmt->fetch()){
                                     echo '
                                     <tr>
+                                        <td class="text-center">'.$result["id"].'</td>
                                         <td class="text-center">'.$result["username"].'</td>
                                         <td class="text-center">'.$result["email"].'</td>
                                         <td class="text-center">'.$result["status"].'</td>
                                         <td class="text-center">'.$result["admin"].'</td>';
                                         if ($result["status"] == "Enable"){
-                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Disable';\">Switch to Disable</button></td>";
+                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Disable'\">Switch to Disable</button></td>";
                                         }else{
-                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Enable';\">Switch to Enable</button></td>";
+                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Enable'\">Switch to Enable</button></td>";
                                         }
                                         if ($result["admin"] == "Y"){
-                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=N';\">Switch to User</button></td>";
+                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=N'\">Switch to User</button></td>";
                                         }else{
-                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=Y';\">Switch to Admin</button></td>";
+                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=Y'\">Switch to Admin</button></td>";
                                         }
-                                    echo'
-                                        <td class="text-center"><button type="button" class="btn btn-primary" onclick="window.location.href=./dblogs.php?id='.$result['id'].'";>View Logs</button></td>
-                                        <td class="text-center"><button type="button" class="btn btn-primary" onclick="window.location.href=./whitelist.php?id='.$result['id'].'";>View User Whitelist</button></td>
-                                    </tr>';
+                                    echo "
+                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/log.php?user_id=".$result['id']."'\">View User Log</button></td>
+                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/whitelist.php?user_id=".$result['id']."'\">View User Whitelist</button></td>
+                                    </tr>";
 
                                 }
                             echo'
