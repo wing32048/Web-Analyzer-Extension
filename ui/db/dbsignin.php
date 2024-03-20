@@ -11,9 +11,9 @@ if (array_key_exists('email',$_POST) && array_key_exists('password',$_POST)){
         $sql =  "SELECT id,password FROM user where email = '$email'";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-        $cookieName = "id";
-        $expirationTime = time() - (24 * 60 * 60);
-        setcookie($cookieName, "", $cookieExpiration, "/");
+        // $cookieName = "id";
+        // $expirationTime = time() - (24 * 60 * 60);
+        // setcookie($cookieName, "", $cookieExpiration, "/");
         $data = $stmt->fetch();
         $cookieName = 'id';
         $cookieValue = $data['id'];
@@ -22,7 +22,7 @@ if (array_key_exists('email',$_POST) && array_key_exists('password',$_POST)){
         
         if ($data['password'] === $password && ($stmt->rowCount()) === 1){
             $_SESSION["expiry"] = time() + 900;
-            header('Location: ../HomePage.php');
+            header('Location: ../account.php');
         }else{
             header('Location: ../signin.php?error=1');
         }
