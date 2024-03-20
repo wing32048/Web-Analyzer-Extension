@@ -60,12 +60,12 @@
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                         aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-wrench"></i>
-                        <span>Data Management</span>
+                        <span>Trend Analysis and Reporting</span>
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Data Management</h6>
+                            <h6 class="collapse-header">Reporting</h6>
                             <a class="collapse-item" href="history.php">History</a>
 
                             
@@ -81,12 +81,12 @@
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                         aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-wrench"></i>
-                        <span>Data Management</span>
+                        <span>Trend Analysis and Reporting</span>
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Management</h6>
+                            <h6 class="collapse-header">Reporting</h6>
                             <a class="collapse-item" href="history.php">History</a>
 
                         </div>
