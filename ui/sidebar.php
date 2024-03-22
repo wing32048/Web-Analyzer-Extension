@@ -1,3 +1,9 @@
+<?php
+if (!isset($_COOKIE['user'])) {
+    header('location: ../signin.php?error=2');
+    exit();
+}
+?>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 

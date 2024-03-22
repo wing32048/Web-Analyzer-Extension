@@ -63,8 +63,6 @@
 
                     <?php
                         $pdo = dbconnect();
-                        $cookieId = $_COOKIE['id'];
-                        // echo $cookieId;
                         try {
                             $sql =  "SELECT * FROM user" ;
                             $stmt = $pdo->prepare($sql);
@@ -96,11 +94,11 @@
                                 while ($result = $stmt->fetch()){
                                     echo '
                                     <tr>
-                                        <td class="text-center">'.$result["id"].'</td>
-                                        <td class="text-center">'.$result["username"].'</td>
-                                        <td class="text-center">'.$result["email"].'</td>
-                                        <td class="text-center">'.$result["status"].'</td>
-                                        <td class="text-center">'.$result["admin"].'</td>';
+                                        <td class="text-center id">'.$result["id"].'</td>
+                                        <td class="text-center username">'.$result["username"].'</td>
+                                        <td class="text-center email">'.$result["email"].'</td>
+                                        <td class="text-center status">'.$result["status"].'</td>
+                                        <td class="text-center admin">'.$result["admin"].'</td>';
                                         if ($result["status"] == "Enable"){
                                             echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Disable'\">Switch to Disable</button></td>";
                                         }else{
@@ -135,7 +133,7 @@
                         $("#myInput").on("keyup", function() {
                             var value = $(this).val().toLowerCase();
                             $("#myTable tr").filter(function() {
-                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            $(this).toggle($(this).find(".username").text().toLowerCase().indexOf(value) > -1)
                             });
                         });
                         });

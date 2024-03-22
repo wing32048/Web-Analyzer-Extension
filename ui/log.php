@@ -58,11 +58,11 @@ if (!array_key_exists('user_id', $_GET)) {
                     <p class="mb-4">Press the Add new button to import the Whitelist.</p>
 
                     <!-- Content Row -->
+                    
                     <input class="form-control" id="myInput" type="text" placeholder="Search type">
                     <br>
                     <?php
                         $id = $_GET['user_id'];
-                        // echo $id;
                         try {
                             $sql =  "SELECT * FROM log where user_id = :id order by id DESC" ;
                             $stmt = $pdo->prepare($sql);
