@@ -35,7 +35,7 @@
 
     <?php
         $pdo = dbconnect();
-        $cookieId = $_COOKIE['id'];
+        $cookieId = $_COOKIE['user'];
         // echo $cookieId;
         try {
             $sql =  "SELECT * FROM user where id = $cookieId" ;
