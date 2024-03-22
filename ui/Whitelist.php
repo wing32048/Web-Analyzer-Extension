@@ -1,3 +1,9 @@
+<?php
+if (!array_key_exists('user_id', $_GET)) {
+    header('Location: user.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,15 +58,15 @@
                     <p class="mb-4">Press the Add new button to import the Whitelist.</p>
 
                     <!-- Content Row -->
+                    <input class="form-control" id="myInput" type="text" placeholder="Search URL">
+                    <br>
                     <?php
-                        if( !array_key_exists('id',$_GET)) {
-                            header('location: ../user.php');
-                            exit();
-                        }
-                        $id = $_GET['id'];
+                        $id = $_GET['user_id'];
+                        // echo $id;
                         try {
-                            $sql =  "SELECT * FROM whitelist where id = $id" ;
+                            $sql =  "SELECT * FROM whitelist where user_id = :id" ;
                             $stmt = $pdo->prepare($sql);
+                            $stmt->bindParam(":id", $id);
                             $stmt->execute();
                         } catch (PDOException $e) {
                             die($e->getMessage());
@@ -69,8 +75,47 @@
                         if ($numFound < 0){
                             echo "No result";
                         }
-                    ?>
+                        else if ( $numFound > 0){
+                            echo'
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">URL</th>
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody id="myTable">';
+                                while ($result = $stmt->fetch()){
+                                    echo "
+                                    <tr>
+                                        <td class='text-center'>".$result['id']."</td>
+                                        <td class='text-center'>".$result['url']."</td>
+                                        <td class='text-center'>".$result['date']."</td>
+                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdelwhitelist.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
+                                    </tr>";
 
+                                }
+                            echo'
+                                </tbody>
+                            </table>';
+
+                        }
+                    ?>
+                        <p></p>
+                        
+                        
+                        <script>
+                        $(document).ready(function(){
+                        $("#myInput").on("keyup", function() {
+                            var value = $(this).val().toLowerCase();
+                            $("#myTable tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                        });
+                        });
+                        </script>
                 </div>
                 <!-- /.container-fluid -->
             </div>

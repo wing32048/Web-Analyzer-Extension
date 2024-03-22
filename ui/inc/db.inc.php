@@ -1,6 +1,6 @@
 <?php
-$dsn = 'mysql:dbname=fyp;host=localhost;charset=UTF8';
-$dbuser = 'root';
+$dsn = 'mysql:dbname=fyp;host=192.168.140.100;charset=UTF8';
+$dbuser = 'www-data';
 $dbpwd = '';
 
 function dbconnect() {
