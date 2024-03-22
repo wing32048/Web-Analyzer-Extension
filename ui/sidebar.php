@@ -27,7 +27,9 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    
+
+
+    <!-- Nav Item - Utilities Collapse Menu -->
     <?php
         $pdo = dbconnect();
         $cookieId = $_COOKIE['id'];
@@ -39,6 +41,7 @@
             $result = $stmt->fetch();
             if ($result["admin"] == "Y"){
                 echo '
+                <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                         aria-controls="collapseTwo">
@@ -55,16 +58,17 @@
                 </li>
                 ';
             }
-            
+
         } catch (PDOException $e) {
             die($e->getMessage());
         }
     ?>
+    <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>Trend Analysis and Reporting</span>
+            <span>Reporting</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">

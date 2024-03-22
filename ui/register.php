@@ -33,7 +33,11 @@
     <main class="form-signin">
         <form form method="post" action="./db/dbregister.php">
             <h1 class="h3 mb-3 fw-normal">Register</h1>
-
+            <?php
+                if (isset($_GET['error']) && $_GET['error'] == 1) {
+                    echo "Input error";
+                }
+            ?>
             <div class="form-floating">
                 <input type="email" name='email' class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>

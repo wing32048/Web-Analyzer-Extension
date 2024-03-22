@@ -41,10 +41,8 @@
             <?php
                 if (isset($_GET['error']) && $_GET['error'] == 1) {
                     echo "Incorrect email address/password";
-                }else if (isset($_GET['error']) && $_GET['error'] == 2) {
+                }else if (isset($_GET['successful']) && $_GET['successful'] == 1) {
                     echo "Register successful";
-                }else if (isset($_GET['error']) && $_GET['error'] == 3) {
-                    echo "Email used";
                 }
             ?>
             <div class="form-floating">

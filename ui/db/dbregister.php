@@ -3,9 +3,8 @@ require_once "../inc/db.inc.php";
   
 
 $pdo = dbconnect();
-session_start();
-unset($_SESSION["expiry"]);
-
+$date = date("Y-m-d");
+// echo $date;
 if (array_key_exists('email',$_POST) && array_key_exists('username',$_POST) && array_key_exists('password',$_POST)){
     $email = $_POST['email'];
     $username = $_POST['username'];
@@ -15,29 +14,27 @@ if (array_key_exists('email',$_POST) && array_key_exists('username',$_POST) && a
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetch();
-        // echo $stmt->rowCount();
-        // echo $data['email'];
         if (($stmt->rowCount()) == 0){
             try{
-                $sql2 = "INSERT INTO user (`email`, `username`, `password`) VALUES ( '$email', '$username', '$password')";
+                // INSERT INTO `user` (`id`, `email`, `username`, `password`, `admin`, `status`, `date`) VALUES (NULL, '', '', '', '', '', '')
+                $sql2 = "INSERT INTO user (`email`, `username`, `password`, `admin`, `status`, `date`) VALUES ";
+                $sql2 .= "( '$email', '$username', '$password', 'N', 'Enable', '$date')";
                 $stmt2 = $pdo->prepare($sql2);
                 $stmt2->execute();
-                $stmt->execute();
-                $data = $stmt->fetch();
-                if (($stmt->rowCount()) == 1){
-                    header('location: ../register.php?error=2');
-                }
+                header('location: ../signin.php?successful=1');
             }
             catch (PDOException $e) {
                 die($e->getMessage());
             }
         }else{
-            header('location: ../register.php?error=3');
+            header('location: ../register.php?error=1');
         }
         
     } catch (PDOException $e) {
     die($e->getMessage());
     }
+}else{
+    header('location: ../register.php?error=1');
 }
 ?>
 

@@ -64,7 +64,7 @@ if (!array_key_exists('user_id', $_GET)) {
                         $id = $_GET['user_id'];
                         // echo $id;
                         try {
-                            $sql =  "SELECT * FROM log where user_id = :id" ;
+                            $sql =  "SELECT * FROM log where user_id = :id order by id DESC" ;
                             $stmt = $pdo->prepare($sql);
                             $stmt->bindParam(":id", $id);
                             $stmt->execute();
@@ -82,6 +82,7 @@ if (!array_key_exists('user_id', $_GET)) {
                                 <tr>
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Type</th>
+                                    <th class="text-center">Information</th>
                                     <th class="text-center">Datetime</th>
                                     <th class="text-center">Delete</th>
                                 </tr>
@@ -92,6 +93,7 @@ if (!array_key_exists('user_id', $_GET)) {
                                     <tr>
                                         <td class='text-center'>".$result['id']."</td>
                                         <td class='text-center'>".$result['type']."</td>
+                                        <td class='text-center'>".$result['information']."</td>
                                         <td class='text-center'>".$result['datetime']."</td>
                                         <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdellog.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
                                     </tr>";
