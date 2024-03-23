@@ -48,7 +48,7 @@
                 <div class="container-fluid">
                 <?php
                     $pdo = dbconnect();
-                    $cookieId = $_COOKIE['user'];
+                    //$cookieId = $_COOKIE['id'];
                     // echo $cookieId;
                     try {
                         $sql =  "SELECT * FROM user where id = $cookieId" ;
@@ -59,40 +59,26 @@
                         die($e->getMessage());
                     }
                     ?>  
-                    <h1>Account</h1>
-                    <h3>Manage your account settings</h3>
-                
-                    <!-- Username -->
-                    <h5>Username</h5>
-                    <table>
-                        <tr>
-                            <?php
-                                echo "<td>".$result['username']."</td>";
-                            ?>
-                        </tr>
-                    </table>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Username</button>
+                    <h1>Change Username</h1>
+                    <div class="container">
+                        <form id="changeUsernameForm">
+                        <div class="container">    
+                            <div class="form-group">
+                                <label for="new-username">New Username</label>
+                                <input type="text" class="form-control" id="new-username" placeholder="Enter a new username">
+                            </div>
 
-                    <hr>
-                
-                    <!-- Email Address -->
-                    <h5>Email Address</h5>
-                    <table>
-                        <tr>
-                            <?php
-                                echo "<td>".$result['email']."</td>";
-                            ?>
-                        </tr>
-                    </table>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_email.php'">Change Email</button>
-
-                    <hr>
-
-                    <h5>Password</h5>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_pw.php'">Change Password</button>
-                    <hr>
+                            <div class="form-group">
+                                <label for="confirm-username">Confirm New Username</label>
+                                <input type="text" class="form-control" id="confirm-username" placeholder="Confirm your new username">
+                            </div>
+                            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                                <button type="submit" class="btn btn-primary">Change Username</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
+                    
             </div>
 
         </div>
@@ -100,7 +86,20 @@
 
     </div>
     <!-- End of Page Wrapper -->
+    <script>
+    document.getElementById('changeUsernameForm').addEventListener('submit', function(event) {
+      var newUsername = document.getElementById('new-username').value;
+      var confirmUsername = document.getElementById('confirm-username').value;
 
+      if (newUsername !== confirmUsername) {
+        alert("New username and confirm username do not match.");
+        event.preventDefault();
+        return;
+      }
+
+
+    });
+  </script>
 
     <?php 
         require_once 'logout.php';
