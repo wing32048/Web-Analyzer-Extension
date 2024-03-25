@@ -38,8 +38,6 @@ if (!isset($_COOKIE['user'])) {
     <!-- Nav Item - Utilities Collapse Menu -->
     <?php
         $pdo = dbconnect();
-        $cookieId = $_COOKIE['user'];
-        // echo $cookieId;
         try {
             $sql =  "SELECT * FROM user where id = $cookieId" ;
             $stmt = $pdo->prepare($sql);

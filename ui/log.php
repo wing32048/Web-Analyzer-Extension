@@ -59,13 +59,14 @@ if (!array_key_exists('user_id', $_GET)) {
                     <p class="mb-4">Here can check the user logs.</p>
 
                     <!-- Content Row -->
-                    <input class="form-control" id="myInput" type="text" placeholder="Search type">
+                    <input class="form-control" id="myInput" type="text" placeholder="Search information">
                     <br>
-                    <select class="form-select mb-3" aria-label=".form-select-lg example">
-                        <option selected>All</option>
+                    <select class="form-select mb-3" id="mySelect" aria-label=".form-select-lg example">
+                        <option value="all" selected>All</option>
                         <option value="login">Login</option>
                         <option value="logout">Logout</option>
                         <option value="add">Add</option>
+                        <option value="update">Update</option>
                         <option value="delete">Delete</option>
                     </select>
                     <br>
@@ -100,10 +101,10 @@ if (!array_key_exists('user_id', $_GET)) {
                                 while ($result = $stmt->fetch()){
                                     echo "
                                     <tr>
-                                        <td class='text-center'>".$result['id']."</td>
-                                        <td class='text-center'>".$result['type']."</td>
-                                        <td class='text-center'>".$result['information']."</td>
-                                        <td class='text-center'>".$result['datetime']."</td>
+                                        <td class='text-center id'>".$result['id']."</td>
+                                        <td class='text-center type'>".$result['type']."</td>
+                                        <td class='text-center information'>".$result['information']."</td>
+                                        <td class='text-center datetime'>".$result['datetime']."</td>
                                         <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdellog.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
                                     </tr>";
 
@@ -118,14 +119,43 @@ if (!array_key_exists('user_id', $_GET)) {
                         
                         
                         <script>
-                        $(document).ready(function(){
-                        $("#myInput").on("keyup", function() {
-                            var value = $(this).val().toLowerCase();
-                            $("#myTable tr").filter(function() {
-                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            $(document).ready(function() {
+                                $("#myInput").on("keyup", function() {
+                                    var value = $(this).val().toLowerCase();
+                                    $("#myTable tr").filter(function() {
+                                        $(this).toggle($(this).find(".information").text().toLowerCase().indexOf(value) > -1);
+                                    });
+                                });
                             });
-                        });
-                        });
+                            $(document).ready(function() {
+                                $("#mySelect").on("change", function() {
+                                    var value = $(this).val().toLowerCase();
+                                    $("#myTable tr").filter(function() {
+                                        var type = $(this).find(".type").text().toLowerCase()
+                                        var showAll = value === "all";
+                                        var typeMatch = type.indexOf(value) > -1;
+
+                                        $(this).toggle(showAll || typeMatch);
+                                    });
+                                });
+                            });
+                            // $(document).ready(function() {
+                            //     $("#myInput").on("keyup", function() {
+                            //         var value = $(this).val().toLowerCase();
+                            //         var filterType = $("#filterType").val().toLowerCase();
+
+                            //         $("#myTable tr").filter(function() {
+                            //             var username = $(this).find(".username").text().toLowerCase();
+                            //             var activity = $(this).find(".activity").text().toLowerCase();
+
+                            //             var usernameMatch = username.indexOf(value) > -1;
+                            //             var activityMatch = activity.indexOf(value) > -1;
+                            //             var typeMatch = filterType === "all" || activity.indexOf(filterType) > -1;
+
+                            //             $(this).toggle(usernameMatch && (activityMatch || typeMatch));
+                            //         });
+                            //     });
+                            // });
                         </script>
                 </div>
                 <!-- /.container-fluid -->

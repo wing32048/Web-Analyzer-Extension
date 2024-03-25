@@ -1,5 +1,5 @@
 <?php
-require_once "../inc/db.inc.php";
+require_once "../inc/db.php";
 $pdo = dbconnect();
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');

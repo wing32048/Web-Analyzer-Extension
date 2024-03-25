@@ -46,34 +46,21 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <?php
-                    $pdo = dbconnect();
-                    //$cookieId = $_COOKIE['id'];
-                    // echo $cookieId;
-                    try {
-                        $sql =  "SELECT * FROM user where id = $cookieId" ;
-                        $stmt = $pdo->prepare($sql);
-                        $stmt->execute();
-                        $result = $stmt->fetch();
-                    } catch (PDOException $e) {
-                        die($e->getMessage());
-                    }
-                    ?>  
                     <h1>Change Username</h1>
                     <div class="container">
-                        <form id="changeUsernameForm">
+                        <form id="changeUsernameForm" method="post" action="./db/dbchange_username.php">
                         <div class="container">    
                             <div class="form-group">
                                 <label for="new-username">New Username</label>
-                                <input type="text" class="form-control" id="new-username" placeholder="Enter a new username">
+                                <input type="text" class="form-control" name="username" placeholder="Enter a new username">
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="confirm-username">Confirm New Username</label>
                                 <input type="text" class="form-control" id="confirm-username" placeholder="Confirm your new username">
-                            </div>
+                            </div> -->
                             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                                <button type="submit" class="btn btn-primary">Change Username</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
                             </div>
                         </form>
                     </div>
@@ -86,7 +73,7 @@
 
     </div>
     <!-- End of Page Wrapper -->
-    <script>
+    <!-- <script>
     document.getElementById('changeUsernameForm').addEventListener('submit', function(event) {
       var newUsername = document.getElementById('new-username').value;
       var confirmUsername = document.getElementById('confirm-username').value;
@@ -99,7 +86,7 @@
 
 
     });
-  </script>
+  </script> -->
 
     <?php 
         require_once 'logout.php';

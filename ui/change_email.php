@@ -46,38 +46,33 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <?php
-                    $pdo = dbconnect();
-                    //$cookieId = $_COOKIE['id'];
-                    // echo $cookieId;
-                    try {
-                        $sql =  "SELECT * FROM user where id = $cookieId" ;
-                        $stmt = $pdo->prepare($sql);
-                        $stmt->execute();
-                        $result = $stmt->fetch();
-                    } catch (PDOException $e) {
-                        die($e->getMessage());
-                    }
-                    ?>  
                     <h1>Change Email</h1>
                     <div class="container">
-                        <form id="changeEmailForm">
-                        <div class="form-group">
+                        <form id="changeEmailForm" method="post" action="./db/dbchange_email.php">
+                        <!-- <div class="form-group">
                             <label for="current-email">Current Email</label>
                             <input type="email" class="form-control" id="current-email" placeholder="Enter your current email">
-                        </div>
-
+                        </div> -->
+                        <?php
+                            if (isset($_GET['error']) && $_GET['error'] == 1) {
+                                echo "
+                                <script>
+                                alert('Incorrect email address')
+                                </script>
+                                ";
+                            }
+                        ?>
                         <div class="form-group">
                             <label for="new-email">New Email</label>
-                            <input type="email" class="form-control" id="new-email" placeholder="Enter a new email">
+                            <input type="email" class="form-control" name="email" placeholder="Enter a new email">
                         </div>
 
                         <div class="form-group">
                             <label for="confirm-email">Confirm New Email</label>
-                            <input type="email" class="form-control" id="confirm-email" placeholder="Confirm your new email">
+                            <input type="email" class="form-control" name="confirm_email" placeholder="Confirm your new email">
                         </div>
                         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <button type="submit" class="btn btn-primary">Change Email</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                         </form>
             </div>
@@ -89,7 +84,7 @@
 
     </div>
     <!-- End of Page Wrapper -->
-    <script>
+    <!-- <script>
         document.getElementById('changeEmailForm').addEventListener('submit', function(event) {
             var currentEmail = document.getElementById('current-email').value;
             var newEmail = document.getElementById('new-email').value;
@@ -114,7 +109,7 @@
             }
 
         });
-    </script>
+    </script> -->
 
     <?php 
         require_once 'logout.php';

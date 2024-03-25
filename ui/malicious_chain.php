@@ -59,39 +59,57 @@
 
                     <div class="container-fluid">
 
-                        <input class="form-control" id="myInput" type="text" placeholder="Search type">
+                        <input class="form-control" id="myInput" type="text" placeholder="Search code">
                         <br>
-                        <select class="form-select mb-3" aria-label=".form-select-lg example">
-                            <option selected>XSS</option>
-                            <option value="1">URL Redirect</option>
-                            <option value="2">Drive By Download</option>
+                        <select class="form-select mb-3" id="mySelect" aria-label=".form-select-lg example">
+                            <option value="all" selected>All</option>
+                            <option value="XSS">XSS</option>
+                            <option value="URL Redirect">URL Redirect</option>
+                            <option value="Drive By Download">Drive By Download</option>
                         </select>
                         <?php
                             $pdo = dbconnect();
-                            //$cookieId = $_COOKIE['id'];
-                            // echo $cookieId;
+                            $id = $_GET['user_id'];
                             try {
-                                $sql =  "SELECT * FROM user" ;
+                                $sql =  "SELECT * FROM malicious_chain where user_id = :id" ;
                                 $stmt = $pdo->prepare($sql);
+                                $stmt->bindParam(":id", $id);
                                 $stmt->execute();
                             } catch (PDOException $e) {
                                 die($e->getMessage());
                             }
                             $numFound = $stmt->rowCount();
-                            if ($numFound < 0){
+                            if ($numFound <= 0){
                                 echo "No result";
                             }
                             else if ( $numFound > 0){
                                 echo'
-                                <br>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <th class="text-center">Type</th>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center type">Type</th>
                                         <th class="text-center">Code</th>
-                                        <th class="text-center">Date </th>
+                                        <th class="text-center">Date</th>
+                                        <th class="text-center"></th>
+                                    </tr>
                                     </thead>
-                                    
+                                    <tbody id="myTable">';
+                                    while ($result = $stmt->fetch()){
+                                        echo '
+                                        <tr>
+                                            <td class="text-center id">'.$result["id"].'</td>
+                                            <td class="text-center type">'.$result["type"].'</td>
+                                            <td class="text-center code">'.htmlspecialchars($result["code"]).'</td>
+                                            <td class="text-center date">'.$result["date"].'</td>';
+                                            
+                                        echo "
+                                            <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbdelmalicious_chain.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
+                                        </tr>";
+
+                                    }
+                                echo'
+                                    </tbody>
                                 </table>';
 
                             }
@@ -104,14 +122,26 @@
                         
                         
                         <script>
-                        $(document).ready(function(){
-                        $("#myInput").on("keyup", function() {
-                            var value = $(this).val().toLowerCase();
-                            $("#myTable tr").filter(function() {
-                            $(this).toggle($(this).find(".type").toLowerCase().indexOf(value) > -1)
+                            $(document).ready(function() {
+                                $("#myInput").on("keyup", function() {
+                                    var value = $(this).val().toLowerCase();
+                                    $("#myTable tr").filter(function() {
+                                        $(this).toggle($(this).find(".code").text().toLowerCase().indexOf(value) > -1);
+                                    });
+                                });
                             });
-                        });
-                        });
+                            $(document).ready(function() {
+                                $("#mySelect").on("change", function() {
+                                    var value = $(this).val().toLowerCase();
+                                    $("#myTable tr").filter(function() {
+                                        var type = $(this).find(".type").text().toLowerCase()
+                                        var showAll = value === "all";
+                                        var typeMatch = type.indexOf(value) > -1;
+
+                                        $(this).toggle(showAll || typeMatch);
+                                    });
+                                });
+                            });
                         </script>
                     
                     </div>

@@ -20,6 +20,16 @@ try {
     $stmt->bindParam(":id", $id);
     $stmt->bindParam(":status", $status);
     $stmt->execute();
+    try {
+        // INSERT INTO `log` (`id`, `user_id`, `type`, `information`, `datetime`) VALUES (NULL, '', '', '', '2024-03-22 16:50:37.000000')
+        $sql =  "INSERT INTO `log` (`user_id`, `type`, `information`, `datetime`) VALUES";
+        $sql .= "('$cookieId', 'update', 'Switch user id : $id to $status', '$datetime')";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetch();            
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    } 
     header('location: ../user.php');
     exit();
 

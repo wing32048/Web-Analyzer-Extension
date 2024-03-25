@@ -1,5 +1,5 @@
 <?php
-require_once "../inc/db.inc.php";
+require_once "../inc/db.php";
 $pdo = dbconnect();
 // $data = json_decode(file_get_contents('php://input'), true);
 

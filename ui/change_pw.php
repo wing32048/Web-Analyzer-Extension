@@ -44,21 +44,36 @@
                     <h1>Change Password</h1>
                     <p>The password should be a minimum of eight characters long and consist of a combination of uppercase and lowercase letters, numbers, and special characters.</p>
                     <div class="container">
-                        <form id="resetPasswordForm">
+                        <form id="resetPasswordForm" method="post" action="./db/dbchange_pw.php">
+                            <?php
+                                if (isset($_GET['error']) && $_GET['error'] == 1) {
+                                    echo "
+                                    <script>
+                                    alert('Current_password is wrong')
+                                    </script>
+                                    ";
+                                }elseif(isset($_GET['error']) && $_GET['error'] == 2){
+                                    echo "
+                                    <script>
+                                    alert('Password not enough strong/Password not match')
+                                    </script>
+                                    ";
+                                }
+                            ?>
                             <div class="mb-3">
                                 <label for="old-password" class="form-label">Currrent Password</label>
-                                <input type="password" class="form-control" id="old-password" placeholder="Enter your current password">
+                                <input type="password" class="form-control" name="current_password" placeholder="Enter your current password">
                             </div>
                             <div class="mb-3">
                                 <label for="new-password" class="form-label">New Password</label>
-                                <input type="password" class="form-control" id="new-password" placeholder="Enter a new password">
+                                <input type="password" class="form-control" name="password" placeholder="Enter a new password">
                             </div>
                             <div class="mb-3">
                                 <label for="confirm-password" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your new password">
+                                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm your new password">
                             </div>
                             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                                <button type="submit" class="btn btn-primary">Change Password</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
                             </div>  
                         </form>
                     </div>
@@ -70,7 +85,7 @@
 
     <!-- Your existing script includes here -->
 
-    <script>
+    <!-- <script>
         document.getElementById('resetPasswordForm').addEventListener('submit', function (event) {
             var newPassword = document.getElementById('new-password').value;
             var confirmPassword = document.getElementById('confirm-password').value;
@@ -104,7 +119,7 @@
         function hasSpecialCharacter(str) {
             return /[!@#$%^&*(),.?":{}|<>_]/.test(str);
         }
-    </script>
+    </script> -->
 
     <?php 
         require_once 'logout.php';

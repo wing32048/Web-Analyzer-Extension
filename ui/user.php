@@ -73,7 +73,7 @@
                             die($e->getMessage());
                         }
                         $numFound = $stmt->rowCount();
-                        if ($numFound < 0){
+                        if ($numFound <= 0){
                             echo "No result";
                         }
                         else if ( $numFound > 0){
@@ -115,7 +115,7 @@
                                     echo "
                                         <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/malicious_chain.php?user_id=".$result['id']."'\">View Malicious Chain</button></td>
                                         <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/log.php?user_id=".$result['id']."'\">View User Log</button></td>
-                                        <td class='text-center'><button type='button' class='btn btn-primary btn-smb' onclick=\"window.location.href='/whitelist.php?user_id=".$result['id']."'\">View User Whitelist</button></td>
+                                        <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/whitelist.php?user_id=".$result['id']."'\">View User Whitelist</button></td>
                                     </tr>";
 
                                 }
@@ -133,14 +133,14 @@
                         
                         
                         <script>
-                        $(document).ready(function(){
-                        $("#myInput").on("keyup", function() {
-                            var value = $(this).val().toLowerCase();
-                            $("#myTable tr").filter(function() {
-                            $(this).toggle($(this).find(".username").toLowerCase().indexOf(value) > -1)
+                            $(document).ready(function() {
+                                $("#myInput").on("keyup", function() {
+                                    var value = $(this).val().toLowerCase();
+                                    $("#myTable tr").filter(function() {
+                                        $(this).toggle($(this).find(".username").text().toLowerCase().indexOf(value) > -1);
+                                    });
+                                });
                             });
-                        });
-                        });
                         </script>
                     
                     </div>

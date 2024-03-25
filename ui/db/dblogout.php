@@ -6,7 +6,6 @@ $device =UserInfo::get_device();
 $os = UserInfo::get_os();
 $browser = UserInfo::get_browser();
 $pdo = dbconnect();
-$cookieId = $_COOKIE['user'];
 try {
     try {
         // INSERT INTO `log` (`id`, `user_id`, `type`, `information`, `datetime`) VALUES (NULL, '', '', '', '2024-03-22 16:50:37.000000')
