@@ -63,6 +63,8 @@
 
                     <?php
                         $pdo = dbconnect();
+                        // $cookieId = $_COOKIE['id'];
+                        // echo $cookieId;
                         try {
                             $sql =  "SELECT * FROM user" ;
                             $stmt = $pdo->prepare($sql);
@@ -86,6 +88,7 @@
                                     <th class="text-center">Admin</th>
                                     <th class="text-center">Switch to</th>
                                     <th class="text-center">Switch to</th>
+                                    <th class="text-centre">View Malicious Chain</th>
                                     <th class="text-center">Activity</th>
                                     <th class="text-center">Whitelist</th>
                                 </tr>
@@ -100,18 +103,19 @@
                                         <td class="text-center status">'.$result["status"].'</td>
                                         <td class="text-center admin">'.$result["admin"].'</td>';
                                         if ($result["status"] == "Enable"){
-                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Disable'\">Switch to Disable</button></td>";
+                                            echo "<td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Disable'\">Switch to Disable</button></td>";
                                         }else{
-                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Enable'\">Switch to Enable</button></td>";
+                                            echo "<td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbstatus.php?id=".$result['id']."&status=Enable'\">Switch to Enable</button></td>";
                                         }
                                         if ($result["admin"] == "Y"){
-                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=N'\">Switch to User</button></td>";
+                                            echo "<td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=N'\">Switch to User</button></td>";
                                         }else{
-                                            echo "<td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=Y'\">Switch to Admin</button></td>";
+                                            echo "<td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=Y'\">Switch to Admin</button></td>";
                                         }
                                     echo "
-                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/log.php?user_id=".$result['id']."'\">View User Log</button></td>
-                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/whitelist.php?user_id=".$result['id']."'\">View User Whitelist</button></td>
+                                        <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/log.php?user_id=".$result['id']."'\">View Malicious Chain</button></td>
+                                        <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/log.php?user_id=".$result['id']."'\">View User Log</button></td>
+                                        <td class='text-center'><button type='button' class='btn btn-primary btn-smb' onclick=\"window.location.href='/whitelist.php?user_id=".$result['id']."'\">View User Whitelist</button></td>
                                     </tr>";
 
                                 }
@@ -133,7 +137,7 @@
                         $("#myInput").on("keyup", function() {
                             var value = $(this).val().toLowerCase();
                             $("#myTable tr").filter(function() {
-                            $(this).toggle($(this).find(".username").text().toLowerCase().indexOf(value) > -1)
+                            $(this).toggle($(this).find(".username").toLowerCase().indexOf(value) > -1)
                             });
                         });
                         });

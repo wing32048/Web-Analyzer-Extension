@@ -14,8 +14,9 @@ if (!array_key_exists('user_id', $_GET)) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Whitelist</title>
+    <title>Logs</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -54,15 +55,23 @@ if (!array_key_exists('user_id', $_GET)) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Whitelist</h1>
-                    <p class="mb-4">Press the Add new button to import the Whitelist.</p>
+                    <h1 class="h3 mb-1 text-gray-800">User Log</h1>
+                    <p class="mb-4">Here can check the user logs.</p>
 
                     <!-- Content Row -->
-                    
                     <input class="form-control" id="myInput" type="text" placeholder="Search type">
+                    <br>
+                    <select class="form-select mb-3" aria-label=".form-select-lg example">
+                        <option selected>All</option>
+                        <option value="login">Login</option>
+                        <option value="logout">Logout</option>
+                        <option value="add">Add</option>
+                        <option value="delete">Delete</option>
+                    </select>
                     <br>
                     <?php
                         $id = $_GET['user_id'];
+                        // echo $id;
                         try {
                             $sql =  "SELECT * FROM log where user_id = :id order by id DESC" ;
                             $stmt = $pdo->prepare($sql);
