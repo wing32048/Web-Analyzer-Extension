@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener(data => {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.action === 'getCookie') {
         chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-            chrome.cookies.get({ name: 'id', url: tabs[0].url }, function(cookie) {
+            chrome.cookies.get({ name: 'user', url: tabs[0].url }, function(cookie) {
                 sendResponse({ cookie: cookie });
             });
         });
