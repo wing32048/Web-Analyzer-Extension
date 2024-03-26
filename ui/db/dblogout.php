@@ -19,7 +19,7 @@ try {
     }        
     $cookieName = 'user';
     $cookieValue = $data['id'];
-    $expirationTime = time() - (24 * 60 * 60);
+    $cookieExpiration = time() - (24 * 60 * 60);
     setcookie($cookieName, $cookieValue, $cookieExpiration, "/");
     header('Location: ../signin.php');
 } catch (PDOException $e) {

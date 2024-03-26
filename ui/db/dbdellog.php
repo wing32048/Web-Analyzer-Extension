@@ -7,20 +7,22 @@ $pdo = dbconnect();
 if( !array_key_exists('id',$_GET) && !array_key_exists('user_id',$_GET)) {
     header('location: ../user.php');
     exit();
-}
-$user_id = $_GET['user_id'];
-$id = $_GET['id'];
+}else{
 
-try {
-    /* 3. Prepare and execute SQL . . . */
-    $sql =  "DELETE FROM log ";
-    $sql .= " WHERE id = :id ";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(":id", $id);
-    $stmt->execute();
-    header('location: ../log.php?user_id='.$user_id);
-    exit();
-
-} catch (PDOException $e) {
-    die($e->getMessage());
+    $user_id = $_GET['user_id'];
+    $id = $_GET['id'];
+    
+    try {
+        /* 3. Prepare and execute SQL . . . */
+        $sql =  "DELETE FROM log ";
+        $sql .= " WHERE id = :id ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        header('location: ../log.php?user_id='.$user_id);
+        exit();
+    
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
 }

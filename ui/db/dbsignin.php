@@ -17,7 +17,7 @@ if (array_key_exists('email',$_POST) && array_key_exists('password',$_POST)){
         $data = $stmt->fetch();
         $cookieName = 'user';
         $cookieValue = base64_encode($data['id']);
-        $expirationTime = time() + (24 * 60 * 60);
+        $cookieExpiration = time() + (24 * 60 * 60);
         setcookie($cookieName, $cookieValue, $cookieExpiration, "/");
         
         if (password_verify($password, $data['password']) && ($stmt->rowCount()) === 1){
