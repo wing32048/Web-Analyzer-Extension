@@ -21,6 +21,8 @@ if (sessionStorage.times % 2 === 0){
     });
 }else if(window.location.href.startsWith("https://www.google.com/search?")){
     console.log('Googel Search');
+}else if(window.location.href.startsWith("https://192.168.140.100/malicious_chain.php?")){
+    console.log('Malicious Chain');
 }else{
     sessionStorage.times = 1;
     window.stop();
@@ -79,7 +81,7 @@ if (sessionStorage.times % 2 === 0){
                                             })
                                             .catch(function(error) {
                                                 console.error(error);
-                                            });                           
+                                            });                             
                                         sessionStorage.times = Number(sessionStorage.times) +1;
                                         window.location.reload();
                                     } else {
