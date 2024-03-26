@@ -46,50 +46,56 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <?php
-                    $pdo = dbconnect();
-                    // echo $cookieId;
-                    try {
-                        $sql =  "SELECT * FROM user where id = $cookieId" ;
-                        $stmt = $pdo->prepare($sql);
-                        $stmt->execute();
-                        $result = $stmt->fetch();
-                    } catch (PDOException $e) {
-                        die($e->getMessage());
-                    }
+                    <?php
+                        $pdo = dbconnect();
+                        // echo $cookieId;
+                        try {
+                            $sql =  "SELECT * FROM user where id = $cookieId" ;
+                            $stmt = $pdo->prepare($sql);
+                            $stmt->execute();
+                            $result = $stmt->fetch();
+                        } catch (PDOException $e) {
+                            die($e->getMessage());
+                        }
                     ?>  
-                    <h1>Account</h1>
-                    <h3>Manage your account settings</h3>
-                
-                    <!-- Username -->
-                    <h5>Username</h5>
-                    <table>
-                        <tr>
-                            <?php
-                                echo "<td>".$result['username']."</td>";
-                            ?>
-                        </tr>
-                    </table>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Username</button>
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <h1 class="text-center">Account</h1>
+                                <h3 class="text-center">Manage your account settings</h3>
 
-                    <hr>
-                
-                    <!-- Email Address -->
-                    <h5>Email Address</h5>
-                    <table>
-                        <tr>
-                            <?php
-                                echo "<td>".$result['email']."</td>";
-                            ?>
-                        </tr>
-                    </table>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_email.php'">Change Email</button>
+                                <div class="text-center">
+                                    <h5>Username</h5>
+                                    <label>
+                                        <?php echo $result['username']; ?>
+                                    </label>
+                                    <br>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Username</button>
+                                </div>
 
-                    <hr>
+                                <hr>
 
-                    <h5>Password</h5>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_pw.php'">Change Password</button>
-                    <hr>
+                                <!-- Email Address -->
+                                <div class="text-center">
+                                <h5>Email Address</h5>
+                                <label>
+                                    <?php echo $result['email']; ?>
+                                </label>
+                                <br>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_email.php'">Change Email</button>
+                                </div>
+
+                                <hr>
+
+                                <div class="text-center">
+                                <h5>Password</h5>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_pw.php'">Change Password</button>
+                                </div>
+
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
