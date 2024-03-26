@@ -114,6 +114,7 @@
                                             <th class="text-center">ID</th>
                                             <th class="text-center">URL</th>
                                             <th class="text-center">Date</th>
+                                            <th class="text-center">Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody id="myTable">';
@@ -123,6 +124,7 @@
                                                 <td class="text-center id">'.$result["id"].'</td>
                                                 <td class="text-center url">'.$result["url"].'</td>
                                                 <td class="text-center date">'.$result["date"].'</td>
+                                                <td class="text-center"><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href=\'/db/dbdelhistory.php?user_id='.$result["id"].'\'">View User Whitelist</button></td>
                                             </tr>';
                                 
                                         }
@@ -152,6 +154,7 @@
                                             <th class="text-center">ID</th>
                                             <th class="text-center">URL</th>
                                             <th class="text-center">Date</th>
+                                            <th class="text-center">Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody id="myTable">';
@@ -161,6 +164,7 @@
                                                 <td class="text-center id">'.$result["id"].'</td>
                                                 <td class="text-center url">'.$result["url"].'</td>
                                                 <td class="text-center date">'.$result["date"].'</td>
+                                                <td class="text-center"><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href=\'/db/dbdelhistory.php?id='.$result["id"].'\'">Delete</button></td>
                                             </tr>';
                                 
                                         }

@@ -46,6 +46,9 @@
                 }else if (isset($_GET['successful']) && $_GET['successful'] == 1) {
                     echo "Register successful";
                 }
+                $cookieName = 'user';
+                $cookieExpiration = time() - (24 * 60 * 60);
+                setcookie($cookieName, "", $cookieExpiration);
             ?>
             <div class="form-floating">
                 <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">

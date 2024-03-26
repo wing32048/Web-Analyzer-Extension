@@ -67,54 +67,8 @@
                             <option value="URL Redirect">URL Redirect</option>
                             <option value="Drive By Download">Drive By Download</option>
                         </select>
-                        <!-- <button class="w-100 btn btn-lg btn-primary" onclick="window.location.href='/add_malicious_chain.php'">ADD</button> -->
-                        <?php
-                            $pdo = dbconnect();
-                            $id = $_GET['user_id'];
-                            try {
-                                $sql =  "SELECT * FROM malicious_chain where user_id = :id" ;
-                                $stmt = $pdo->prepare($sql);
-                                $stmt->bindParam(":id", $id);
-                                $stmt->execute();
-                            } catch (PDOException $e) {
-                                die($e->getMessage());
-                            }
-                            $numFound = $stmt->rowCount();
-                            if ($numFound <= 0){
-                                echo "No result";
-                            }
-                            else if ( $numFound > 0){
-                                echo'
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-center">ID</th>
-                                        <th class="text-center type">Type</th>
-                                        <th class="text-center">Code</th>
-                                        <th class="text-center">Date</th>
-                                        <th class="text-center"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="myTable">';
-                                    while ($result = $stmt->fetch()){
-                                        echo '
-                                        <tr>
-                                            <td class="text-center id">'.$result["id"].'</td>
-                                            <td class="text-center type">'.$result["type"].'</td>
-                                            <td class="text-center code">'.htmlspecialchars($result["code"]).'</td>
-                                            <td class="text-center date">'.$result["date"].'</td>';
-                                            
-                                        echo "
-                                            <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbdelmalicious_chain.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
-                                        </tr>";
+                        <button class="w-100 btn btn-lg btn-primary" onclick="window.location.href='/add_malicious_chain.php'">ADD</button>
 
-                                    }
-                                echo'
-                                    </tbody>
-                                </table>';
-
-                            }
-                        ?>
                             
                                 
                         
