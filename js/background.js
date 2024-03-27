@@ -11,6 +11,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 sendResponse({ cookie: cookie });
             });
         });
+        chrome.storage.local.get('phpCookieValue', function(result) {
+            const phpCookieValue = result.phpCookieValue;
+            console.log(phpCookieValue);
+            if (phpCookieValue === undefined ) {
+                chrome.action.setPopup({ popup: 'popup/html/setting.html' });
+            } else {
+                chrome.action.setPopup({ popup: 'popup/html/scanning.html' });
+              }
+          });
         return true; // Indicates that the response will be sent asynchronously
     }
 });
