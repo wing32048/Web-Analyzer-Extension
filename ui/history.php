@@ -103,7 +103,7 @@
                                     die($e->getMessage());
                                 }
                                 $numFound = $stmt->rowCount();
-                                if ($numFound < 0){
+                                if ($numFound <= 0){
                                     echo "No result";
                                 }
                                 else if ( $numFound > 0){

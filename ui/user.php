@@ -2,7 +2,22 @@
 <html lang="en">
 
 <head>
-
+    <?php 
+        require_once './inc/db.inc.php';
+        $pdo = dbconnect();
+        try {
+            $sql =  "SELECT * FROM user where id = $cookieId" ;
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            if ($result["admin"] == "N"){
+                header('location: /account.php');
+            }
+            
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,9 +41,6 @@
             width: 150px; /* Adjust the width as needed */
         }
     </style>
-    <?php 
-        require_once './inc/db.inc.php';
-    ?>
 </head>
 
 <body id="page-top">

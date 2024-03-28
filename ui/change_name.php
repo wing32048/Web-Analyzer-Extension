@@ -62,8 +62,8 @@
                             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
                     
             </div>
