@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var registerButton = document.getElementById("signin");
-    registerButton.addEventListener("click", function() {
+    var signinButton = document.getElementById("signin");
+    signinButton.addEventListener("click", function() {
     chrome.tabs.create({ url:'https://192.168.140.100/signin.php'});
     });
 });

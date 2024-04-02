@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             const phpCookieValue = result.phpCookieValue;
             console.log(phpCookieValue);
             if (phpCookieValue === undefined ) {
-                chrome.action.setPopup({ popup: 'popup/html/setting.html' });
+                chrome.action.setPopup({ popup: 'popup/html/index.html' });
             } else {
                 chrome.action.setPopup({ popup: 'popup/html/scanning.html' });
               }
