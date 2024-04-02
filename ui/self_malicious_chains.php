@@ -70,11 +70,10 @@
                         <!-- <button class="w-100 btn btn-lg btn-primary" onclick="window.location.href='/add_malicious_chain.php'">ADD</button> -->
                         <?php
                             $pdo = dbconnect();
-                            $id = $_GET['user_id'];
                             try {
                                 $sql =  "SELECT * FROM malicious_chain where user_id = :id" ;
                                 $stmt = $pdo->prepare($sql);
-                                $stmt->bindParam(":id", $id);
+                                $stmt->bindParam(":id", $cookieId);
                                 $stmt->execute();
                             } catch (PDOException $e) {
                                 die($e->getMessage());
@@ -105,7 +104,7 @@
                                             <td class="text-center date">'.$result["date"].'</td>';
                                             
                                         echo "
-                                            <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbdelmalicious_chain.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
+                                            <td class='text-center'><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbdelmalicious_chain.php?id=".$result['id']."&user_id=$cookieId'\">Delete</button></td>
                                         </tr>";
 
                                     }

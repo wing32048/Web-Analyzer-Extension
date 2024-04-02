@@ -24,7 +24,7 @@ if (array_key_exists('email',$_POST) && array_key_exists('password',$_POST)){
             try {
                 // INSERT INTO `log` (`id`, `user_id`, `type`, `information`, `datetime`) VALUES (NULL, '', '', '', '2024-03-22 16:50:37.000000')
                 $sql =  "INSERT INTO `log` (`user_id`, `type`, `information`, `datetime`) VALUES";
-                $sql .= "('$cookieValue', 'login', 'IP address : $ip; Device : $device; OS : $os; Browser : $browser', '$datetime')";
+                $sql .= "('$data[id]', 'login', 'IP address : $ip; Device : $device; OS : $os; Browser : $browser', '$datetime')";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
                 $data = $stmt->fetch();            
