@@ -40,8 +40,8 @@
                     require_once 'topbar.php';
                 ?>
                 <!-- Your existing topbar code here -->
-                <div class="container text-center">
-                    <h1>Insert Malicious Chain</h1>
+                <div class="container-fluid text-center">
+                    <h1 class="h3 mb-4 text-gray-800">Insert Malicious Chain</h1>
                     <p>Today think think.</p>
                     <?php
                         if (isset($_GET['error']) && $_GET['error'] == 1) {
@@ -67,10 +67,10 @@
                         <div class="mb-3 row justify-content-center">
                             <label class="col-sm-1 col-form-label">Chain:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" name="code">
+                                <input type="text" class="form-control" name="code" placeholder="javascript:,document.cookie">
                             </div>
                         </div>
-                        <div class="d-grid gap-2 col-sm-3 mx-auto">
+                        <div class="d-grid gap-2 col-sm-1 mx-auto">
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </form>

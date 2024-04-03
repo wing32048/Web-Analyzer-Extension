@@ -95,7 +95,7 @@ if (!isset($_COOKIE['user'])) {
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Risk Management</h6>
                 <a class="collapse-item" href="self_malicious_chains.php">My Malicious Chains</a>
-                <a class="collapse-item" href="insert_malicious_chian.php">Insert Malicious Chain</a>
+                <a class="collapse-item" href="insert_malicious_chain.php">Insert Malicious Chain</a>
 
             </div>
         </div>

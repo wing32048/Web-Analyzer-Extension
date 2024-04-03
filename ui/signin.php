@@ -10,7 +10,7 @@
     <title>WEB ANALYZER</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-    <script src="popup.js"></script>
+    <!-- <script src="popup.js"></script> -->
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
