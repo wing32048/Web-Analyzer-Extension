@@ -45,58 +45,59 @@
                 ?>
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <?php
-                        $pdo = dbconnect();
-                        // echo $cookieId;
-                        try {
-                            $sql =  "SELECT * FROM user where id = $cookieId" ;
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->execute();
-                            $result = $stmt->fetch();
-                        } catch (PDOException $e) {
-                            die($e->getMessage());
-                        }
-                    ?>  
-                    <div class="container-fluid">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <h1 class="text-center">Account</h1>
-                                <h3 class="text-center">Manage your account settings</h3>
-
-                                <div class="text-center">
-                                    <h5>Username</h5>
-                                    <label>
-                                        <?php echo $result['username']; ?>
-                                    </label>
-                                    <br>
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Username</button>
+                <?php
+                    $pdo = dbconnect();
+                    // echo $cookieId;
+                    try {
+                        $sql =  "SELECT * FROM user where id = $cookieId" ;
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->execute();
+                        $result = $stmt->fetch();
+                    } catch (PDOException $e) {
+                        die($e->getMessage());
+                    }
+                ?>  
+                <div class="container-xl px-4 mt-4">
+                    <div class="card mb-4">
+                        <div class="card-header">Account Details</div>
+                        <div class="card-body ">
+                            <div class="mb-3">
+                                <label class="mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-9 text-center">
+                                        <input class="form-control" type="text" value="<?php echo $result['username']; ?>" disabled>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <button type="button" class="form-control btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Username</button>
+                                    </div>
                                 </div>
-
-                                <hr>
-
-                                <!-- Email Address -->
-                                <div class="text-center">
-                                <h5>Email Address</h5>
-                                <label>
-                                    <?php echo $result['email']; ?>
-                                </label>
-                                <br>
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_email.php'">Change Email</button>
+                            </div>
+                            <div class="mb-3">
+                                <label class="mb-1" for="inputUsername">Email address</label>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-9 text-center">
+                                        <input class="form-control" type="text" value="<?php echo $result['email']; ?>" disabled>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <button type="button" class="form-control btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Email Address</button>
+                                    </div>
                                 </div>
-
-                                <hr>
-
-                                <div class="text-center">
-                                <h5>Password</h5>
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/change_pw.php'">Change Password</button>
+                            </div>
+                            <div class="mb-3">
+                                <label class="mb-1" for="inputUsername">Password</label>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-9 text-center">
+                                        <input class="form-control" type="password" value="<?php echo $result['password']; ?>" disabled>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <button type="button" class="form-control btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Password</button>
+                                    </div>
                                 </div>
-
-                                <hr>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
             </div>
 
