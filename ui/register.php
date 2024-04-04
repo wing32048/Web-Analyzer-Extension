@@ -9,55 +9,6 @@
     <title>WEB ANALYZER</title>
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/"> -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- <style>
-html,
-body {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
-}
-
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
-
-
-
-.form-signin .form-floating:focus-within {
-  z-index: 2;
-}
-
-.form-signin input[name="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-signin input[name="username"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.form-signin input[name="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-    </style> -->
     <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">    
@@ -67,6 +18,8 @@ body {
             <?php
                 if (isset($_GET['error']) && $_GET['error'] == 1) {
                     echo "Input error";
+                }else if (isset($_GET['error']) && $_GET['error'] == 2) {
+                    echo "Password not match/Password not strong";
                 }
             ?>
             <div class="form-floating">
@@ -78,10 +31,17 @@ body {
                 <label for="floatingUsername">Username</label>
             </div>
             <div class="form-floating">
-                <input type="password" name='password' class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" name='register_password' class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+            <div class="form-floating">
+                <input type="password" name='re-enter_password' class="form-control" id="floatingPassword" placeholder="Re-enter Password">
+                <label for="floatingPassword">Re-enter Password</label>
+            </div>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button class="btn btn-primary btn-lg px-4 gap-3" type="submit">Register</button>
+                <button type="button" id="registerButton" class="btn btn-outline-secondary btn-lg px-4" onclick="window.location.href='/signin.php'">Sign-in</button>
+            </div>
         </form>
     </main>
 </body>
