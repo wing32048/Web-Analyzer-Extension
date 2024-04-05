@@ -46,7 +46,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1>Change Username</h1>
+                    <h1 class="text-center">Change Username</h1>
                     <div class="container">
                         <form id="changeUsernameForm" method="post" action="./db/dbchange_username.php">
                         <div class="container">    

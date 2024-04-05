@@ -41,8 +41,8 @@
                 <!-- Your existing topbar code here -->
 
                 <div class="container-fluid">
-                    <h1>Change Password</h1>
-                    <p>The password should be a minimum of eight characters long and consist of a combination of uppercase and lowercase letters, numbers, and special characters.</p>
+                    <h1 class="text-center">Change Password</h1>
+                    <p class="text-center">The password should be a minimum of eight characters long and consist of a combination of uppercase and lowercase letters, numbers, and special characters.</p>
                     <div class="container">
                         <form id="resetPasswordForm" method="post" action="./db/dbchange_pw.php">
                             <?php

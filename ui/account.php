@@ -57,12 +57,13 @@
                         die($e->getMessage());
                     }
                 ?>  
+
                 <div class="container-xl px-4 mt-4">
                     <div class="card mb-4">
                         <div class="card-header">Account Details</div>
                         <div class="card-body ">
                             <div class="mb-3">
-                                <label class="mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                <label class="mb-1" for="inputUsername">Username</label>
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-9 text-center">
                                         <input class="form-control" type="text" value="<?php echo $result['username']; ?>" disabled>
@@ -79,7 +80,7 @@
                                         <input class="form-control" type="text" value="<?php echo $result['email']; ?>" disabled>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <button type="button" class="form-control btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Email Address</button>
+                                        <button type="button" class="form-control btn btn-primary btn-sm" onclick="window.location.href='/change_email.php'">Change Email Address</button>
                                     </div>
                                 </div>
                             </div>
@@ -90,14 +91,13 @@
                                         <input class="form-control" type="password" value="<?php echo $result['password']; ?>" disabled>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <button type="button" class="form-control btn btn-primary btn-sm" onclick="window.location.href='/change_name.php'">Change Password</button>
+                                        <button type="button" class="form-control btn btn-primary btn-sm" onclick="window.location.href='/change_pw.php'">Change Password</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
 
             </div>
 
