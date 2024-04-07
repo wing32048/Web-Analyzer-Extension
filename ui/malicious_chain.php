@@ -18,8 +18,8 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>
@@ -57,16 +57,11 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Malicious Chain</h1>
 
-                    <div class="container-fluid">
-
-                        <input class="form-control" id="myInput" type="text" placeholder="Search code">
-                        <br>
-                        <select class="form-select mb-3" id="mySelect" aria-label=".form-select-lg example">
-                            <option value="all" selected>All</option>
-                            <option value="XSS">XSS</option>
-                            <option value="URL Redirect">URL Redirect</option>
-                            <option value="Drive By Download">Drive By Download</option>
-                        </select>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Malicious Chain</h6>
+                        </div>
+                        <div class="card-body">
                         <!-- <button class="w-100 btn btn-lg btn-primary" onclick="window.location.href='/add_malicious_chain.php'">ADD</button> -->
                         <?php
                             $pdo = dbconnect();
@@ -85,16 +80,25 @@
                             }
                             else if ( $numFound > 0){
                                 echo'
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-center">ID</th>
-                                        <th class="text-center type">Type</th>
-                                        <th class="text-center">Code</th>
-                                        <th class="text-center">Date</th>
-                                        <th class="text-center">Delete</th>
-                                    </tr>
-                                    </thead>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Type</th>
+                                                <th>Code</th>
+                                                <th>Date</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Type</th>
+                                                <th>Code</th>
+                                                <th>Date</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </tfoot>
                                     <tbody id="myTable">';
                                     while ($result = $stmt->fetch()){
                                         echo '

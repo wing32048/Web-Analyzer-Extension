@@ -25,6 +25,7 @@ if (!array_key_exists('user_id', $_GET)) {
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <?php 
         require_once './inc/db.inc.php';
@@ -55,11 +56,12 @@ if (!array_key_exists('user_id', $_GET)) {
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800">Whitelist</h1>
-                    <p class="mb-4">Press the Add new button to import the Whitelist.</p>
-
-                    <!-- Content Row -->
-                    <input class="form-control" id="myInput" type="text" placeholder="Search URL">
-                    <br>
+                    <p class="mb-4">Here can remove the whitelist what the user add.</p>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Whitelist</h6>
+                        </div>
+                        <div class="card-body">
                     <?php
                         $id = $_GET['user_id'];
                         // echo $id;
@@ -77,15 +79,23 @@ if (!array_key_exists('user_id', $_GET)) {
                         }
                         else if ( $numFound > 0){
                             echo'
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">URL</th>
-                                    <th class="text-center">Date</th>
-                                    <th class="text-center">Delete</th>
-                                </tr>
-                                </thead>
+                            <div class="table-responsive">
+                                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>URL</th>
+                                                <th>Date</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>URL</th>
+                                                <th>Date</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </tfoot>
                                 <tbody id="myTable">';
                                 while ($result = $stmt->fetch()){
                                     echo "
