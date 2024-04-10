@@ -22,7 +22,7 @@ $pdo = dbconnect();
 // }
 if (isset($_POST['url']) && isset($_POST['user_id'])) {
     $url = $_POST['url'];
-    $user_id = $_POST['user_id'];
+    $user_id = base64_decode($_POST['user_id']);
     $today = date("Y-m-d");
     try {
         // Prepare and execute SQL statement
