@@ -51,7 +51,7 @@
                         }else if (isset($_GET['successful']) && $_GET['successful'] == 1) {
                             echo "Input successful";
                         }
-                    ?>
+                    ?>z
                     <form method="post" action="/db/dbinsert_malicious_chain.php">
                         <div class="mb-3 row justify-content-center">
                             <label class="col-sm-1 col-form-label">Type:</label>

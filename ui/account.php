@@ -59,6 +59,8 @@
                 ?>  
 
                 <div class="container-xl px-4 mt-4">
+                <h1 class="h3 mb-2 text-gray-800">My Malicious Chain</h1>
+                    <p class="mb-4">This table displays Malicious Chains what you insert.</p>
                     <div class="card mb-4">
                         <div class="card-header">Account Details</div>
                         <div class="card-body ">

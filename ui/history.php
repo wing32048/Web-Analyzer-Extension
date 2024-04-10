@@ -90,32 +90,37 @@
 
                     <!-- Content Row -->
                     <form class="row" method="get" action="/history.php">
-                        <div class="col-5">
-                            <div class="input-group">
-                                <label for="datepicker" class="col-1 col-form-label">From</label>
-                                <input type="text" id="from-datepicker" class="form-control" name="from-date" readonly>
-                                <button type="button" id="from-datepicker-btn" class="btn btn-outline-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
-                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5"/>
-                                    </svg>
-                                </button>
-                                <label for="datepicker" class="col-1 col-form-label">To </label>
-                                    <input type="text" id="to-datepicker" class="form-control" name="to-date"readonly>
-                                    <button type="button" id="to-datepicker-btn" class="btn btn-outline-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
-                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5"/>
-                                    </svg>
-                                </button>
-                            </div>
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <label for="from-datepicker" class="col-12 col-md-2 col-form-label">From</label>
+                            <input type="text" id="from-datepicker" class="form-control" name="from-date" readonly>
+                            <button type="button" id="from-datepicker-btn" class="btn btn-outline-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
+                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5"/>
+                                </svg>
+                            </button>
                         </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <label for="to-datepicker" class="col-12 col-md-2 col-form-label">To</label>
+                            <input type="text" id="to-datepicker" class="form-control" name="to-date" readonly>
+                            <button type="button" id="to-datepicker-btn" class="btn btn-outline-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
+                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                        <div class="col-12 col-md-2 mt-3 mt-md-0">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                </form>
                     <br>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">History</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
