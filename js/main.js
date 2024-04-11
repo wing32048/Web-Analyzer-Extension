@@ -28,7 +28,7 @@ if (sessionStorage.times % 2 === 0){
     // window.location.reload();
 }else if(window.location.href.startsWith("https://www.google.com/search?")){
     console.log('Googel Search');
-}else if(window.location.href.startsWith("https://192.168.140.100/malicious_chain.php")){
+}else if(window.location.href.startsWith("https://192.168.140.100/malicious_chain.php") || window.location.href.startsWith("https://192.168.140.100/self_whitelist.php")){
     console.log('Malicious Chain');
 }else{
     sessionStorage.times = 1;
