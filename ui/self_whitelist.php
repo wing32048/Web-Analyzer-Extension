@@ -1,9 +1,4 @@
-<?php
-if (!array_key_exists('user_id', $_GET)) {
-    header('Location: user.php');
-    exit();
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,13 +51,13 @@ if (!array_key_exists('user_id', $_GET)) {
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800">Whitelist</h1>
-                    <p class="mb-4">Here can remove the whitelist what the user add.</p>
+                    <p class="mb-4">Here can remove the whitelist</p>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Whitelist</h6>
                         </div>
                         <div class="card-body">
-                        <div class="table-responsive">
+                            <div class="table-responsive">
                                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">         
                                     <thead>
                                         <tr>
@@ -81,35 +76,35 @@ if (!array_key_exists('user_id', $_GET)) {
                                         </tr>
                                     </tfoot>
                                 <tbody>
-                    <?php
-                        $id = $_GET['user_id'];
-                        // echo $id;
-                        try {
-                            $sql =  "SELECT * FROM whitelist where user_id = :id" ;
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->bindParam(":id", $id);
-                            $stmt->execute();
-                        } catch (PDOException $e) {
-                            die($e->getMessage());
-                        }
-                        $numFound = $stmt->rowCount();
-                        if ($numFound < 0){
-                            echo "No result";
-                        }
-                        else if ( $numFound > 0){
-                                while ($result = $stmt->fetch()){
-                                    echo "
-                                    <tr>
-                                        <td class='text-center'>".$result['id']."</td>
-                                        <td class='text-center'>".$result['url']."</td>
-                                        <td class='text-center'>".$result['date']."</td>
-                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdelwhitelist.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
-                                    </tr>";
+                                    <?php
+                                        // $id = $_GET['user_id'];
+                                        // echo $id;
+                                        try {
+                                            $sql =  "SELECT * FROM whitelist where user_id = :id" ;
+                                            $stmt = $pdo->prepare($sql);
+                                            $stmt->bindParam(":id", $cookieId);
+                                            $stmt->execute();
+                                        } catch (PDOException $e) {
+                                            die($e->getMessage());
+                                        }
+                                        $numFound = $stmt->rowCount();
+                                        if ($numFound < 0){
+                                            echo "No result";
+                                        }
+                                        else if ( $numFound > 0){
+                                                while ($result = $stmt->fetch()){
+                                                    echo "
+                                                    <tr>
+                                                        <td class='text-center'>".$result['id']."</td>
+                                                        <td class='text-center'>".$result['url']."</td>
+                                                        <td class='text-center'>".$result['date']."</td>
+                                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdelwhitelist.php?id=".$result['id']."&user_id=$cookieId'\">Delete</button></td>
+                                                    </tr>";
 
-                                }
+                                                }
 
-                        }
-                    ?>
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         

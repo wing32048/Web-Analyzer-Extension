@@ -62,25 +62,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Malicious Chain</h6>
                         </div>
                         <div class="card-body">
-                        <!-- <button class="w-100 btn btn-lg btn-primary" onclick="window.location.href='/add_malicious_chain.php'">ADD</button> -->
-                        <?php
-                            $pdo = dbconnect();
-                            $id = $_GET['user_id'];
-                            try {
-                                $sql =  "SELECT * FROM malicious_chain where user_id = :id" ;
-                                $stmt = $pdo->prepare($sql);
-                                $stmt->bindParam(":id", $id);
-                                $stmt->execute();
-                            } catch (PDOException $e) {
-                                die($e->getMessage());
-                            }
-                            $numFound = $stmt->rowCount();
-                            if ($numFound <= 0){
-                                echo "No result";
-                            }
-                            else if ( $numFound > 0){
-                                echo'
-                                <div class="table-responsive">
+                        <div class="table-responsive">
                                     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">                                        <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -99,7 +81,21 @@
                                                 <th>Delete</th>
                                             </tr>
                                         </tfoot>
-                                    <tbody id="myTable">';
+                                    <tbody>
+                        <!-- <button class="w-100 btn btn-lg btn-primary" onclick="window.location.href='/add_malicious_chain.php'">ADD</button> -->
+                        <?php
+                            $pdo = dbconnect();
+                            $id = $_GET['user_id'];
+                            try {
+                                $sql =  "SELECT * FROM malicious_chain where user_id = :id" ;
+                                $stmt = $pdo->prepare($sql);
+                                $stmt->bindParam(":id", $id);
+                                $stmt->execute();
+                            } catch (PDOException $e) {
+                                die($e->getMessage());
+                            }
+                            $numFound = $stmt->rowCount();
+if ( $numFound > 0){
                                     while ($result = $stmt->fetch()){
                                         echo '
                                         <tr>
@@ -113,9 +109,6 @@
                                         </tr>";
 
                                     }
-                                echo'
-                                    </tbody>
-                                </table>';
 
                             }
                         ?>
@@ -123,31 +116,10 @@
                                 
                         
                         
-                        <p></p>
+                            </tbody>
+                                </table>
                         
-                        
-                        <script>
-                            $(document).ready(function() {
-                                $("#myInput").on("keyup", function() {
-                                    var value = $(this).val().toLowerCase();
-                                    $("#myTable tr").filter(function() {
-                                        $(this).toggle($(this).find(".code").text().toLowerCase().indexOf(value) > -1);
-                                    });
-                                });
-                            });
-                            $(document).ready(function() {
-                                $("#mySelect").on("change", function() {
-                                    var value = $(this).val().toLowerCase();
-                                    $("#myTable tr").filter(function() {
-                                        var type = $(this).find(".type").text().toLowerCase()
-                                        var showAll = value === "all";
-                                        var typeMatch = type.indexOf(value) > -1;
-
-                                        $(this).toggle(showAll || typeMatch);
-                                    });
-                                });
-                            });
-                        </script>
+                    
                     
                     </div>
                 </div>

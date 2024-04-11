@@ -8,8 +8,6 @@ $date = date("Y-m-d");
 if (array_key_exists('type', $_POST) && array_key_exists('code', $_POST) && !empty($_POST['type']) && !empty($_POST['code'])) {
     $type = $_POST['type'];
     $code = $_POST['code'];
-    echo $type;
-    echo $code;
     try {
         $sql = "SELECT * FROM malicious_chain where code = '$code'";
         $stmt = $pdo->prepare($sql);
@@ -22,6 +20,10 @@ if (array_key_exists('type', $_POST) && array_key_exists('code', $_POST) && !emp
                 $sql2 .= "('$cookieId', '$type', '$code', '$date')";
                 $stmt2 = $pdo->prepare($sql2);
                 $stmt2->execute();
+                $sql =  "INSERT INTO `log` (`user_id`, `type`, `information`, `datetime`) VALUES";
+                $sql .= "('$cookieId', 'add', 'malicious_chain type:$type code:$code ', '$datetime')";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
                 header('location: ../insert_malicious_chain.php?successful=1');
                 exit();
             } catch (PDOException $e) {

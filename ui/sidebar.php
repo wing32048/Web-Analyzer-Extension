@@ -71,15 +71,15 @@ if (!isset($_COOKIE['user'])) {
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fa fa-fw fa-clipboard"></i>
             <span>Reporting</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Reporting</h6>
-                <a class="collapse-item" href="history.php">History</a>
-
+                <a class="collapse-item" href="history.php">Action list</a>
+                <a class="collapse-item" href="self_whitelist.php">Whitelist</a>
             </div>
         </div>
     </li>

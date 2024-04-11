@@ -42,7 +42,7 @@
                 <!-- Your existing topbar code here -->
                 <div class="container-fluid text-center">
                     <h1 class="h3 mb-4 text-gray-800">Insert Malicious Chain</h1>
-                    <p>Today think think.</p>
+                    <!-- <p>Today think think.</p> -->
                     <?php
                         if (isset($_GET['error']) && $_GET['error'] == 1) {
                             echo "This malicious chain already in the database";
@@ -51,7 +51,7 @@
                         }else if (isset($_GET['successful']) && $_GET['successful'] == 1) {
                             echo "Input successful";
                         }
-                    ?>z
+                    ?>
                     <form method="post" action="/db/dbinsert_malicious_chain.php">
                         <div class="mb-3 row justify-content-center">
                             <label class="col-sm-1 col-form-label">Type:</label>

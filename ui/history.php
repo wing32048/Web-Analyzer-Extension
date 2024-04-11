@@ -25,37 +25,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var fromDatePicker = flatpickr("#from-datepicker", {
-                dateFormat: "Y-m-d",
-                allowInput: false,
-                onClose: function(selectedDates) {
-                if (selectedDates[0]) {
-                    toDatePicker.set("minDate", selectedDates[0]);
-                    filterTableRows();
-                }
-                }
-            });
 
-            var toDatePicker = flatpickr("#to-datepicker", {
-                dateFormat: "Y-m-d",
-                allowInput: false,
-                onClose: function(selectedDates) {
-                if (selectedDates[0]) {
-                    fromDatePicker.set("maxDate", selectedDates[0]);
-                    filterTableRows();
-                }
-                }
-            });
-
-            document.querySelectorAll('#from-datepicker-btn, #to-datepicker-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                btn.previousElementSibling._flatpickr.open();
-                });
-            });
-        });
-    </script>
     
     <?php 
         require_once './inc/db.inc.php';
@@ -86,10 +56,10 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800 ">History</h1>
-                    <p class="mb-4">Please select a date to view the action history.</p>
+                    <p class="mb-4">Here can remove the action list</p>
 
                     <!-- Content Row -->
-                    <form class="row" method="get" action="/history.php">
+                    <!-- <form class="row" method="get" action="/history.php">
                     <div class="col-md-5">
                         <div class="input-group">
                             <label for="from-datepicker" class="col-12 col-md-2 col-form-label">From</label>
@@ -115,21 +85,20 @@
                         <div class="col-12 col-md-2 mt-3 mt-md-0">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                </form>
-                    <br>
+                </form> -->
+                    <!-- <br> -->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">History</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Action History</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <div class="table-responsive">
+                                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">  
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Type</th>
-                                            <th>Code</th>
+                                            <th>URL</th>
                                             <th>Date</th>
                                             <th>Delete</th>
                                         </tr>
@@ -137,8 +106,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Type</th>
-                                            <th>Code</th>
+                                            <th>URL</th>
                                             <th>Date</th>
                                             <th>Delete</th>
                                         </tr>
@@ -146,13 +114,33 @@
                                     <tbody>
                                         <?php
                                             $pdo = dbconnect();
-                                            if (array_key_exists('from-date',$_GET) && array_key_exists('to-date',$_GET)){
-                                                $fromDate = $_GET['from-date'];
-                                                $toDate = $_GET['to-date'];
+                                            // if (array_key_exists('from-date',$_GET) && array_key_exists('to-date',$_GET)){
+                                            //     $fromDate = $_GET['from-date'];
+                                            //     $toDate = $_GET['to-date'];
+                                            //     try {
+                                            //         // SELECT * FROM `action_history` WHERE `date` >= '2024-03-24' AND `date` <= '2024-03-25';
+                                            //         $sql = "SELECT * FROM action_history ";
+                                            //         $sql .= "WHERE date >= '$fromDate' AND date <= '$toDate' AND user_id = $cookieId";
+                                            //         $stmt = $pdo->prepare($sql);
+                                            //         $stmt->execute();
+                                            //     } catch (PDOException $e) {
+                                            //         die($e->getMessage());
+                                            //     }
+                                            //     $numFound = $stmt->rowCount();
+                                            //     if ( $numFound > 0){
+                                            //         while ($result = $stmt->fetch()){
+                                            //             echo '
+                                            //             <tr>
+                                            //                 <td>'.$result["id"].'</td>
+                                            //                 <td>'.$result["url"].'</td>
+                                            //                 <td>'.$result["date"].'</td>
+                                            //                 <td><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href=\'/db/dbdelhistory.php?id='.$result["id"].'\'">Delete</button></td>
+                                            //             </tr>';
+                                            //         }                                             
+                                            //     }
+                                            // }else{
                                                 try {
-                                                    // SELECT * FROM `action_history` WHERE `date` >= '2024-03-24' AND `date` <= '2024-03-25';
-                                                    $sql = "SELECT * FROM action_history ";
-                                                    $sql .= "WHERE date >= '$fromDate' AND date <= '$toDate' AND user_id = $cookieId";
+                                                    $sql =  "SELECT * FROM action_history WHERE user_id = $cookieId order by id" ;
                                                     $stmt = $pdo->prepare($sql);
                                                     $stmt->execute();
                                                 } catch (PDOException $e) {
@@ -163,34 +151,14 @@
                                                     while ($result = $stmt->fetch()){
                                                         echo '
                                                         <tr>
-                                                            <td">'.$result["id"].'</td>
-                                                            <td">'.$result["url"].'</td>
+                                                            <td>'.$result["id"].'</td>
+                                                            <td>'.$result["url"].'</td>
                                                             <td>'.$result["date"].'</td>
-                                                            <td><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href=\'/db/dbdelhistory.php?user_id='.$result["id"].'\'">View User Whitelist</button></td>
-                                                        </tr>';
-                                                    }                                             
-                                                }
-                                            }else{
-                                                try {
-                                                    $sql =  "SELECT * FROM action_history WHERE user_id = $cookieId order by id DESC" ;
-                                                    $stmt = $pdo->prepare($sql);
-                                                    $stmt->execute();
-                                                } catch (PDOException $e) {
-                                                    die($e->getMessage());
-                                                }
-                                                $numFound = $stmt->rowCount();
-                                                if ( $numFound > 0){
-                                                    while ($result = $stmt->fetch()){
-                                                        echo '
-                                                        <tr>
-                                                            <td">'.$result["id"].'</td>
-                                                            <td">'.$result["url"].'</td>
-                                                            <td>'.$result["date"].'</td>
-                                                            <td><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href=\'/db/dbdelhistory.php?user_id='.$result["id"].'\'">View User Whitelist</button></td>
+                                                            <td><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href=\'/db/dbdelhistory.php?id='.$result["id"].'\'">Delete</button></td>
                                                         </tr>';
                                                     }  
                                                 }
-                                            }
+                                            
                                         ?>
                                     </tbody>
                                 </table>

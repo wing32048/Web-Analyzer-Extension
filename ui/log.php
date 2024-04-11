@@ -1,9 +1,3 @@
-<?php
-if (!array_key_exists('user_id', $_GET)) {
-    header('Location: user.php');
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,19 +8,24 @@ if (!array_key_exists('user_id', $_GET)) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Logs</title>
+    <title>History</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+    
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
     <?php 
         require_once './inc/db.inc.php';
     ?>
@@ -58,118 +57,87 @@ if (!array_key_exists('user_id', $_GET)) {
                     <h1 class="h3 mb-1 text-gray-800">User Log</h1>
                     <p class="mb-4">Here can check the user logs.</p>
 
-                    <!-- Content Row -->
-                    <input class="form-control" id="myInput" type="text" placeholder="Search information">
-                    <br>
-                    <select class="form-select mb-3" id="mySelect" aria-label=".form-select-lg example">
-                        <option value="all" selected>All</option>
-                        <option value="login">Login</option>
-                        <option value="logout">Logout</option>
-                        <option value="add">Add</option>
-                        <option value="update">Update</option>
-                        <option value="delete">Delete</option>
-                    </select>
-                    <br>
-                    <?php
-                        $id = $_GET['user_id'];
-                        // echo $id;
-                        try {
-                            $sql =  "SELECT * FROM log where user_id = :id order by id DESC" ;
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->bindParam(":id", $id);
-                            $stmt->execute();
-                        } catch (PDOException $e) {
-                            die($e->getMessage());
-                        }
-                        $numFound = $stmt->rowCount();
-                        if ($numFound < 0){
-                            echo "No result";
-                        }
-                        else if ( $numFound > 0){
-                            echo'
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">Type</th>
-                                    <th class="text-center">Information</th>
-                                    <th class="text-center">Datetime</th>
-                                    <th class="text-center">Delete</th>
-                                </tr>
-                                </thead>
-                                <tbody id="myTable">';
-                                while ($result = $stmt->fetch()){
-                                    echo "
-                                    <tr>
-                                        <td class='text-center id'>".$result['id']."</td>
-                                        <td class='text-center type'>".$result['type']."</td>
-                                        <td class='text-center information'>".$result['information']."</td>
-                                        <td class='text-center datetime'>".$result['datetime']."</td>
-                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdellog.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
-                                    </tr>";
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">History</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Type</th>
+                                            <th>Information</th>
+                                            <th>Datetime</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Type</th>
+                                            <th>Information</th>
+                                            <th>Datetime</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php
+                                            $id = $_GET['user_id'];
+                                            // echo $id;
+                                            try {
+                                                $sql =  "SELECT * FROM log where user_id = :id" ;
+                                                $stmt = $pdo->prepare($sql);
+                                                $stmt->bindParam(":id", $id);
+                                                $stmt->execute();
+                                            } catch (PDOException $e) {
+                                                die($e->getMessage());
+                                            }
+                                            $numFound = $stmt->rowCount();
+                                            if ($numFound < 0){
+                                                echo "No result";
+                                            }
+                                            else if ( $numFound > 0){
+                                                    while ($result = $stmt->fetch()){
+                                                        echo "
+                                                        <tr>
+                                                            <td>".$result['id']."</td>
+                                                            <td>".$result['type']."</td>
+                                                            <td>".$result['information']."</td>
+                                                            <td>".$result['datetime']."</td>
+                                                            <td><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdellog.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
+                                                        </tr>";
 
-                                }
-                            echo'
-                                </tbody>
-                            </table>';
+                                                    }
 
-                        }
-                    ?>
-                        <p></p>
-                        
-                        
-                        <script>
-                            $(document).ready(function() {
-                                $("#myInput").on("keyup", function() {
-                                    var value = $(this).val().toLowerCase();
-                                    $("#myTable tr").filter(function() {
-                                        $(this).toggle($(this).find(".information").text().toLowerCase().indexOf(value) > -1);
-                                    });
-                                });
-                            });
-                            $(document).ready(function() {
-                                $("#mySelect").on("change", function() {
-                                    var value = $(this).val().toLowerCase();
-                                    $("#myTable tr").filter(function() {
-                                        var type = $(this).find(".type").text().toLowerCase()
-                                        var showAll = value === "all";
-                                        var typeMatch = type.indexOf(value) > -1;
-
-                                        $(this).toggle(showAll || typeMatch);
-                                    });
-                                });
-                            });
-                            // $(document).ready(function() {
-                            //     $("#myInput").on("keyup", function() {
-                            //         var value = $(this).val().toLowerCase();
-                            //         var filterType = $("#filterType").val().toLowerCase();
-
-                            //         $("#myTable tr").filter(function() {
-                            //             var username = $(this).find(".username").text().toLowerCase();
-                            //             var activity = $(this).find(".activity").text().toLowerCase();
-
-                            //             var usernameMatch = username.indexOf(value) > -1;
-                            //             var activityMatch = activity.indexOf(value) > -1;
-                            //             var typeMatch = filterType === "all" || activity.indexOf(filterType) > -1;
-
-                            //             $(this).toggle(usernameMatch && (activityMatch || typeMatch));
-                            //         });
-                            //     });
-                            // });
-                        </script>
-                </div>
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 <!-- /.container-fluid -->
+
             </div>
             <!-- End of Main Content -->
+
+            
+
         </div>
         <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
 
+
+
+
     <?php 
         require_once 'logout.php';
     ?>
+
 
 </body>
 
