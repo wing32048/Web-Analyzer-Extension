@@ -12,7 +12,15 @@ if (isset($_POST['url']) && isset($_POST['user_id'])) {
         $stmt->bindParam(':url', $url);
         $stmt->bindParam(':today', $today);
         $stmt->execute();
-
+        try {
+            // INSERT INTO `log` (`id`, `user_id`, `type`, `information`, `datetime`) VALUES (NULL, '', '', '', '2024-03-22 16:50:37.000000')
+            $sql =  "INSERT INTO `log` (`user_id`, `type`, `information`, `datetime`) VALUES";
+            $sql .= "('$user_id', 'add', '$url to whitelist', '$datetime')";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
         // echo "Cookie value inserted into the database.";
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());

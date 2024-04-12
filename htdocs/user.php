@@ -73,6 +73,7 @@
                                             <th>View Malicious Chain</th>
                                             <th>Activity</th>
                                             <th>Whitelist</th>
+                                            <th>Action list</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -87,6 +88,7 @@
                                             <th>View Malicious Chain</th>
                                             <th>Activity</th>
                                             <th>Whitelist</th>
+                                            <th>Action list</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -125,6 +127,7 @@
                                                         <td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/malicious_chain.php?user_id=".$result['id']."'\">View Malicious Chain</button></td>
                                                         <td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/log.php?user_id=".$result['id']."'\">View User Log</button></td>
                                                         <td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/whitelist.php?user_id=".$result['id']."'\">View User Whitelist</button></td>
+                                                        <td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/action_histroy.php?user_id=".$result['id']."'\">View User Action List</button></td>
                                                     </tr>";
                                                 }
                                             }

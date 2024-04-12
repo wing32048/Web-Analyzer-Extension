@@ -50,7 +50,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Whitelist</h1>
+                    <h1 class="h3 mb-1 text-gray-800">Whitelist History</h1>
                     <p class="mb-4">Here can remove the whitelist</p>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">

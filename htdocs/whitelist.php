@@ -81,35 +81,35 @@ if (!array_key_exists('user_id', $_GET)) {
                                         </tr>
                                     </tfoot>
                                 <tbody>
-                    <?php
-                        $id = $_GET['user_id'];
-                        // echo $id;
-                        try {
-                            $sql =  "SELECT * FROM whitelist where user_id = :id" ;
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->bindParam(":id", $id);
-                            $stmt->execute();
-                        } catch (PDOException $e) {
-                            die($e->getMessage());
-                        }
-                        $numFound = $stmt->rowCount();
-                        if ($numFound < 0){
-                            echo "No result";
-                        }
-                        else if ( $numFound > 0){
-                                while ($result = $stmt->fetch()){
-                                    echo "
-                                    <tr>
-                                        <td class='text-center'>".$result['id']."</td>
-                                        <td class='text-center'>".$result['url']."</td>
-                                        <td class='text-center'>".$result['date']."</td>
-                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdelwhitelist.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
-                                    </tr>";
+                                    <?php
+                                        $id = $_GET['user_id'];
+                                        // echo $id;
+                                        try {
+                                            $sql =  "SELECT * FROM whitelist where user_id = :id" ;
+                                            $stmt = $pdo->prepare($sql);
+                                            $stmt->bindParam(":id", $id);
+                                            $stmt->execute();
+                                        } catch (PDOException $e) {
+                                            die($e->getMessage());
+                                        }
+                                        $numFound = $stmt->rowCount();
+                                        if ($numFound < 0){
+                                            echo "No result";
+                                        }
+                                        else if ( $numFound > 0){
+                                                while ($result = $stmt->fetch()){
+                                                    echo "
+                                                    <tr>
+                                                        <td class='text-center'>".$result['id']."</td>
+                                                        <td class='text-center'>".$result['url']."</td>
+                                                        <td class='text-center'>".$result['date']."</td>
+                                                        <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdelwhitelist.php?id=".$result['id']."&user_id=$id'\">Delete</button></td>
+                                                    </tr>";
 
-                                }
+                                                }
 
-                        }
-                    ?>
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         

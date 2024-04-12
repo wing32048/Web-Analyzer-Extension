@@ -95,7 +95,7 @@
                                 die($e->getMessage());
                             }
                             $numFound = $stmt->rowCount();
-if ( $numFound > 0){
+                            if ( $numFound > 0){
                                     while ($result = $stmt->fetch()){
                                         echo '
                                         <tr>

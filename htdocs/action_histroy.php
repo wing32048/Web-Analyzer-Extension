@@ -55,38 +55,9 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800 ">History</h1>
+                    <h1 class="h3 mb-1 text-gray-800 ">Action History</h1>
                     <p class="mb-4">Here can remove the action list</p>
-
-                    <!-- Content Row -->
-                    <!-- <form class="row" method="get" action="/history.php">
-                    <div class="col-md-5">
-                        <div class="input-group">
-                            <label for="from-datepicker" class="col-12 col-md-2 col-form-label">From</label>
-                            <input type="text" id="from-datepicker" class="form-control" name="from-date" readonly>
-                            <button type="button" id="from-datepicker-btn" class="btn btn-outline-secondary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
-                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="input-group">
-                            <label for="to-datepicker" class="col-12 col-md-2 col-form-label">To</label>
-                            <input type="text" id="to-datepicker" class="form-control" name="to-date" readonly>
-                            <button type="button" id="to-datepicker-btn" class="btn btn-outline-secondary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16">
-                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                        <div class="col-12 col-md-2 mt-3 mt-md-0">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                </form> -->
-                    <!-- <br> -->
+                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -114,34 +85,13 @@
                                     <tbody>
                                         <?php
                                             $pdo = dbconnect();
-                                            // if (array_key_exists('from-date',$_GET) && array_key_exists('to-date',$_GET)){
-                                            //     $fromDate = $_GET['from-date'];
-                                            //     $toDate = $_GET['to-date'];
-                                            //     try {
-                                            //         // SELECT * FROM `action_history` WHERE `date` >= '2024-03-24' AND `date` <= '2024-03-25';
-                                            //         $sql = "SELECT * FROM action_history ";
-                                            //         $sql .= "WHERE date >= '$fromDate' AND date <= '$toDate' AND user_id = $cookieId";
-                                            //         $stmt = $pdo->prepare($sql);
-                                            //         $stmt->execute();
-                                            //     } catch (PDOException $e) {
-                                            //         die($e->getMessage());
-                                            //     }
-                                            //     $numFound = $stmt->rowCount();
-                                            //     if ( $numFound > 0){
-                                            //         while ($result = $stmt->fetch()){
-                                            //             echo '
-                                            //             <tr>
-                                            //                 <td>'.$result["id"].'</td>
-                                            //                 <td>'.$result["url"].'</td>
-                                            //                 <td>'.$result["date"].'</td>
-                                            //                 <td><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href=\'/db/dbdelhistory.php?id='.$result["id"].'\'">Delete</button></td>
-                                            //             </tr>';
-                                            //         }                                             
-                                            //     }
-                                            // }else{
                                                 try {
-                                                    $sql =  "SELECT * FROM action_history WHERE user_id = $cookieId order by id" ;
+                                                    $id = $_GET['user_id'];
+
+                                                    // $sql =  "SELECT * FROM action_history WHERE user_id = $cookieId" ;
+                                                    $sql =  "SELECT * FROM action_history where user_id = :id" ;
                                                     $stmt = $pdo->prepare($sql);
+                                                    $stmt->bindParam(":id", $id);
                                                     $stmt->execute();
                                                 } catch (PDOException $e) {
                                                     die($e->getMessage());
