@@ -78,8 +78,8 @@ if (!isset($_COOKIE['user'])) {
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Reporting</h6>
-                <a class="collapse-item" href="self_action_history.php">Action list</a>
-                <a class="collapse-item" href="self_whitelist_history.php">Whitelist</a>
+                <a class="collapse-item" href="self_action_history.php">Action list History</a>
+                <a class="collapse-item" href="self_whitelist_history.php">Whitelist History</a>
             </div>
         </div>
     </li>
