@@ -9,7 +9,7 @@ if( !array_key_exists('id',$_GET)) {
     exit();
 }else{
 
-    // $user_id = $_GET['user_id'];
+    $user_id = $_GET['user_id'];
     $id = $_GET['id'];
     
     try {
@@ -29,7 +29,7 @@ if( !array_key_exists('id',$_GET)) {
         } catch (PDOException $e) {
             die($e->getMessage());
         } 
-        header('location: ../history.php');
+        header('location: ../action_histroy.php?user_id='.$user_id);
         exit();
     
     } catch (PDOException $e) {

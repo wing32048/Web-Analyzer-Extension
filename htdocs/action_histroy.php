@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+if (!array_key_exists('user_id', $_GET)) {
+    header('Location: user.php');
+    exit();
+}
+?>
 <head>
 
     <meta charset="utf-8">
@@ -9,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>History</title>
+    <title>Action History</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -99,14 +104,15 @@
                                                 $numFound = $stmt->rowCount();
                                                 if ( $numFound > 0){
                                                     while ($result = $stmt->fetch()){
-                                                        echo '
+                                                        echo "
                                                         <tr>
-                                                            <td>'.$result["id"].'</td>
-                                                            <td>'.$result["url"].'</td>
-                                                            <td>'.$result["date"].'</td>
-                                                            <td><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href=\'/db/dbdelhistory.php?id='.$result["id"].'\'">Delete</button></td>
-                                                        </tr>';
-                                                    }  
+                                                            <td class='text-center'>".$result['id']."</td>
+                                                            <td class='text-center'>".$result['url']."</td>
+                                                            <td class='text-center'>".$result['date']."</td>
+                                                            <td class='text-center'><button type='button' class='btn btn-primary' onclick=\"window.location.href='/db/dbdelhistory.php?id=".$result['id']."&user_id=$cookieId'\">Delete</button></td>
+                                                        </tr>";
+    
+                                                    }
                                                 }
                                             
                                         ?>

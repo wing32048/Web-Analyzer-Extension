@@ -63,7 +63,7 @@ if (sessionStorage.times % 2 === 0){
                                 history.back();
                             } else {
                                 notification(window.location.href);
-                                if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && withoutencode(data,malwarejs) == false && findutf8(data,malwarejs) == false && reflected_xss(window.location.href,malwarejs) == false){
+                                if (findbase64(data,malwarejs) == false && findbase32(data,malwarejs) == false && findutf8(data,malwarejs) == false && withoutencode(data,malwarejs) == false && reflected_xss(window.location.href,malwarejs) == false){
                                     sessionStorage.times = Number(sessionStorage.times) +1;
                                     window.location.reload();
                                 }else{
@@ -204,24 +204,48 @@ function whitelist(phpCookieValue) {
     });
 }
 
+function findURL(code) {
+    const urlPattern = /(?:var|let|const)\s+(\w+)\s*=\s*['"]((?:https?:)[^\s'"]+)['"]/g;
+    const currentDomain = window.location.hostname;
+    console.log(currentDomain);
+    let match;
+    const urls = [];
+  
+    while ((match = urlPattern.exec(code)) !== null) {
+        const variableName = match[1];
+        const url = match[2];
+        console.log(variableName, ':', url);
+
+        if (!url.includes(currentDomain)) {
+            urls.push(url);
+        }
+    }
+    console.log(urls);
+    return urls;
+}
+
 function withoutencode(data,malwarejs){
     let anyTypeObjectsIncluded = false;
     for (var id in malwarejs) {
         var type = malwarejs[id].type;
         var chains = malwarejs[id].chains;
-        console.log(chains);
+        console.log(chains);     
+
         var allChainsFound = chains.every(chain => data.includes(chain));
-        
-        if (!allChainsFound) {
-            console.log("Not all malware chains of type", type, "found in data.");
-        } else {
-            console.log("All malware chains of type", type, "found in data.");
-            return anyTypeObjectsIncluded = true;
-        }
-        if(findURL().length == 0){
-            console.log('All in domain')
+        if (type == "URL redirect"){
+            if (!allChainsFound && findURL(data).length == 0) {
+                console.log("Not all malware chains of type", type, "found in data.");
+            } else {
+                console.log("All malware chains of type", type, "found in data.");
+                return anyTypeObjectsIncluded = true;
+            }
         }else{
-            return anyTypeObjectsIncluded = true;
+            if (!allChainsFound) {
+                console.log("Not all malware chains of type", type, "found in data.");
+            } else {
+                console.log("All malware chains of type", type, "found in data.");
+                return anyTypeObjectsIncluded = true;
+            }
         }
     }
     return anyTypeObjectsIncluded;
@@ -237,23 +261,25 @@ function findbase64(data,malwarejs){
         console.log(variableName,':',encodedString);
         const decodedString = atob(encodedString);
         console.log(decodedString);
-    
         for (var id in malwarejs) {
             var type = malwarejs[id].type;
             var chains = malwarejs[id].chains;
-            console.log(chains);
+            console.log(chains);      
             var allChainsFound = chains.every(chain => decodedString.includes(chain));
-    
-            if (!allChainsFound) {
-                console.log("Not all malware chains of type", type, "found in data.");
-            } else {
-                console.log("All malware chains of type", type, "found in data.");
-                return anyTypeObjectsIncluded = true;
-            }
-            if(findURL().length == 0){
-                console.log('All in domain')
+            if (type == "URL redirect"){
+                if (!allChainsFound && findURL(decodedString).length == 0) {
+                    console.log("Not all malware chains of type", type, "found in data.");
+                } else {
+                    console.log("All malware chains of type", type, "found in data.");
+                    return anyTypeObjectsIncluded = true;
+                }
             }else{
-                return anyTypeObjectsIncluded = true;
+                if (!allChainsFound) {
+                    console.log("Not all malware chains of type", type, "found in data.");
+                } else {
+                    console.log("All malware chains of type", type, "found in data.");
+                    return anyTypeObjectsIncluded = true;
+                }
             }
         }
     }
@@ -270,23 +296,26 @@ function findbase32(data,malwarejs){
         console.log(variableName,':',encodedString);
         const decodedString = base32Decode(encodedString);
         console.log(decodedString);
-    
         for (var id in malwarejs) {
             var type = malwarejs[id].type;
             var chains = malwarejs[id].chains;
             console.log(chains);
             var allChainsFound = chains.every(chain => decodedString.includes(chain));
-    
-            if (!allChainsFound) {
-                console.log("Not all malware chains of type", type, "found in data.");
-            } else {
-                console.log("All malware chains of type", type, "found in data.");
-                return anyTypeObjectsIncluded = true;
-            }
-            if(findURL().length == 0){
-                console.log('All in domain')
+            
+            if (type == "URL redirect"){
+                if (!allChainsFound && findURL(decodedString).length == 0) {
+                    console.log("Not all malware chains of type", type, "found in data.");
+                } else {
+                    console.log("All malware chains of type", type, "found in data.");
+                    return anyTypeObjectsIncluded = true;
+                }
             }else{
-                return anyTypeObjectsIncluded = true;
+                if (!allChainsFound) {
+                    console.log("Not all malware chains of type", type, "found in data.");
+                } else {
+                    console.log("All malware chains of type", type, "found in data.");
+                    return anyTypeObjectsIncluded = true;
+                }
             }
         }
     }
@@ -341,16 +370,20 @@ function findutf8(data,malwarejs){
             console.log(chains);
             var allChainsFound = chains.every(chain => decodedString.includes(chain));
     
-            if (!allChainsFound) {
-                console.log("Not all malware chains of type", type, "found in data.");
-            } else {
-                console.log("All malware chains of type", type, "found in data.");
-                return anyTypeObjectsIncluded = true;
-            }
-            if(findURL().length == 0){
-                console.log('All in domain')
+            if (type == "URL redirect"){
+                if (!allChainsFound || findURL(data).length == 0) {
+                    console.log("Not all malware chains of type", type, "found in data.");
+                } else {
+                    console.log("All malware chains of type", type, "found in data.");
+                    return anyTypeObjectsIncluded = true;
+                }
             }else{
-                return anyTypeObjectsIncluded = true;
+                if (!allChainsFound) {
+                    console.log("Not all malware chains of type", type, "found in data.");
+                } else {
+                    console.log("All malware chains of type", type, "found in data.");
+                    return anyTypeObjectsIncluded = true;
+                }
             }
         }
     }
@@ -386,22 +419,3 @@ function reflected_xss(url,malwarejs){
     return anyTypeObjectsIncluded;
 }
 
-function findURL(data) {
-    const urlPattern = /(?:var|let|const)\s+(\w+)\s*=\s*['"]((?:https?:)[^\s'"]+)['"]/g;
-    const currentDomain = window.location.hostname;
-    console.log(currentDomain);
-    let match;
-    const urls = [];
-  
-    while ((match = urlPattern.exec(data)) !== null) {
-        const variableName = match[1];
-        const url = match[2];
-        console.log(variableName, ':', url);
-
-        if (!url.includes(currentDomain)) {
-            urls.push(url);
-        }
-    }
-
-    return urls;
-}

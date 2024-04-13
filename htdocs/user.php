@@ -2,7 +2,21 @@
 <html lang="en">
 
 <head>
-
+    <?php 
+        require_once './inc/db.inc.php';
+        $pdo = dbconnect();
+        try {
+            $sql =  "SELECT * FROM user where id = $cookieId" ;
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            if ($result["admin"] == "N"){
+                header('location: /account.php');
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,7 +70,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">User</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">User Information</h6>
                         </div>
                         <div class="card-body ">
                             <div class="table-responsive">

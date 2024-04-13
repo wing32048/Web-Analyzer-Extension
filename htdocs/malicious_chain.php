@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+if (!array_key_exists('user_id', $_GET)) {
+    header('Location: user.php');
+    exit();
+}
+?>
 <head>
 
     <meta charset="utf-8">

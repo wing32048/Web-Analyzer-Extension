@@ -56,7 +56,7 @@ if (!isset($_COOKIE['user'])) {
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">User Management</h6>
-                            <a class="collapse-item" href="user.php">User</a>
+                            <a class="collapse-item" href="user.php">User Information</a>
                         </div>
                     </div>
                 </li>
