@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2024 at 04:24 PM
+-- Generation Time: Apr 14, 2024 at 09:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,151 +53,273 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`id`, `user_id`, `type`, `information`, `datetime`) VALUES
-(1, 1, 'login', 'IP address : 192.168.140.100', '2024-03-20 11:32:18'),
-(2, 1, 'login', 'IP address : 192.168.140.100', '2024-03-22 11:32:18'),
-(3, 1, 'login', 'UserInfo::get_ip(),UserInfo::get_device(),UserInfo::get_os(),UserInfo::get_browser()', '2024-03-22 16:57:35'),
-(4, 1, 'login', '192.168.140.100', '2024-03-22 16:59:38'),
-(5, 1, 'login', '192.168.140.100,Computer,Windows 10,Chrome', '2024-03-22 17:00:23'),
-(6, 1, 'login', 'IP address : 192.168.140.100,, Device : Computer, OS : Windows 10, Browser : Chrome', '2024-03-22 17:01:33'),
-(7, 1, 'login', 'IP address : 192.168.140.100 Device : Computer OS : Windows 10 Browser : Chrome', '2024-03-22 17:02:20'),
-(8, 1, 'login', 'IP address : 192.168.140.100 Device : Computer OS : Windows 10 Browser : Chrome', '2024-03-23 00:04:25'),
-(9, 1, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:06:49'),
-(10, 10, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:07:22'),
-(11, 11, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:08:11'),
-(12, 1, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:08:58'),
-(13, 0, 'login', '1', '0000-00-00 00:00:00'),
-(14, 0, 'login', '1', '0000-00-00 00:00:00'),
-(15, 1, 'login', 'switch user id : :id to Admin', '0000-00-00 00:00:00'),
-(16, 1, 'login', 'switch user id : :id to Admin', '0000-00-00 00:00:00'),
-(17, 1, 'login', 'switch user id : :id to Admin', '0000-00-00 00:00:00'),
-(18, 1, 'login', 'switch user id : :id to Admin', '0000-00-00 00:00:00'),
-(19, 1, 'login', 'switch user id : 1 to Admin', '0000-00-00 00:00:00'),
-(20, 1, 'login', 'switch user id : 1 to Admin', '0000-00-00 00:00:00'),
-(21, 1, 'login', 'switch user id : 1 to user', '2024-03-23 00:34:02'),
-(22, 1, 'login', 'switch user id : 1 to admin', '2024-03-23 00:36:53'),
-(23, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:37:50'),
-(24, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:40:35'),
-(25, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:41:43'),
-(26, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:41:45'),
-(27, 0, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:41:54'),
-(28, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:41:56'),
-(29, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:44:10'),
-(30, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:44:12'),
-(31, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:54:29'),
-(32, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:54:36'),
-(33, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 00:56:14'),
-(34, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 01:23:11'),
-(35, 1, 'login', 'switch user id : 10 to user', '2024-03-23 01:36:43'),
-(36, 1, 'login', 'switch user id : 10 to admin', '2024-03-23 01:36:44'),
-(37, 1, 'login', 'switch user id : 10 to user', '2024-03-23 01:42:57'),
-(38, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 02:01:49'),
-(39, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 02:01:50'),
-(40, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 02:01:55'),
-(41, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 02:02:10'),
-(42, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 02:03:22'),
-(43, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 02:08:44'),
-(44, 1, 'login', 'IP address : 127.0.0.1; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 13:25:53'),
-(45, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 13:34:28'),
-(46, 1, 'login', 'switch user id : 1 to user', '2024-03-23 13:37:16'),
-(47, 1, 'login', 'switch user id : 1 to admin', '2024-03-23 13:37:17'),
-(48, 1, 'login', 'switch user id : 1 to user', '2024-03-23 13:37:18'),
-(49, 1, 'login', 'switch user id : 1 to admin', '2024-03-23 13:37:19'),
-(50, 1, 'login', 'switch user id : 1 to user', '2024-03-23 13:37:19'),
-(51, 1, 'login', 'switch user id : 1 to admin', '2024-03-23 13:37:20'),
-(52, 1, 'login', 'switch user id : 1 to user', '2024-03-23 13:37:20'),
-(53, 1, 'login', 'switch user id : 1 to admin', '2024-03-23 13:37:20'),
-(54, 0, 'update', 'switch user id : 11 to Disable', '2024-03-23 15:09:41'),
-(55, 0, 'update', 'switch user id : 11 to Enable', '2024-03-23 15:09:43'),
-(56, 0, 'update', 'switch user id : 11 to Disable', '2024-03-23 15:09:44'),
-(57, 1, 'update', 'switch user id : 10 to admin', '2024-03-23 15:10:20'),
-(58, 0, 'update', 'switch user id : 10 to Disable', '2024-03-23 15:10:28'),
-(59, 1, 'update', 'switch user id : 10 to Enable', '2024-03-23 15:10:55'),
-(60, 1, 'update', 'switch user id : 10 to Disable', '2024-03-23 15:10:58'),
-(61, 1, 'update', 'switch user id : 10 to Enable', '2024-03-23 15:10:59'),
-(62, 1, 'update', 'Switch user id : 1 to Disable', '2024-03-23 15:12:18'),
-(63, 1, 'update', 'Switch user id : 1 to Enable', '2024-03-23 15:12:19'),
-(64, 1, 'update', 'Switch user id : 1 to user', '2024-03-23 15:12:20'),
-(65, 1, 'update', 'Switch user id : 1 to admin', '2024-03-23 15:12:20'),
-(66, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 15:12:31'),
-(67, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-23 15:12:33'),
-(68, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 17:37:48'),
-(69, 1, 'update', 'Switch user id : 1 to user', '2024-03-25 17:39:01'),
-(70, 1, 'update', 'Switch user id : 1 to admin', '2024-03-25 17:39:02'),
-(71, 11, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 17:50:55'),
-(72, 11, 'logout', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 17:52:10'),
-(73, 1, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 17:52:23'),
-(74, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 17:52:48'),
-(75, 11, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 17:52:56'),
-(76, 11, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 17:53:32'),
-(77, 11, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 17:54:58'),
-(78, 11, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 18:09:39'),
-(79, 11, 'logout', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 18:12:21'),
-(80, 11, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 18:12:41'),
-(81, 11, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 21:50:56'),
-(82, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 21:51:01'),
-(83, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 22:56:21'),
-(84, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 22:56:23'),
-(85, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 22:56:33'),
-(86, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 22:57:12'),
-(87, 1, 'update', 'Switch user id : 11 to Enable', '2024-03-25 22:57:29'),
-(88, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:09:50'),
-(89, 11, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:09:52'),
-(90, 11, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:09:59'),
-(91, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:10:03'),
-(92, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:43:07'),
-(93, 11, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:43:09'),
-(94, 11, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:43:18'),
-(95, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:43:21'),
-(96, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:49:22'),
-(97, 11, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:49:24'),
-(98, 11, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:54:49'),
-(99, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-25 23:54:52'),
-(100, 1, 'update', 'Change username to ', '2024-03-26 00:07:15'),
-(101, 1, 'update', 'Change username to administrator', '2024-03-26 00:07:49'),
-(102, 1, 'update', 'Change email to a@a', '2024-03-26 00:12:59'),
-(103, 1, 'update', 'Change email to administrator@domain.com', '2024-03-26 00:13:07'),
-(104, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:20:10'),
-(105, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:34:38'),
-(106, 1, 'update', 'Change password to md5(12345678)', '2024-03-26 00:40:13'),
-(107, 1, 'update', 'Change password to md5(P@ssw0rd)', '2024-03-26 00:41:19'),
-(108, 1, 'update', 'Change password to 161ebd7d45089b3446ee4e0d86dbcf92', '2024-03-26 00:44:44'),
-(109, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:44:51'),
-(110, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:44:53'),
-(111, 1, 'update', 'Changed password', '2024-03-26 00:50:37'),
-(112, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:50:49'),
-(113, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:50:51'),
-(114, 11, 'update', 'Changed password', '2024-03-26 00:52:06'),
-(115, 10, 'update', 'Changed password', '2024-03-26 00:52:34'),
-(116, 10, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:53:32'),
-(117, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:53:34'),
-(118, 0, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:56:27'),
-(119, 0, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:56:29'),
-(120, 0, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 00:59:08'),
-(121, 1, 'update', 'Switch user id : 10 to Disable', '2024-03-26 01:02:05'),
-(122, 1, 'update', 'Switch user id : 10 to Enable', '2024-03-26 01:02:06'),
-(123, 1, 'update', 'Switch user id : 10 to Disable', '2024-03-26 01:02:07'),
-(124, 1, 'update', 'Switch user id : 10 to Enable', '2024-03-26 01:02:07'),
-(125, 1, 'update', 'Switch user id : 10 to user', '2024-03-26 01:02:08'),
-(126, 1, 'update', 'Switch user id : 10 to admin', '2024-03-26 01:02:09'),
-(127, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 01:03:19'),
-(128, 0, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 01:03:21'),
-(129, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 01:03:24'),
-(130, 0, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 01:03:27'),
-(131, 11, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 01:03:44'),
-(132, 0, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 01:07:26'),
-(133, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 01:10:52'),
-(134, 0, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 01:13:13'),
-(135, 11, 'update', 'Changed password', '2024-03-26 01:18:26'),
-(136, 0, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 19:31:17'),
-(137, 0, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 20:04:10'),
-(138, 11, 'logout', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 20:04:58'),
-(139, 0, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 20:05:14'),
-(140, 0, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 20:13:21'),
-(141, 1, 'logout', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 20:30:07'),
-(142, 0, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 20:30:09'),
-(143, 11, 'delete', 'Delete action_history id : ', '2024-03-26 20:31:25'),
-(144, 11, 'delete', 'Delete action_history id : 20', '2024-03-26 20:38:13'),
-(145, 11, 'logout', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-03-26 20:38:35');
+(353, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 00:35:30'),
+(354, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 00:35:32'),
+(355, 1, 'update', 'Switch user id : 10 to Disable', '2024-04-12 00:35:47'),
+(356, 1, 'update', 'Switch user id : 11 to Disable', '2024-04-12 00:35:50'),
+(357, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 00:35:59'),
+(358, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 00:38:05'),
+(359, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 00:49:41'),
+(360, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 00:50:49'),
+(361, 16, 'add', 'malicious_chain type:URL redirect code:adsasd ', '2024-04-12 00:57:32'),
+(362, 16, 'delete', 'Delete malicious_chain id : 41', '2024-04-12 00:57:36'),
+(363, 1, 'delete', 'Delete action_history id : 33', '2024-04-12 00:58:04'),
+(364, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 18:54:30'),
+(365, 16, 'delete', 'Delete action_history id : 41', '2024-04-12 18:59:41'),
+(366, 16, 'add', 'http://192.168.140.100/malware%20website/stored_xss.php to action_list', '2024-04-12 18:59:48'),
+(367, 16, 'logout', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 19:02:26'),
+(368, 1, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 19:02:32'),
+(369, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 19:08:49'),
+(370, 16, 'logout', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 19:10:07'),
+(371, 1, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 19:10:11'),
+(372, 1, 'logout', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-12 19:17:43'),
+(373, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-13 23:33:58'),
+(374, 1, 'add', 'malicious_chain type:URL redirect code:javascript:,window.open( ', '2024-04-13 23:36:50'),
+(375, 1, 'add', 'malicious_chain type:DBD code:javascript:,createObjectURL(,click(,createElement( ', '2024-04-13 23:37:12'),
+(376, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-13 23:38:01'),
+(377, 1, 'update', 'Switch user id : 11 to Enable', '2024-04-13 23:40:01'),
+(378, 1, 'update', 'Switch user id : 11 to Disable', '2024-04-13 23:40:02'),
+(379, 1, 'update', 'Switch user id : 11 to Enable', '2024-04-13 23:40:06'),
+(380, 1, 'update', 'Switch user id : 11 to Disable', '2024-04-13 23:40:07'),
+(381, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 00:29:14'),
+(382, 16, 'logout', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 00:31:57'),
+(383, 1, 'add', 'https://192.168.140.100/malware%20website/dbd_base64.html to action_list', '2024-04-14 01:28:19'),
+(384, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 01:28:24'),
+(385, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 01:28:46'),
+(386, 1, 'delete', 'Delete action_history id : 44', '2024-04-14 01:29:42'),
+(387, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to whitelist', '2024-04-14 01:31:39'),
+(388, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 01:36:20'),
+(389, 1, 'delete', 'Delete whitelist id : 61', '2024-04-14 01:36:30'),
+(390, 1, 'delete', 'Delete action_history id : 45', '2024-04-14 01:36:44'),
+(391, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 01:37:46'),
+(392, 1, 'delete', 'Delete action_history id : 46', '2024-04-14 01:37:58'),
+(393, 1, 'delete', 'Delete whitelist id : 28', '2024-04-14 01:38:23'),
+(394, 1, 'delete', 'Delete action_history id : 43', '2024-04-14 01:39:30'),
+(395, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 01:42:48'),
+(396, 1, 'delete', 'Delete action_history id : 47', '2024-04-14 01:43:06'),
+(397, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 01:43:36'),
+(398, 1, 'delete', 'Delete action_history id : 48', '2024-04-14 01:49:30'),
+(399, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 01:49:53'),
+(400, 1, 'delete', 'Delete action_history id : 49', '2024-04-14 01:51:17'),
+(401, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 01:54:22'),
+(402, 1, 'delete', 'Delete action_history id : 50', '2024-04-14 01:54:27'),
+(403, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 01:56:08'),
+(404, 1, 'delete', 'Delete action_history id : 51', '2024-04-14 01:56:20'),
+(405, 1, 'delete', 'Delete whitelist id : 62', '2024-04-14 01:58:01'),
+(406, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 01:59:28'),
+(407, 1, 'delete', 'Delete action_history id : 52', '2024-04-14 01:59:52'),
+(408, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:01:45'),
+(409, 1, 'delete', 'Delete action_history id : 53', '2024-04-14 02:01:50'),
+(410, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:04:12'),
+(411, 1, 'delete', 'Delete whitelist id : 54', '2024-04-14 02:05:03'),
+(412, 1, 'delete', 'Delete action_history id : 54', '2024-04-14 02:05:29'),
+(413, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:06:46'),
+(414, 1, 'delete', 'Delete whitelist id : 55', '2024-04-14 02:06:50'),
+(415, 1, 'delete', 'Delete action_history id : 55', '2024-04-14 02:07:33'),
+(416, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to whitelist', '2024-04-14 02:11:24'),
+(417, 1, 'delete', 'Delete whitelist id : 63', '2024-04-14 02:11:30'),
+(418, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:12:36'),
+(419, 1, 'delete', 'Delete action_history id : 56', '2024-04-14 02:12:41'),
+(420, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:14:03'),
+(421, 1, 'delete', 'Delete action_history id : 57', '2024-04-14 02:14:07'),
+(422, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:14:19'),
+(423, 1, 'delete', 'Delete action_history id : 58', '2024-04-14 02:14:46'),
+(424, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:15:45'),
+(425, 1, 'delete', 'Delete action_history id : 59', '2024-04-14 02:15:50'),
+(426, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to whitelist', '2024-04-14 02:16:29'),
+(427, 1, 'delete', 'Delete whitelist id : 64', '2024-04-14 02:16:45'),
+(428, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:17:44'),
+(429, 1, 'delete', 'Delete action_history id : 60', '2024-04-14 02:17:50'),
+(430, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:18:49'),
+(431, 1, 'delete', 'Delete action_history id : 61', '2024-04-14 02:18:53'),
+(432, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:21:13'),
+(433, 1, 'delete', 'Delete action_history id : 62', '2024-04-14 02:21:17'),
+(434, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:21:47'),
+(435, 1, 'add', 'https://192.168.140.100/malware%20website/ to whitelist', '2024-04-14 02:22:02'),
+(436, 1, 'add', 'https://192.168.140.100/action_histroy.php?user_id=1 to action_list', '2024-04-14 02:22:17'),
+(437, 1, 'add', 'https://192.168.140.100/self_action_history.php to action_list', '2024-04-14 02:22:17'),
+(438, 1, 'add', 'https://192.168.140.100/whitelist.php?user_id=1 to action_list', '2024-04-14 02:22:17'),
+(439, 1, 'add', 'https://192.168.140.100/self_whitelist_history.php to action_list', '2024-04-14 02:22:17'),
+(440, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:24:11'),
+(441, 1, 'delete', 'Delete action_history id : 68', '2024-04-14 02:26:47'),
+(442, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:27:58'),
+(443, 1, 'delete', 'Delete action_history id : 69', '2024-04-14 02:28:04'),
+(444, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:31:17'),
+(445, 1, 'delete', 'Delete action_history id : 70', '2024-04-14 02:31:25'),
+(446, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 02:32:56'),
+(447, 1, 'delete', 'Delete action_history id : 71', '2024-04-14 02:33:02'),
+(448, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 03:06:08'),
+(449, 1, 'delete', 'Delete action_history id : 72', '2024-04-14 03:06:19'),
+(450, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 03:08:41'),
+(451, 1, 'delete', 'Delete action_history id : 73', '2024-04-14 03:09:37'),
+(452, 1, 'add', 'https://192.168.140.100/malware%20website/test.html to action_list', '2024-04-14 03:11:10'),
+(453, 1, 'delete', 'Delete action_history id : 74', '2024-04-14 03:11:15'),
+(454, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 03:11:44'),
+(455, 1, 'add', 'https://192.168.140.100/malware%20website/stored_xss.php to action_list', '2024-04-14 03:17:22'),
+(456, 1, 'delete', 'Delete action_history id : 76', '2024-04-14 03:18:40'),
+(457, 1, 'delete', 'Delete action_history id : 75', '2024-04-14 03:18:46'),
+(458, 1, 'add', 'https://192.168.140.100/malware%20website/stored_xss.php to action_list', '2024-04-14 03:18:53'),
+(459, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 03:18:57'),
+(460, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 03:18:59'),
+(461, 1, 'add', 'https://192.168.140.100/malware%20website/cookie.php to action_list', '2024-04-14 03:19:03'),
+(462, 1, 'delete', 'Delete action_history id : 77', '2024-04-14 03:20:12'),
+(463, 1, 'delete', 'Delete action_history id : 78', '2024-04-14 03:20:13'),
+(464, 1, 'delete', 'Delete action_history id : 79', '2024-04-14 03:20:13'),
+(465, 1, 'delete', 'Delete action_history id : 80', '2024-04-14 03:20:14'),
+(466, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 03:21:26'),
+(467, 1, 'delete', 'Delete action_history id : 81', '2024-04-14 03:21:31'),
+(468, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 03:21:36'),
+(469, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 03:22:37'),
+(470, 1, 'delete', 'Delete action_history id : 83', '2024-04-14 03:22:41'),
+(471, 1, 'delete', 'Delete action_history id : 82', '2024-04-14 03:22:42'),
+(472, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 03:23:48'),
+(473, 1, 'delete', 'Delete action_history id : 84', '2024-04-14 03:23:52'),
+(474, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 03:24:24'),
+(475, 1, 'delete', 'Delete action_history id : 85', '2024-04-14 03:24:27'),
+(476, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 03:24:39'),
+(477, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 03:24:46'),
+(478, 1, 'delete', 'Delete action_history id : 86', '2024-04-14 03:25:03'),
+(479, 1, 'delete', 'Delete action_history id : 87', '2024-04-14 03:25:04'),
+(480, 1, 'add', 'https://192.168.140.100/malware%20website/test.html to action_list', '2024-04-14 03:25:39'),
+(481, 1, 'delete', 'Delete action_history id : 88', '2024-04-14 03:25:50'),
+(482, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 03:27:16'),
+(483, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 03:28:05'),
+(484, 1, 'delete', 'Delete action_history id : 90', '2024-04-14 03:28:11'),
+(485, 1, 'delete', 'Delete action_history id : 89', '2024-04-14 03:28:12'),
+(486, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to whitelist', '2024-04-14 03:28:45'),
+(487, 1, 'add', 'https://192.168.140.100/malware%20website/test.html to action_list', '2024-04-14 03:29:43'),
+(488, 1, 'add', 'https://192.168.140.100/action_histroy.php?user_id=1 to action_list', '2024-04-14 03:30:05'),
+(489, 1, 'add', 'https://192.168.140.100/self_action_history.php to action_list', '2024-04-14 03:30:08'),
+(490, 1, 'add', 'https://192.168.140.100/self_whitelist_history.php to action_list', '2024-04-14 03:30:08'),
+(491, 1, 'add', 'https://192.168.140.100/action_histroy.php?user_id= to action_list', '2024-04-14 03:30:09'),
+(492, 1, 'add', 'https://192.168.140.100/whitelist.php?user_id=1 to action_list', '2024-04-14 03:30:09'),
+(493, 1, 'add', 'https://192.168.140.100/action_histroy.php?user_id=1 to action_list', '2024-04-14 03:30:22'),
+(494, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 03:31:28'),
+(495, 1, 'add', 'https://192.168.140.100/malware%20website/stored_xss.php to action_list', '2024-04-14 03:31:33'),
+(496, 1, 'add', 'https://192.168.140.100/malware%20website/cookie.php to action_list', '2024-04-14 03:31:36'),
+(497, 1, 'add', 'https://192.168.140.100/malware%20website/reflected_xss.php to whitelist', '2024-04-14 03:32:16'),
+(498, 1, 'delete', 'Delete action_history id : 98', '2024-04-14 03:33:23'),
+(499, 1, 'delete', 'Delete action_history id : 99', '2024-04-14 03:33:24'),
+(500, 1, 'delete', 'Delete action_history id : 100', '2024-04-14 03:33:25'),
+(501, 1, 'add', 'https://192.168.140.100/malware%20website/stored_xss.php to action_list', '2024-04-14 03:34:51'),
+(502, 1, 'add', 'https://192.168.140.100/malware%20website/dbd_base64.html to action_list', '2024-04-14 03:35:16'),
+(503, 1, 'add', 'https://192.168.140.100/malware%20website/dbd.html to action_list', '2024-04-14 03:35:20'),
+(504, 1, 'add', 'https://192.168.140.100/malicious/reflected_xss.php?myInput=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E to action_list', '2024-04-14 03:35:41'),
+(505, 1, 'delete', 'Delete action_history id : 101', '2024-04-14 03:36:39'),
+(506, 1, 'delete', 'Delete action_history id : 102', '2024-04-14 03:36:40'),
+(507, 1, 'delete', 'Delete action_history id : 103', '2024-04-14 03:36:40'),
+(508, 1, 'delete', 'Delete action_history id : 104', '2024-04-14 03:36:40'),
+(509, 1, 'add', 'https://192.168.140.100/malicious/reflected_xss.php?myInput=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E to action_list', '2024-04-14 03:36:47'),
+(510, 1, 'add', 'https://192.168.140.100/malware%20website/dbd.html to action_list', '2024-04-14 03:36:53'),
+(511, 1, 'add', 'https://192.168.140.100/malware%20website/dbd_base64.html to action_list', '2024-04-14 03:36:55'),
+(512, 1, 'add', 'https://192.168.140.100/malware%20website/stored_xss.php to action_list', '2024-04-14 03:37:16'),
+(513, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 03:37:24'),
+(514, 1, 'delete', 'Delete action_history id : 105', '2024-04-14 03:37:53'),
+(515, 1, 'delete', 'Delete action_history id : 106', '2024-04-14 03:38:00'),
+(516, 1, 'delete', 'Delete action_history id : 107', '2024-04-14 03:38:01'),
+(517, 1, 'delete', 'Delete action_history id : 108', '2024-04-14 03:38:01'),
+(518, 1, 'delete', 'Delete action_history id : 109', '2024-04-14 03:38:01'),
+(519, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:41:35'),
+(520, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:45:20'),
+(521, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:45:50'),
+(522, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:45:55'),
+(523, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:46:11'),
+(524, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:46:21'),
+(525, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:46:29'),
+(526, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:46:46'),
+(527, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:46:56'),
+(528, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:47:02'),
+(529, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:47:08'),
+(530, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:47:13'),
+(531, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 10:47:56'),
+(532, 1, 'login', 'IP address : 192.168.140.200; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 11:11:15'),
+(533, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to whitelist', '2024-04-14 11:11:44'),
+(534, 1, 'delete', 'Delete whitelist id : 68', '2024-04-14 11:12:13'),
+(535, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:14:49'),
+(536, 1, 'delete', 'Delete action_history id : 110', '2024-04-14 11:16:01'),
+(537, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:18:06'),
+(538, 1, 'delete', 'Delete action_history id : 111', '2024-04-14 11:18:14'),
+(539, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:19:32'),
+(540, 1, 'delete', 'Delete action_history id : 112', '2024-04-14 11:19:40'),
+(541, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 11:22:41'),
+(542, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:22:59'),
+(543, 1, 'delete', 'Delete action_history id : 114', '2024-04-14 11:23:11'),
+(544, 1, 'delete', 'Delete action_history id : 113', '2024-04-14 11:23:16'),
+(545, 1, 'add', 'https://192.168.140.200/malware%20website/url_re_base64.html to action_list', '2024-04-14 11:23:26'),
+(546, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 11:24:29'),
+(547, 1, 'delete', 'Delete whitelist id : 66', '2024-04-14 11:24:35'),
+(548, 1, 'add', 'https://192.168.140.100/malware%20website/url_re.html to action_list', '2024-04-14 11:25:46'),
+(549, 1, 'delete', 'Delete action_history id : 116', '2024-04-14 11:26:00'),
+(550, 1, 'delete', 'Delete action_history id : 115', '2024-04-14 11:26:01'),
+(551, 1, 'add', 'https://192.168.140.100/malware%20website/url_re_base64.html to action_list', '2024-04-14 11:26:13'),
+(552, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:26:27'),
+(553, 1, 'delete', 'Delete action_history id : 118', '2024-04-14 11:26:41'),
+(554, 1, 'delete', 'Delete action_history id : 117', '2024-04-14 11:26:42'),
+(555, 1, 'add', 'https://192.168.140.200/malware%20website/url_re_base64.html to action_list', '2024-04-14 11:26:51'),
+(556, 1, 'add', 'https://192.168.140.200/malware%20website/dbd.html to action_list', '2024-04-14 11:26:55'),
+(557, 1, 'add', 'https://192.168.140.200/malware%20website/dbd_base64.html to action_list', '2024-04-14 11:26:59'),
+(558, 1, 'add', 'https://192.168.140.100/malicious/reflected_xss.php?myInput=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E to action_list', '2024-04-14 11:27:10'),
+(559, 1, 'add', 'https://192.168.140.200/malware%20website/stored_xss.php to action_list', '2024-04-14 11:27:18'),
+(560, 1, 'delete', 'Delete action_history id : 119', '2024-04-14 11:28:15'),
+(561, 1, 'add', 'https://192.168.140.200/malware%20website/url_re_base64.html to action_list', '2024-04-14 11:32:02'),
+(562, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:35:53'),
+(563, 1, 'delete', 'Delete action_history id : 125', '2024-04-14 11:35:59'),
+(564, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:36:20'),
+(565, 1, 'delete', 'Delete action_history id : 124', '2024-04-14 11:36:24'),
+(566, 1, 'delete', 'Delete action_history id : 126', '2024-04-14 11:36:25'),
+(567, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:37:23'),
+(568, 1, 'delete', 'Delete action_history id : 127', '2024-04-14 11:37:34'),
+(569, 1, 'add', 'https://192.168.140.200/malware%20website/url_re.html to action_list', '2024-04-14 11:38:21'),
+(570, 1, 'delete', 'Delete action_history id : 128', '2024-04-14 11:38:27'),
+(571, 1, 'add', 'https://192.168.140.200/malware%20website/url_re_base64.html to action_list', '2024-04-14 11:38:36'),
+(572, 1, 'delete', 'Delete action_history id : 120', '2024-04-14 11:39:05'),
+(573, 1, 'delete', 'Delete action_history id : 121', '2024-04-14 11:39:05'),
+(574, 1, 'delete', 'Delete action_history id : 122', '2024-04-14 11:39:06'),
+(575, 1, 'delete', 'Delete action_history id : 123', '2024-04-14 11:39:06'),
+(576, 1, 'delete', 'Delete action_history id : 129', '2024-04-14 11:39:07'),
+(577, 1, 'add', 'https://192.168.140.200/malware%20website/url_re_base64.html to action_list', '2024-04-14 11:39:27'),
+(578, 1, 'add', 'https://192.168.140.200/malware%20website/stored_xss.php to action_list', '2024-04-14 11:39:37'),
+(579, 1, 'add', 'https://192.168.140.100/malicious/reflected_xss.php?myInput=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E to action_list', '2024-04-14 11:39:43'),
+(580, 1, 'add', 'https://192.168.140.200/malware%20website/dbd_base64.html to action_list', '2024-04-14 11:39:50'),
+(581, 1, 'add', 'https://192.168.140.200/malware%20website/dbd.html to action_list', '2024-04-14 11:39:52'),
+(582, 1, 'delete', 'Delete action_history id : 130', '2024-04-14 11:40:00'),
+(583, 1, 'delete', 'Delete action_history id : 131', '2024-04-14 11:40:01'),
+(584, 1, 'delete', 'Delete action_history id : 132', '2024-04-14 11:40:01'),
+(585, 1, 'delete', 'Delete action_history id : 133', '2024-04-14 11:40:01'),
+(586, 1, 'delete', 'Delete action_history id : 134', '2024-04-14 11:40:02'),
+(587, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 15:51:15'),
+(588, 1, 'add', 'https://www.youtube.com/ to action_list', '2024-04-14 15:51:39'),
+(589, 1, 'delete', 'Delete action_history id : 135', '2024-04-14 15:52:00'),
+(590, 1, 'add', 'https://www.youtube.com/ to action_list', '2024-04-14 15:52:15'),
+(591, 1, 'delete', 'Delete action_history id : 136', '2024-04-14 15:52:22'),
+(592, 1, 'add', 'https://www.youtube.com/ to action_list', '2024-04-14 15:52:22'),
+(593, 1, 'delete', 'Delete action_history id : 137', '2024-04-14 15:52:31'),
+(594, 1, 'add', 'https://www.youtube.com/ to action_list', '2024-04-14 15:53:24'),
+(595, 1, 'delete', 'Delete action_history id : 138', '2024-04-14 15:53:37'),
+(596, 1, 'add', 'https://www.youtube.com/ to action_list', '2024-04-14 15:53:54'),
+(597, 1, 'delete', 'Delete action_history id : 139', '2024-04-14 15:53:57'),
+(598, 1, 'add', 'https://www.youtube.com/ to action_list', '2024-04-14 15:54:21'),
+(599, 1, 'delete', 'Delete action_history id : 140', '2024-04-14 15:54:25'),
+(600, 1, 'add', 'https://192.168.140.200/malware%20website/url_re_base64.html to action_list', '2024-04-14 15:56:44'),
+(601, 1, 'delete', 'Delete whitelist id : 67', '2024-04-14 15:57:16'),
+(602, 1, 'delete', 'Delete action_history id : 141', '2024-04-14 15:57:25'),
+(603, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 15:57:57'),
+(604, 1, 'add', 'https://192.168.140.200/malware%20website/url_re_base64.html to action_list', '2024-04-14 15:59:19'),
+(605, 1, 'delete', 'Delete action_history id : 142', '2024-04-14 16:00:59'),
+(606, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 16:02:42'),
+(607, 16, 'add', 'http://192.168.140.200/url_re_base64.html to action_list', '2024-04-14 16:02:56'),
+(608, 16, 'add', 'http://192.168.140.200/stored_xss.php to action_list', '2024-04-14 16:03:51'),
+(609, 16, 'add', 'https://192.168.140.200/reflected_xss.php?myInput=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E to action_list', '2024-04-14 16:04:34'),
+(610, 16, 'add', 'http://192.168.140.200/dbd_base64.html to action_list', '2024-04-14 16:04:43'),
+(611, 16, 'add', 'http://192.168.140.200/dbd.html to action_list', '2024-04-14 16:04:45'),
+(612, 16, 'delete', 'Delete action_history id : 143', '2024-04-14 16:05:16'),
+(613, 16, 'delete', 'Delete action_history id : 144', '2024-04-14 16:05:17'),
+(614, 16, 'delete', 'Delete action_history id : 145', '2024-04-14 16:05:17'),
+(615, 16, 'delete', 'Delete action_history id : 146', '2024-04-14 16:05:18'),
+(616, 16, 'delete', 'Delete action_history id : 147', '2024-04-14 16:05:19'),
+(617, 16, 'add', 'http://192.168.140.200/dom_xss.html to whitelist', '2024-04-14 22:57:03'),
+(618, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 22:57:32'),
+(619, 16, 'delete', 'Delete whitelist id : 69', '2024-04-14 22:58:12');
 
 -- --------------------------------------------------------
 
@@ -220,7 +342,39 @@ CREATE TABLE `malicious_chain` (
 INSERT INTO `malicious_chain` (`id`, `user_id`, `type`, `code`, `date`) VALUES
 (1, 1, 'XSS', '<script>,document.cookie,</script>', '2024-02-05'),
 (2, 1, 'URL redirect', 'window.open(', '2024-01-29'),
-(3, 1, 'DBD', 'createObjectURL(,click(,createElement(', '2024-01-29');
+(3, 1, 'DBD', 'createObjectURL(,click(,createElement(', '2024-01-29'),
+(6, 1, 'XSS', '<script>,document.URL,</script>', '2024-04-11'),
+(7, 1, 'XSS', '<script>,document.documentURI,</script>', '2024-04-11'),
+(8, 1, 'XSS', '<script>,document.URLUnencoded,</script>', '2024-04-11'),
+(9, 1, 'XSS', '<script>,document.baseURI,</script>', '2024-04-11'),
+(11, 1, 'XSS', '<script>,window.name,</script>', '2024-04-11'),
+(12, 1, 'XSS', '<script>,history.pushState,</script>', '2024-04-11'),
+(13, 1, 'XSS', '<script>,localStorage,</script>', '2024-04-11'),
+(14, 1, 'XSS', '<script>,sessionStorage,</script>', '2024-04-11'),
+(15, 1, 'XSS', '<script>,IndexedDB(mozIndexedDB),</script>', '2024-04-11'),
+(16, 1, 'XSS', '<script>,IndexedDB(webkitIndexedDB),</script>', '2024-04-11'),
+(17, 1, 'XSS', '<script>,IndexedDB(msIndexedDB),</script>', '2024-04-11'),
+(18, 1, 'XSS', '<script>,Database,</script>', '2024-04-11'),
+(19, 1, 'XSS', '<script>,document.referrer,</script>', '2024-04-11'),
+(20, 1, 'XSS', '<script>,history.replaceState,</script>', '2024-04-11'),
+(21, 1, 'XSS', 'javascript:,document.URL', '2024-04-11'),
+(22, 1, 'XSS', 'javascript:,document.documentURI', '2024-04-11'),
+(23, 1, 'XSS', 'javascript:,document.URLUnencoded', '2024-04-11'),
+(24, 1, 'XSS', 'javascript:,document.baseURI', '2024-04-11'),
+(25, 1, 'XSS', 'javascript:,location', '2024-04-11'),
+(26, 1, 'XSS', 'javascript:,document.cookie', '2024-04-11'),
+(27, 1, 'XSS', 'javascript:,document.referrer', '2024-04-11'),
+(28, 1, 'XSS', 'javascript:,window.name', '2024-04-11'),
+(29, 1, 'XSS', 'javascript:,history.pushState', '2024-04-11'),
+(30, 1, 'XSS', 'javascript:,history.replaceState', '2024-04-11'),
+(31, 1, 'XSS', 'javascript:,localStorage', '2024-04-11'),
+(32, 1, 'XSS', 'javascript:,sessionStorage', '2024-04-11'),
+(33, 1, 'XSS', 'javascript:,Database', '2024-04-11'),
+(34, 1, 'XSS', 'javascript:,IndexedDB(mozIndexedDB)', '2024-04-11'),
+(35, 1, 'XSS', 'javascript:,IndexedDB(webkitIndexedDB)', '2024-04-11'),
+(36, 1, 'XSS', 'javascript:,IndexedDB(msIndexedDB)', '2024-04-11'),
+(42, 1, 'URL redirect', 'javascript:,window.open(', '2024-04-13'),
+(43, 1, 'DBD', 'javascript:,createObjectURL(,click(,createElement(', '2024-04-13');
 
 -- --------------------------------------------------------
 
@@ -232,7 +386,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `email` varchar(256) NOT NULL,
   `username` varchar(256) NOT NULL,
-  `password` varchar(256) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `admin` enum('Y','N') NOT NULL,
   `status` enum('Enable','Disable') NOT NULL,
   `date` date NOT NULL
@@ -244,29 +398,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `admin`, `status`, `date`) VALUES
 (1, 'administrator@domain.com', 'administrator', '$2y$10$2/sNqriY5w8EWuPdqD6OjOP0lXPkOUrZplE8Ose8VRm6HkRZAzPTS', 'Y', 'Enable', '2024-03-20'),
-(10, 'admin@domain.com', 'admin', '$2y$10$DsvsUb1YO9ZUtOxzehBjI.Dsxx4hPnpK6XShsTVSJC9cnFKgKd.BG', 'Y', 'Enable', '2024-03-20'),
-(11, 'user@domain.com', 'user', '$2y$10$34P6KrJYn18kL9OdIfDCcOEmtLRJYQCf5qSfzylAOAfpMPjIIPmdW', 'N', 'Enable', '2024-03-20');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `website`
---
-
-CREATE TABLE `website` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `url` varchar(1024) NOT NULL,
-  `datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `website`
---
-
-INSERT INTO `website` (`id`, `user_id`, `url`, `datetime`) VALUES
-(1, 1, 'https://www.youtube.com/', '2024-03-20 18:22:25'),
-(4, 1, 'https://www.google.com/', '2024-03-20 18:22:28');
+(10, 'admin@domain.com', 'admin', '$2y$10$DsvsUb1YO9ZUtOxzehBjI.Dsxx4hPnpK6XShsTVSJC9cnFKgKd.BG', 'Y', 'Disable', '2024-03-20'),
+(11, 'user@domain.com', 'user', '$2y$10$34P6KrJYn18kL9OdIfDCcOEmtLRJYQCf5qSfzylAOAfpMPjIIPmdW', 'N', 'Disable', '2024-03-20'),
+(15, 'john@domain.com', 'john', '$2y$10$kF3GlbgnZw2I0Keg9QHfdO8ktCnWi1FWmB/4EaM0KqLUaGgpYm0l6', 'N', 'Enable', '2024-03-28'),
+(16, 'lucas@domain.com', 'Lucas', '$2y$10$x2vRpYgV3rUkPt6PpK1/5.2zcZOcUmZS688tlx8/xo7I1.nK4rWMy', 'N', 'Enable', '2024-04-11');
 
 -- --------------------------------------------------------
 
@@ -280,14 +415,6 @@ CREATE TABLE `whitelist` (
   `url` varchar(1000) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `whitelist`
---
-
-INSERT INTO `whitelist` (`id`, `user_id`, `url`, `date`) VALUES
-(28, 1, 'http://192.168.140.100/phpmyadmin/', '2024-03-20'),
-(29, 1, 'https://192.168.140.100/backend_php/malicious_chain.php?id=1', '2024-03-25');
 
 --
 -- Indexes for dumped tables
@@ -321,12 +448,6 @@ ALTER TABLE `user`
   ADD KEY `ID` (`id`);
 
 --
--- Indexes for table `website`
---
-ALTER TABLE `website`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `whitelist`
 --
 ALTER TABLE `whitelist`
@@ -341,37 +462,31 @@ ALTER TABLE `whitelist`
 -- AUTO_INCREMENT for table `action_history`
 --
 ALTER TABLE `action_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=620;
 
 --
 -- AUTO_INCREMENT for table `malicious_chain`
 --
 ALTER TABLE `malicious_chain`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `website`
---
-ALTER TABLE `website`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `whitelist`
 --
 ALTER TABLE `whitelist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- Constraints for dumped tables
@@ -381,19 +496,19 @@ ALTER TABLE `whitelist`
 -- Constraints for table `action_history`
 --
 ALTER TABLE `action_history`
-  ADD CONSTRAINT `action_history_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `action_history_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `malicious_chain`
 --
 ALTER TABLE `malicious_chain`
-  ADD CONSTRAINT `malicious_chain_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `malicious_chain_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `whitelist`
 --
 ALTER TABLE `whitelist`
-  ADD CONSTRAINT `whitelist_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `whitelist_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
