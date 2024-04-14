@@ -222,7 +222,7 @@ function withoutencode(data,malwarejs){
 
         var allChainsFound = chains.every(chain => data.includes(chain));
         if (type == "URL redirect"){
-            if (!allChainsFound && findURL(data).length == 0) {
+            if (!allChainsFound || findURL(data).length == 0) {
                 console.log("Not all malware chains of type", type, "found in data.");
             } else {
                 console.log("All malware chains of type", type, "found in data.");
@@ -256,7 +256,7 @@ function findbase64(data,malwarejs){
             console.log(chains);      
             var allChainsFound = chains.every(chain => decodedString.includes(chain));
             if (type == "URL redirect"){
-                if (!allChainsFound && findURL(decodedString).length == 0) {
+                if (!allChainsFound || findURL(decodedString).length == 0) {
                     console.log("Not all malware chains of type", type, "found in data.");
                 } else {
                     console.log("All malware chains of type", type, "found in data.");
@@ -292,7 +292,7 @@ function findbase32(data,malwarejs){
             var allChainsFound = chains.every(chain => decodedString.includes(chain));
             
             if (type == "URL redirect"){
-                if (!allChainsFound && findURL(decodedString).length == 0) {
+                if (!allChainsFound || findURL(decodedString).length == 0) {
                     console.log("Not all malware chains of type", type, "found in data.");
                 } else {
                     console.log("All malware chains of type", type, "found in data.");
@@ -360,7 +360,7 @@ function findutf8(data,malwarejs){
             var allChainsFound = chains.every(chain => decodedString.includes(chain));
     
             if (type == "URL redirect"){
-                if (!allChainsFound || findURL(data).length == 0) {
+                if (!allChainsFound || findURL(decodedString).length == 0) {
                     console.log("Not all malware chains of type", type, "found in data.");
                 } else {
                     console.log("All malware chains of type", type, "found in data.");
