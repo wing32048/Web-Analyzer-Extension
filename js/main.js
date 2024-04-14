@@ -15,21 +15,10 @@ if (sessionStorage.times % 2 === 0){
             console.log('PHP cookie not found.');
         }
     });
-}else if(window.location.href == 'https://192.168.140.100/account.php'){
-    chrome.runtime.sendMessage({ action: 'getCookie' }, function(response) {
-        if (response.cookie) {
-            var cookieValue = response.cookie.value;
-            chrome.storage.local.set({ 'phpCookieValue': cookieValue }, function() {
-            console.log('PHP cookie saved to local storage.');});
-        } else {
-            console.log('PHP cookie not found.');
-        }
-    });
-    // window.location.reload();
 }else if(window.location.href.startsWith("https://www.google.com/search?")){
     console.log('Googel Search');
-}else if(window.location.href.startsWith("https://192.168.140.100/malicious_chain.php") || window.location.href.startsWith("https://192.168.140.100/self_malicious_chains.php") || window.location.href.startsWith("https://192.168.140.100/insert_malicious_chain.php")){
-    console.log('Malicious Chain');
+}else if(window.location.href.startsWith("https://192.168.140.100/")){
+    console.log('WEB ANALYZER');
 }else{
     sessionStorage.times = 1;
     window.stop();
