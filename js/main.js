@@ -136,7 +136,7 @@ function notification(url){
         type: 'notification',
         options: {
             title: 'Just wanted to notify you',
-            message: 'Scanning:' + url,
+            message: 'Scanning: ' + url,
             iconUrl: '/image/ZKZx.gif',
             type: 'basic'
         }
