@@ -42,6 +42,7 @@
                 <!-- Your existing topbar code here -->
                 <div class="container-fluid text-center">
                     <h1 class="h3 mb-4 text-gray-800">Insert Malicious Chain</h1>
+                    <p>Here can insert malicious chain in the text box.</p>
                     <!-- <p>Today think think.</p> -->
                     <?php
                         if (isset($_GET['error']) && $_GET['error'] == 1) {
