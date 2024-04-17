@@ -20,7 +20,7 @@
         },{
             "matches": ["https://192.168.140.100/account.php"],
             "js": ["js/account.js"],
-            "run_at": "document_end"
+            "run_at": "document_start"
         }
     ],
     "action": {
