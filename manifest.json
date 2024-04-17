@@ -19,7 +19,7 @@
             "run_at": "document_start"
         },{
             "matches": ["https://192.168.140.100/account.php"],
-            "js": ["js/main2.js"],
+            "js": ["js/account.js"],
             "run_at": "document_end"
         }
     ],
