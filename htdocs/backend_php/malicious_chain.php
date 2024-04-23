@@ -13,13 +13,13 @@ try {
     // $stmt->bindValue(':userId', $userId);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    if ($stmt->rowCount() <= 0){
-        $sql = "SELECT * FROM malicious_chain where user_id = '1'";
-        $stmt = $pdo->prepare($sql);
-        // $stmt->bindValue(':userId', $userId);
-        $stmt->execute();
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // if ($stmt->rowCount() <= 0){
+    //     $sql = "SELECT * FROM malicious_chain where user_id = '1'";
+    //     $stmt = $pdo->prepare($sql);
+    //     // $stmt->bindValue(':userId', $userId);
+    //     $stmt->execute();
+    //     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
     $output = [];
     foreach ($data as $row) {
         $id = $row['id'];

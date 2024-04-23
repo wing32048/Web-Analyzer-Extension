@@ -3,6 +3,10 @@
 
 <head>
     <?php 
+        if (!isset($_COOKIE['user'])) {
+            header('location: ../signin.php?error=2');
+            exit();
+        }
         require_once './inc/db.inc.php';
         $pdo = dbconnect();
         try {

@@ -3,7 +3,7 @@
     "name": "WEB ANALYZER",
     "version": "1.0",
     "permissions": [
-        "tabGroups",
+        "tabs",
         "notifications",
         "cookies",
         "storage"
