@@ -90,7 +90,7 @@
                                 <label class="mb-1" for="inputUsername">Password</label>
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-9 text-center">
-                                        <input class="form-control" type="password" value="<?php echo $result['password']; ?>" disabled>
+                                        <input class="form-control" type="password" value="........" disabled>
                                     </div>
                                     <div class="col-md-3 text-center">
                                         <button type="button" class="form-control btn btn-primary btn-sm" onclick="window.location.href='/change_pw.php'">Change Password</button>

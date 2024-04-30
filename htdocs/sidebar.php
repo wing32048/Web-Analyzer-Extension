@@ -59,47 +59,51 @@ if (!isset($_COOKIE['user'])) {
                             <a class="collapse-item" href="user.php">User Information</a>
                         </div>
                     </div>
+                    </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseThree"
+                        aria-expanded="true" aria-controls="collapseThree">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Risk Management</span>
+                    </a>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingUtilities"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Risk Management</h6>
+                            <a class="collapse-item" href="malicious_chain.php?user_id='.$cookieId.'">Malicious Chains</a>
+                            <a class="collapse-item" href="insert_malicious_chain.php">Insert Malicious Chain</a>
+            
+                        </div>
+                    </div>
                 </li>
-                ';
-            }
+                    ';
+                }else{
+                    echo'
+                    <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="true" aria-controls="collapseTwo">
+                            <i class="fa fa-fw fa-clipboard"></i>
+                            <span>Reporting</span>
+                        </a>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingUtilities"
+                            data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Reporting</h6>
+                                <a class="collapse-item" href="self_action_history.php">Action list History</a>
+                                <a class="collapse-item" href="self_whitelist_history.php">Whitelist History</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    ';
+                }
 
         } catch (PDOException $e) {
             die($e->getMessage());
         }
     ?>
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fa fa-fw fa-clipboard"></i>
-            <span>Reporting</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Reporting</h6>
-                <a class="collapse-item" href="self_action_history.php">Action list History</a>
-                <a class="collapse-item" href="self_whitelist_history.php">Whitelist History</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseThree"
-            aria-expanded="true" aria-controls="collapseThree">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Risk Management</span>
-        </a>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Risk Management</h6>
-                <a class="collapse-item" href="self_malicious_chains.php">My Malicious Chains</a>
-                <a class="collapse-item" href="insert_malicious_chain.php">Insert Malicious Chain</a>
-
-            </div>
-        </div>
-    </li>
 
 
     <!-- Divider -->

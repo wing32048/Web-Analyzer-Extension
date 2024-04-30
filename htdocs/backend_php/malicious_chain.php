@@ -7,18 +7,18 @@ header('Content-Type: application/json');
 
 
 try {
-    $userId = base64_decode($_GET['id']);
-    $sql = "SELECT * FROM malicious_chain where user_id = '$userId'";
-    $stmt = $pdo->prepare($sql);
-    // $stmt->bindValue(':userId', $userId);
-    $stmt->execute();
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // $userId = base64_decode($_GET['id']);
+    // $sql = "SELECT * FROM malicious_chain where user_id = '$userId'";
+    // $stmt = $pdo->prepare($sql);
+    // // $stmt->bindValue(':userId', $userId);
+    // $stmt->execute();
+    // $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // if ($stmt->rowCount() <= 0){
-    //     $sql = "SELECT * FROM malicious_chain where user_id = '1'";
-    //     $stmt = $pdo->prepare($sql);
-    //     // $stmt->bindValue(':userId', $userId);
-    //     $stmt->execute();
-    //     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM malicious_chain where user_id = '1'";
+        $stmt = $pdo->prepare($sql);
+        // $stmt->bindValue(':userId', $userId);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // }
     $output = [];
     foreach ($data as $row) {

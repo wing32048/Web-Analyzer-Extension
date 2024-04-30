@@ -64,7 +64,7 @@
                         in our database server. This feature allows users to actively contribute to enhancing the system's effectiveness in detecting and protecting against potential threats.</p>
                         <br>
                         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <a href="insert_malicious_chain.php" class="btn btn-primary btn-lg px-4 gap-3">Let's start</a>
+                            <!-- <a href="signin.php" class="btn btn-primary btn-lg px-4 gap-3">Let's start</a> -->
                         </div>
 
                 </div>

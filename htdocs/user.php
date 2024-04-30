@@ -88,7 +88,6 @@
                                             <th>Admin</th>
                                             <th>Switch to</th>
                                             <th>Switch to</th>
-                                            <th>View Malicious Chain</th>
                                             <th>Activity</th>
                                             <th>Whitelist</th>
                                             <th>Action list</th>
@@ -103,7 +102,6 @@
                                             <th>Admin</th>
                                             <th>Switch to</th>
                                             <th>Switch to</th>
-                                            <th>View Malicious Chain</th>
                                             <th>Activity</th>
                                             <th>Whitelist</th>
                                             <th>Action list</th>
@@ -142,7 +140,6 @@
                                                             echo "<td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/db/dbadmin.php?id=".$result['id']."&admin=Y'\">Switch to Admin</button></td>";
                                                         }
                                                     echo "
-                                                        <td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/malicious_chain.php?user_id=".$result['id']."'\">View Malicious Chain</button></td>
                                                         <td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/log.php?user_id=".$result['id']."'\">View User Log</button></td>
                                                         <td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/whitelist.php?user_id=".$result['id']."'\">View User Whitelist</button></td>
                                                         <td><button type='button' class='btn btn-primary btn-sm' onclick=\"window.location.href='/action_histroy.php?user_id=".$result['id']."'\">View User Action List</button></td>

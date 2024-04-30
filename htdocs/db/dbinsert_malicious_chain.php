@@ -9,7 +9,7 @@ if (array_key_exists('type', $_POST) && array_key_exists('code', $_POST) && !emp
     $type = $_POST['type'];
     $code = $_POST['code'];
     try {
-        $sql = "SELECT * FROM malicious_chain where code = '$code'";
+        $sql = "SELECT * FROM malicious_chain where code = '$code' AND user_id = '$cookieId'";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetch();
