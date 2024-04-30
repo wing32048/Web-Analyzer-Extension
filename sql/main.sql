@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 05:10 AM
+-- Generation Time: Apr 30, 2024 at 04:18 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -319,12 +319,97 @@ INSERT INTO `log` (`id`, `user_id`, `type`, `information`, `datetime`) VALUES
 (614, 16, 'delete', 'Delete action_history id : 145', '2024-04-14 16:05:17'),
 (615, 16, 'delete', 'Delete action_history id : 146', '2024-04-14 16:05:18'),
 (616, 16, 'delete', 'Delete action_history id : 147', '2024-04-14 16:05:19'),
-(617, 1, 'add', 'https://discord.com/ to whitelist', '2024-04-17 10:36:14'),
-(618, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-17 10:36:27'),
-(619, 1, 'delete', 'Delete whitelist id : 69', '2024-04-17 10:36:39'),
-(620, 1, 'add', 'https://discord.com/ to whitelist', '2024-04-17 10:36:58'),
-(621, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-17 10:39:08'),
-(622, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-17 10:40:19');
+(617, 16, 'add', 'http://192.168.140.200/dom_xss.html to whitelist', '2024-04-14 22:57:03'),
+(618, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-14 22:57:32'),
+(619, 16, 'delete', 'Delete whitelist id : 69', '2024-04-14 22:58:12'),
+(620, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-15 03:20:27'),
+(621, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-15 03:22:39'),
+(622, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-15 03:25:39'),
+(623, 1, 'add', 'https://192.168.140.200/stored_xss.php to whitelist', '2024-04-15 03:36:03'),
+(624, 1, 'login', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-16 16:22:46'),
+(625, 1, 'logout', 'IP address : 192.168.140.100; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-16 16:31:32'),
+(626, 1, 'add', 'https://192.168.140.200/dom_xss.html?%27%20onerror=%27alert(document.cookie) to whitelist', '2024-04-17 17:56:52'),
+(627, 1, 'login', 'IP address : 192.168.140.200; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-17 17:57:40'),
+(628, 1, 'add', 'https://192.168.140.200/dom_xss.html?myInput=%3Cscript%3E%3Cimg+src%3Dx+onerror%3Dalert%28document.cookie%29%3E%3C%2Fscript%3E to action_list', '2024-04-17 18:24:08'),
+(629, 1, 'delete', 'Delete action_history id : 148', '2024-04-17 18:24:25'),
+(630, 1, 'add', 'https://192.168.140.200/dom_xss.html?myInput=%3Cscript%3E%3Cimg+src%3Dx+onerror%3Dalert%28document.cookie%29%3E%3C%2Fscript%3E to whitelist', '2024-04-17 18:24:37'),
+(631, 1, 'add', 'https://192.168.140.200/dom_xss.html?myInput=%3Cimg+src%3Dx+onerror%3Dalert%28document.cookie%29%3E to whitelist', '2024-04-17 18:26:37'),
+(632, 1, 'add', 'https://192.168.140.200/url_re_base64.html to action_list', '2024-04-17 18:26:54'),
+(633, 1, 'add', 'https://192.168.140.200/dbd.html to action_list', '2024-04-17 18:28:15'),
+(634, 1, 'add', 'https://192.168.140.200/dbd_base64.html to action_list', '2024-04-17 18:28:19'),
+(635, 1, 'login', 'IP address : 192.168.140.200; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-17 18:29:24'),
+(636, 1, 'add', 'malicious_chain type:XSS code:<script>,alert(document.cookie),</script> ', '2024-04-17 18:29:38'),
+(637, 1, 'delete', 'Delete whitelist id : 70', '2024-04-17 18:30:36'),
+(638, 1, 'delete', 'Delete whitelist id : 71', '2024-04-17 18:30:44'),
+(639, 1, 'delete', 'Delete whitelist id : 72', '2024-04-17 18:30:45'),
+(640, 1, 'delete', 'Delete whitelist id : 73', '2024-04-17 18:30:46'),
+(641, 1, 'add', 'https://192.168.140.200/stored_xss.php to action_list', '2024-04-17 18:30:58'),
+(642, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-17 18:46:15'),
+(643, 1, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-17 23:05:35'),
+(644, 1, 'add', 'http://192.168.140.200/url_re_base64.html to action_list', '2024-04-17 23:05:42'),
+(645, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-23 19:46:51'),
+(646, 16, 'add', 'malicious_chain type:XSS code:document.cookie ', '2024-04-23 19:52:49'),
+(647, 16, 'login', 'IP address : 192.168.140.133; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-23 22:03:16'),
+(648, 16, 'delete', 'Delete malicious_chain id : 45', '2024-04-23 22:03:34'),
+(649, 16, 'add', 'malicious_chain type:XSS code:document.cookie ', '2024-04-23 22:03:52'),
+(650, 16, 'add', 'http://192.168.140.200/stored_xss.php to action_list', '2024-04-23 22:04:37'),
+(651, 1, 'login', 'IP address : 192.168.140.134; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-23 22:41:53'),
+(652, 1, 'delete', 'Delete malicious_chain id : 7', '2024-04-23 22:46:14'),
+(653, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:16:54'),
+(654, 1, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:17:04'),
+(655, 16, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:17:36'),
+(656, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:17:39'),
+(657, 1, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:18:07'),
+(658, 16, 'add', 'http://192.168.140.200/url_re_base64.html to whitelist', '2024-04-24 10:22:32'),
+(659, 16, 'delete', 'Delete action_history id : 154', '2024-04-24 10:22:56'),
+(660, 16, 'delete', 'Delete whitelist id : 74', '2024-04-24 10:23:00'),
+(661, 16, 'update', 'Change username to luca', '2024-04-24 10:24:41'),
+(662, 16, 'update', 'Change username to lucas', '2024-04-24 10:24:44'),
+(663, 16, 'update', 'Change email to luca@domain.com', '2024-04-24 10:24:57'),
+(664, 16, 'update', 'Change email to lucas@domain.com', '2024-04-24 10:25:04'),
+(665, 16, 'update', 'Changed password', '2024-04-24 10:25:42'),
+(666, 16, 'update', 'Changed password', '2024-04-24 10:25:58'),
+(667, 16, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:26:07'),
+(668, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:26:13'),
+(669, 16, 'update', 'Changed password', '2024-04-24 10:26:25'),
+(670, 16, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:35:01'),
+(671, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 10:35:03'),
+(672, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 12:59:46'),
+(673, 1, 'login', 'IP address : 192.168.140.128; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 13:14:45'),
+(674, 16, 'add', 'http://192.168.140.200/dbd.html to whitelist', '2024-04-24 15:22:10'),
+(675, 16, 'add', 'http://192.168.140.200/dbd_base64.html to whitelist', '2024-04-24 15:22:20'),
+(676, 16, 'delete', 'Delete whitelist id : 75', '2024-04-24 15:23:55'),
+(677, 16, 'delete', 'Delete whitelist id : 76', '2024-04-24 15:23:55'),
+(678, 16, 'add', 'http://192.168.140.200/dbd.html to action_list', '2024-04-24 15:24:00'),
+(679, 16, 'delete', 'Delete action_history id : 155', '2024-04-24 15:24:06'),
+(680, 1, 'delete', 'Delete action_history id : 149', '2024-04-24 15:25:07'),
+(681, 1, 'delete', 'Delete action_history id : 150', '2024-04-24 15:25:07'),
+(682, 1, 'delete', 'Delete action_history id : 151', '2024-04-24 15:25:07'),
+(683, 1, 'delete', 'Delete action_history id : 152', '2024-04-24 15:25:07'),
+(684, 1, 'delete', 'Delete action_history id : 153', '2024-04-24 15:25:08'),
+(685, 1, 'update', 'Switch user id : 15 to Disable', '2024-04-24 15:31:18'),
+(686, 1, 'update', 'Switch user id : 15 to Enable', '2024-04-24 15:32:06'),
+(687, 17, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 15:32:39'),
+(688, 1, 'update', 'Switch user id : 17 to Disable', '2024-04-24 15:32:46'),
+(689, 17, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 15:32:49'),
+(690, 1, 'update', 'Switch user id : 17 to Enable', '2024-04-24 15:33:05'),
+(691, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 15:56:59'),
+(692, 16, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 15:57:08'),
+(693, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 15:57:10'),
+(694, 16, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 15:57:23'),
+(695, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 15:57:26'),
+(696, 16, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 17:19:02'),
+(697, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 17:19:54'),
+(698, 16, 'add', 'https://sourceforge.net/ to whitelist', '2024-04-24 17:21:50'),
+(699, 16, 'add', 'http://192.168.140.200/dbd_base64.html to whitelist', '2024-04-24 17:22:43'),
+(700, 16, 'add', 'http://192.168.140.200/url_re_base64.html to whitelist', '2024-04-24 17:27:52'),
+(701, 1, 'add', 'malicious_chain type:XSS code:document.cookie ', '2024-04-24 17:29:05'),
+(702, 1, 'delete', 'Delete malicious_chain id : 18', '2024-04-24 17:29:32'),
+(703, 16, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 17:31:34'),
+(704, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 17:32:16'),
+(705, 16, 'add', 'https://github.com/wing32048/Web-Analyzer-Extension/blob/main/js/main.js to whitelist', '2024-04-24 17:32:21'),
+(706, 16, 'logout', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 17:33:29'),
+(707, 16, 'login', 'IP address : 192.168.140.129; Device : Computer; OS : Windows 10; Browser : Chrome', '2024-04-24 17:34:41');
 
 -- --------------------------------------------------------
 
@@ -345,41 +430,21 @@ CREATE TABLE `malicious_chain` (
 --
 
 INSERT INTO `malicious_chain` (`id`, `user_id`, `type`, `code`, `date`) VALUES
-(1, 1, 'XSS', '<script>,document.cookie,</script>', '2024-02-05'),
-(2, 1, 'URL redirect', '<script>,window.open(,</script>', '2024-01-29'),
-(3, 1, 'DBD', '<script>,createObjectURL(,click(,createElement(,</script>', '2024-01-29'),
-(6, 1, 'XSS', '<script>,document.URL,</script>', '2024-04-11'),
-(7, 1, 'XSS', '<script>,document.documentURI,</script>', '2024-04-11'),
-(8, 1, 'XSS', '<script>,document.URLUnencoded,</script>', '2024-04-11'),
-(9, 1, 'XSS', '<script>,document.baseURI,</script>', '2024-04-11'),
-(11, 1, 'XSS', '<script>,window.name,</script>', '2024-04-11'),
-(12, 1, 'XSS', '<script>,history.pushState,</script>', '2024-04-11'),
-(13, 1, 'XSS', '<script>,localStorage,</script>', '2024-04-11'),
-(14, 1, 'XSS', '<script>,sessionStorage,</script>', '2024-04-11'),
-(15, 1, 'XSS', '<script>,IndexedDB(mozIndexedDB),</script>', '2024-04-11'),
-(16, 1, 'XSS', '<script>,IndexedDB(webkitIndexedDB),</script>', '2024-04-11'),
-(17, 1, 'XSS', '<script>,IndexedDB(msIndexedDB),</script>', '2024-04-11'),
-(18, 1, 'XSS', '<script>,Database,</script>', '2024-04-11'),
-(19, 1, 'XSS', '<script>,document.referrer,</script>', '2024-04-11'),
-(20, 1, 'XSS', '<script>,history.replaceState,</script>', '2024-04-11'),
-(21, 1, 'XSS', 'javascript:,document.URL', '2024-04-11'),
-(22, 1, 'XSS', 'javascript:,document.documentURI', '2024-04-11'),
-(23, 1, 'XSS', 'javascript:,document.URLUnencoded', '2024-04-11'),
-(24, 1, 'XSS', 'javascript:,document.baseURI', '2024-04-11'),
-(25, 1, 'XSS', 'javascript:,location', '2024-04-11'),
-(26, 1, 'XSS', 'javascript:,document.cookie', '2024-04-11'),
-(27, 1, 'XSS', 'javascript:,document.referrer', '2024-04-11'),
-(28, 1, 'XSS', 'javascript:,window.name', '2024-04-11'),
-(29, 1, 'XSS', 'javascript:,history.pushState', '2024-04-11'),
-(30, 1, 'XSS', 'javascript:,history.replaceState', '2024-04-11'),
-(31, 1, 'XSS', 'javascript:,localStorage', '2024-04-11'),
-(32, 1, 'XSS', 'javascript:,sessionStorage', '2024-04-11'),
-(33, 1, 'XSS', 'javascript:,Database', '2024-04-11'),
-(34, 1, 'XSS', 'javascript:,IndexedDB(mozIndexedDB)', '2024-04-11'),
-(35, 1, 'XSS', 'javascript:,IndexedDB(webkitIndexedDB)', '2024-04-11'),
-(36, 1, 'XSS', 'javascript:,IndexedDB(msIndexedDB)', '2024-04-11'),
-(42, 1, 'URL redirect', 'javascript:,window.open(', '2024-04-13'),
-(43, 1, 'DBD', 'javascript:,createObjectURL(,click(,createElement(', '2024-04-13');
+(2, 1, 'URL redirect', 'window.open(', '2024-01-29'),
+(3, 1, 'DBD', 'createObjectURL(,click(,createElement(', '2024-01-29'),
+(6, 1, 'XSS', 'document.URL', '2024-04-11'),
+(8, 1, 'XSS', 'document.URLUnencoded', '2024-04-11'),
+(9, 1, 'XSS', 'document.baseURI', '2024-04-11'),
+(11, 1, 'XSS', 'window.name', '2024-04-11'),
+(12, 1, 'XSS', 'history.pushState', '2024-04-11'),
+(13, 1, 'XSS', 'localStorage', '2024-04-11'),
+(14, 1, 'XSS', 'sessionStorage', '2024-04-11'),
+(15, 1, 'XSS', 'IndexedDB(mozIndexedDB)', '2024-04-11'),
+(16, 1, 'XSS', 'IndexedDB(webkitIndexedDB)', '2024-04-11'),
+(17, 1, 'XSS', 'IndexedDB(msIndexedDB)', '2024-04-11'),
+(19, 1, 'XSS', 'document.referrer', '2024-04-11'),
+(20, 1, 'XSS', 'history.replaceState', '2024-04-11'),
+(47, 1, 'XSS', 'document.cookie', '2024-04-24');
 
 -- --------------------------------------------------------
 
@@ -406,7 +471,8 @@ INSERT INTO `user` (`id`, `email`, `username`, `password`, `admin`, `status`, `d
 (10, 'admin@domain.com', 'admin', '$2y$10$DsvsUb1YO9ZUtOxzehBjI.Dsxx4hPnpK6XShsTVSJC9cnFKgKd.BG', 'Y', 'Disable', '2024-03-20'),
 (11, 'user@domain.com', 'user', '$2y$10$34P6KrJYn18kL9OdIfDCcOEmtLRJYQCf5qSfzylAOAfpMPjIIPmdW', 'N', 'Disable', '2024-03-20'),
 (15, 'john@domain.com', 'john', '$2y$10$kF3GlbgnZw2I0Keg9QHfdO8ktCnWi1FWmB/4EaM0KqLUaGgpYm0l6', 'N', 'Enable', '2024-03-28'),
-(16, 'lucas@domain.com', 'Lucas', '$2y$10$x2vRpYgV3rUkPt6PpK1/5.2zcZOcUmZS688tlx8/xo7I1.nK4rWMy', 'N', 'Enable', '2024-04-11');
+(16, 'lucas@domain.com', 'lucas', '$2y$10$sJFakKXn3uZkpnAgfkLy0.o9hOBi8V1han7MKUDRUUX./gZ/95jme', 'N', 'Enable', '2024-04-11'),
+(17, 'ivan@domain.com', 'ivan', '$2y$10$bn8nYhhdHABGOxY8xGAXE.F8n5p1QbJmmLNGCIJq5i2wpl7OzapSi', 'N', 'Enable', '2024-04-24');
 
 -- --------------------------------------------------------
 
@@ -426,7 +492,10 @@ CREATE TABLE `whitelist` (
 --
 
 INSERT INTO `whitelist` (`id`, `user_id`, `url`, `date`) VALUES
-(70, 1, 'https://discord.com/', '2024-04-17');
+(77, 16, 'https://sourceforge.net/', '2024-04-24'),
+(78, 16, 'http://192.168.140.200/dbd_base64.html', '2024-04-24'),
+(79, 16, 'http://192.168.140.200/url_re_base64.html', '2024-04-24'),
+(80, 16, 'https://github.com/wing32048/Web-Analyzer-Extension/blob/main/js/main.js', '2024-04-24');
 
 --
 -- Indexes for dumped tables
@@ -474,31 +543,31 @@ ALTER TABLE `whitelist`
 -- AUTO_INCREMENT for table `action_history`
 --
 ALTER TABLE `action_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=623;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=708;
 
 --
 -- AUTO_INCREMENT for table `malicious_chain`
 --
 ALTER TABLE `malicious_chain`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `whitelist`
 --
 ALTER TABLE `whitelist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- Constraints for dumped tables
@@ -588,6 +657,13 @@ CREATE TABLE `pma__designer_settings` (
   `settings_data` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Settings related to Designer';
 
+--
+-- Dumping data for table `pma__designer_settings`
+--
+
+INSERT INTO `pma__designer_settings` (`username`, `settings_data`) VALUES
+('root', '{\"relation_lines\":\"true\",\"angular_direct\":\"direct\",\"snap_to_grid\":\"off\"}');
+
 -- --------------------------------------------------------
 
 --
@@ -670,7 +746,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"fyp\",\"table\":\"malicious_chain\"},{\"db\":\"fyp\",\"table\":\"whitelist\"},{\"db\":\"fyp\",\"table\":\"action_history\"},{\"db\":\"xss\",\"table\":\"stroed_xss\"},{\"db\":\"fyp\",\"table\":\"user\"},{\"db\":\"fyp\",\"table\":\"log\"}]');
+('root', '[{\"db\":\"fyp\",\"table\":\"log\"},{\"db\":\"fyp\",\"table\":\"malicious_chain\"},{\"db\":\"fyp\",\"table\":\"whitelist\"},{\"db\":\"fyp\",\"table\":\"action_history\"},{\"db\":\"xss\",\"table\":\"stroed_xss\"},{\"db\":\"fyp\",\"table\":\"user\"}]');
 
 -- --------------------------------------------------------
 
@@ -777,7 +853,7 @@ CREATE TABLE `pma__userconfig` (
 --
 
 INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2024-04-17 03:09:40', '{\"Console\\/Mode\":\"collapse\"}');
+('root', '2024-04-30 14:17:47', '{\"Console\\/Mode\":\"collapse\"}');
 
 -- --------------------------------------------------------
 
@@ -970,49 +1046,6 @@ ALTER TABLE `pma__savedsearches`
 --
 CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `test`;
---
--- Database: `xss`
---
-CREATE DATABASE IF NOT EXISTS `xss` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `xss`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stroed_xss`
---
-
-CREATE TABLE `stroed_xss` (
-  `id` int(11) NOT NULL,
-  `payload` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `stroed_xss`
---
-
-INSERT INTO `stroed_xss` (`id`, `payload`) VALUES
-(1, '<script>alert(document.cookie)</script>');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `stroed_xss`
---
-ALTER TABLE `stroed_xss`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `stroed_xss`
---
-ALTER TABLE `stroed_xss`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
